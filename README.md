@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><a href='https://postimg.cc/rDpkb90D' target='_blank'><img src='[https://i.postimg.cc/rDpkb90D/Captura.png](https://i.postimg.cc/DwrwSj7P/Captura.png)' border='0' alt='Captura'/></a></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><a href='https://postimg.cc/rDpkb90D' target='_blank'><img href='[[https://i.postimg.cc/rDpkb90D/Captura.png](https://i.postimg.cc/DwrwSj7P/Captura.png)](https://cdn1.bitchesgirls.com/file/sydney-sweeney-nude-russian-sweeney_sydney-nude-videos-celebrities-february-21-2025/5516c8c16a64ecf1f37c2583fbb6f40f9bf79c259afeeed559814a50a368bcd1_watermarked.jpg)' border='0' alt='Captura'/></a></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
