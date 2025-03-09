@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://i.postimg.cc/DwrwSj7P/Captura.png" target="_blank">
-    <img src="https://i.postimg.cc/DwrwSj7P/Captura.png" alt="Captura" width="300" style="border-radius= 30px">
-  </a>
+  <img src="https://i.postimg.cc/DwrwSj7P/Captura.png" alt="Captura" width="300" style="border: 3px solid #000; border-radius: 10px;">
 </p>
 
 
