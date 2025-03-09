@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://i.postimg.cc/DwrwSj7P/Captura.png" target="_blank">
-    <img src="https://i.postimg.cc/DwrwSj7P/Captura.png" alt="Captura" width="300" style="border: '3px' solid #000; border-radius: '10px';">
+    <img src="https://i.postimg.cc/DwrwSj7P/Captura.png" alt="Captura" width="400" style="border: '3px' solid #000; border-radius: '10px';">
   </a>
 </p>
 
@@ -12,9 +12,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Filmo
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Filmo is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
