@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://i.postimg.cc/DwrwSj7P/Captura.png" target="_blank">
-    <img src="https://i.postimg.cc/DwrwSj7P/Captura.png" alt="Captura" width="300">
+    <img src="https://i.postimg.cc/DwrwSj7P/Captura.png" alt="Captura" width="300" style="border-radius= 30px">
   </a>
 </p>
 
