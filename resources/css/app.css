@@ -1,0 +1,40 @@
+body {
+    margin-top: 60px;
+}
+
+.navbar .container-fluid {
+
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 10px;
+    z-index: 1000;
+}
+
+.paginas-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.paginas-nav li {
+    margin: 0 15px;
+}
+
+.paginas-nav a {
+    text-decoration: none;
+    color: #EAD2AC;
+    transition: color 0.3s;
+}
+
+.hoverable:hover {
+    color: #2EBFA5;
+}
+
+
