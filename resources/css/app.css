@@ -3,7 +3,6 @@ body {
 }
 
 .navbar .container-fluid {
-
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -37,4 +36,43 @@ body {
     color: #2EBFA5;
 }
 
+/* estilo de peliculas */
+.movie-card {
+    border-radius: 20px;
+    max-height: 30vh;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    box-shadow: #2EBFA5 0px 0px 5px;
+    transition: box-shadow 0.3s;
+}
+.movie-card:hover {
+    box-shadow: #2EBFA5 0px 0px 20px;
+}
 
+.movie-overlay {
+    position: relative;
+    display: flex;
+
+    justify-content: center;
+    text-align: center;
+
+}
+
+.movie-overlay img {
+    width: 100%;
+    filter: brightness(50%);
+}
+
+.movie-title {
+    position: absolute;
+
+    left: 10px;
+
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Arial Black', sans-serif;
+}
