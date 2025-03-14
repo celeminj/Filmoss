@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeliculaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
+Route::get('home', function () {
     return view('index.index');
 });
 
@@ -24,4 +25,14 @@ Route::get('/cartelera', function () {
 Route::get('/cine', function () {
     return view('cine.cine');
 });
+
+// Login y registro son probisionales para style
+Route::get  ('/register', function () {
+    return view('auth.register');
+});
+
+Route::get  ('/login', function () {
+    return view('auth.login');
+});
+Route::get('/catalogo', [PeliculaController::class, 'index']);
 
