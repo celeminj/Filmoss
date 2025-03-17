@@ -50,3 +50,7 @@
         </div>
 
     </div>
+    <div id="film">
+        <film></film>
+
+    </div>
