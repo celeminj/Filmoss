@@ -38,26 +38,29 @@ body {
 
 /* estilo de peliculas */
 .movie-card {
+    width: 20vw;
+    height: 25vh;
+    color: #EAD2AC;
     border-radius: 20px;
-    max-height: 30vh;
     position: relative;
     border: none;
     overflow: hidden;
-    box-shadow: #2EBFA5 0px 0px 5px;
-    transition: box-shadow 0.3s;
+    background-color: #222;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    transition: box-shadow , transform 0.3s;
 }
 .movie-card:hover {
+    transform: scale(1.05);
     box-shadow: #2EBFA5 0px 0px 20px;
 }
 
-.movie-overlay {
-    position: relative;
-    display: flex;
-
-    justify-content: center;
-    text-align: center;
-
-}
 
 .movie-overlay img {
     width: 100%;
@@ -66,13 +69,189 @@ body {
 
 .movie-title {
     position: absolute;
-
     left: 10px;
-
     font-size: 24px;
     font-weight: bold;
     color: white;
     text-transform: uppercase;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     font-family: 'Arial Black', sans-serif;
+}
+#categoria-titulo , #categoria-titulo h1 {
+    display: flex;
+    justify-content: left;
+    color: #EAD2AC;
+    padding: 30px;
+    font-size: 3rem;
+}
+#categorias{
+    display: flex;
+    justify-content: center;
+    color: #EAD2AC;
+    justify-content:space-evenly;
+    cursor: pointer;
+}
+
+.card-categorias h2{
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.card-categorias {
+    width: 20vw;
+    height: 25vh;
+    color: #EAD2AC;
+    border-radius: 20px;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    background-color: #222;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+
+
+.card-categorias[data-bg="accion"]:hover {
+
+    background-image: url('https://64.media.tumblr.com/61d1c199771da715b77c65e0b7326ce4/18f68a7ecd7c022c-e5/s540x810/3b63e706d448df08bd1323bb94ef8c7e33c2f12f.gif');
+}
+
+.card-categorias[data-bg="aventura"]:hover {
+    background-image: url('https://media0.giphy.com/media/bnDYyn2HMzqpDEUecP/giphy.gif?cid=6c09b952ebzi8kdna39atqxtgch8dxsl7bftpvdri5xuvmm9&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g');
+}
+
+.card-categorias[data-bg="ciencia-ficcion"]:hover {
+    background-image: url('https://2.bp.blogspot.com/-JSbIpC1k0d0/Vh2qFB-Ip1I/AAAAAAAACjc/VfDbt-8IK0g/s640/alien%2B8.gif');
+}
+
+.card-categorias[data-bg="comedia"]:hover {
+    background-image: url('https://i.makeagif.com/media/12-06-2020/f75TL5.gif');
+}
+
+
+.card-categorias:hover {
+    color: #2EBFA5;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+
+
+/*  cartelera */
+
+.cartelera-semanal {
+    display: flex;
+    color: #EAD2AC;
+    cursor: pointer;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content:space-evenly;
+}
+
+.cartelera-semanal:hover {
+    color: #2EBFA5;
+}
+
+/* pelicula nueva */
+.card-cartelera-film {
+    position: relative;
+    width: 1200px;
+    height: 350px;
+    left: 400px;
+    margin-top: 10px;
+    padding: 1em;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    color: rgb(255, 255, 255);
+    object-fit: cover;
+    background-image: url('https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.card-cartelera-film * {
+    position: relative;
+    z-index: 2;
+}
+
+.card-cartelera-film::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.486);
+    z-index: 1;
+}
+
+.film-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.film-title {
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.film-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hora-film {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.hora-film a {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #2EBFA5;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+
+}
+
+.hora-film a:hover {
+    background-color:  #29cfb1;
+}
+
+.cartelera-dia{
+    color: #EAD2AC;
+    font-size: 100px;
+    padding-left: 20%;
 }
