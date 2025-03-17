@@ -5,7 +5,7 @@
     <br>
     <div class="text-light">
         <h1>INICIAR SESIÓN</h1>
-        <form>
+        <form class="container">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
                 <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
