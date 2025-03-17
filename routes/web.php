@@ -15,7 +15,7 @@ use App\Http\Controllers\PeliculaController;
 */
 
 Route::get('home', function () {
-    return view('index.index');
+    return view('home.index');
 });
 
 Route::get('/cartelera', function () {
