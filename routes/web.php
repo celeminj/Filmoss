@@ -36,6 +36,10 @@ Route::get  ('/login', function () {
     return view('auth.login');
 });
 
+Route::get  ('/ticket', function () {
+    return view('ticket.ticket');
+});
+
 Route::get('/catalogo', [PeliculaController::class, 'index']);
 
 

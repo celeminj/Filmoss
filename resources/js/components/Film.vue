@@ -13,13 +13,13 @@
             </ul>
             <p>{{pelicula_nueva.descripcion}}</p>
 
-            <ul class="hora-film">
-                <a href="">10:00</a>
-                <a href="">11:00</a>
-                <a href="">12:30</a>
-                <a href="">15:00</a>
-                <a href="">18:00</a>
-            </ul>
+            <div class="hora-film">
+                <a href="ticket">10:00</a>
+                <a href="ticket">11:00</a>
+                <a href="ticket">12:30</a>
+                <a href="ticket">15:00</a>
+                <a href="ticket">18:00</a>
+            </div>
         </div>
 
     </div>
@@ -90,4 +90,61 @@ export default {
         font-size: 1rem;
     }
 }
+
+.film-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.film-title {
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.film-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hora-film {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.hora-film a {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #2EBFA5;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+
+}
+
+.hora-film a:hover {
+    background-color:  #29cfb1;
+}
+
+.cartelera-dia{
+    color: #EAD2AC;
+    font-size: 100px;
+    padding-left: 20%;
+}
+
 </style>

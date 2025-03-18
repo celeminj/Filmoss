@@ -12,7 +12,7 @@
     </div>
     <div class="container-fluid">
         <ul class="paginas-nav">
-            <li><a id="len1" class="hoverable" value="">Lunes</a></li>
+            <li><a id="len1" class="hoverable">Lunes</a></li>
             <li><a id="len2" class="hoverable">Martes</a></li>
             <li><a id="len3" class="hoverable">Miercoles</a></li>
             <li><a id="len4" class="hoverable">Jueves</a></li>

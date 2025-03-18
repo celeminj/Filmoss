@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset('icons/ico.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('icons/favicon.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <a href="home"><img
-                        src='https://i.postimg.cc/xXT44s4v/Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n.png'
+                        src='https://i.postimg.cc/k4yJmLrR/Captura-de-pantalla-2025-03-18-165617-removebg-preview.png'
                         alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
                 <ul class="paginas-nav">
                     <li><a id="len1" class="hoverable" href="home">Inicio</a></li>
@@ -44,8 +44,57 @@
         @yield('contenido')
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container text-primary">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">
+            <div class="col mb-3  text-primary">
+                <a href="home"><img
+                        src='https://i.postimg.cc/xXT44s4v/Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n.png'
+                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
+                <p class="text-primary">Donde estés, donde quieras.</p>
+            </div>
 
+            <div class="col mb-3">
+
+            </div>
+
+            <div class="col mb-3">
+                <ul class="nav flex-column ">
+                    <li class="nav-item mb-2 "><a href="home" class="nav-link p-0 text-primary">Inicio</a></li>
+                    <li class="nav-item mb-2"><a href="cartelera" class="nav-link p-0 text-primary">Cartelera</a></li>
+                    <li class="nav-item mb-2"><a href="catalogo" class="nav-link p-0 text-primary">Catalogo</a></li>
+                    <li class="nav-item mb-2"><a href="cine" class="nav-link p-0 text-primary">Cines</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Sobre Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="mailto:elcorreoquequieres@correo.com"
+                            class="nav-link p-0 text-primary">Correo electrónico</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Enlaces</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Instagram</a></li>
+                    <li class="nav-item mb-2"><a href="https://x.com/Film00o" class="nav-link p-0 text-primary">X</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <ul class="nav flex-column ">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Términos y
+                            condiciones.</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Política de
+                            privacidad.</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Preguntas frecuentes
+                            (FAQ)</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Información sobre
+                            cookies</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
