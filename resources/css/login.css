@@ -1,0 +1,52 @@
+
+
+.container-1{
+position: absolute;
+top: 25%;
+left: 10%;
+height: 500px;
+width: 600px;
+}
+
+.container-1 img{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    height: 370px;
+    width: 500px;
+}
+
+
+
+
+.container-2{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 30%;
+    left: 62%;
+    border-radius: 10px;
+    padding: 20px 20px;
+    z-index: 1000;
+
+}
+
+.titulo-registro h1{
+    font-weight: 700;
+    color: #2EBFA5;
+    font-size: 60px;
+    margin-left: 15px;
+}
+
+form {
+    color: #2EBFA5;
+    font-weight: 500;
+
+}
+
+.form-check-label{
+    font-weight: 300;
+
+}
+
