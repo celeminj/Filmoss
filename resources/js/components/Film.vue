@@ -1,20 +1,17 @@
 <template >
-    <div class="container-fluid">
-        <div class="cartelera-film">
+    <div class="cartelera-fluid">
+        <div class="cartelera-film" v-for="pelicula_nueva in peliculas_nuevas " :key="pelicula_nueva.id"  :style="{
+         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${pelicula_nueva.image})` }">
 
             <div class="film-title">
-              LOS INCREIBLES
+             {{ pelicula_nueva.titulo}}
             </div>
             <ul>
-                <li>DURACIÓN: 120 min</li>
-                <li>Edad: +12</li>
+                <li>{{ pelicula_nueva.duracion + " Min" }}</li>
+                <li>{{"+" + pelicula_nueva.restriccion_edad}}</li>
+                <li>{{ pelicula_nueva.calificacion + "/10" }}</li>
             </ul>
-            <p>Un empleado de oficina insome en busca de una manera de cambiar su vida se cruza con un vendedor y crean un
-                club de lucha clandestino como forma de terapia,, pero la mayoría sufrió alteraciones en alguna manera, ya
-                sea porque se le agregó humor, o palabras aleatorias que no parecen ni un poco creíbles. Si vas a utilizar
-                un pasaje de Lorem Ipsum, necesitás estar seguro de que no hay nada avergonzante escondido en el medio del
-                texto. Todos los generadores de Lorem Ipsum que se encuentran en Internet tienden a repetir trozos
-                predefinidos cuando sea necesario</p>
+            <p>{{pelicula_nueva.descripcion}}</p>
 
             <ul class="hora-film">
                 <a href="">10:00</a>
@@ -30,101 +27,67 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            peliculas_nuevas: [],
+            peliculas_filtradas: []
+        };
+    },
+    mounted(){
+        fetch("http://localhost/Filmoss/public/pelicula_nueva")
+      .then(response => response.json())
+      .then(data => {
+        this.peliculas_nuevas = data;
+      })
+      .catch(error => console.error("Error cargando datos:", error));
+        }
+    }
 
-}
 </script>
 <style >
 
-.cartelera-film {
-    position: relative;
-    width: 1200px;
-    height: 350px;
-    left: 400px;
-    margin-top: 10px;
-    padding: 1em;
-    overflow: hidden;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    color: rgb(255, 255, 255);
-    object-fit: cover;
-    background-image: url('https://lumiere-a.akamaihd.net/v1/images/eu_incredibles-2_article_char2_r_41551334.jpeg?region=0,0,1200,725');
-    background-size: cover;
-    background-position: center;
-
-}
-
-
-.cartelera-film * {
-    position: relative;
-    z-index: 2;
-}
-
-.cartelera-film::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.486);
-    z-index: 1;
-}
-
-.film-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: white;
+.cartelera-fluid{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px;
-    text-align: center;
+    flex-wrap: wrap;
 }
 
-.film-title {
-    font-size: 52px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.film-description {
-    font-size: 14px;
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.hora-film {
-    display: flex;
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.hora-film a {
-    margin-top: 20px;
+.cartelera-film {
     width: 100%;
-    background-color: #2EBFA5;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-
+    max-width: 1200px;
+    height: auto;
+    margin:20px;
+    padding: 1rem;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    color: rgb(255, 255, 255);
+    background-size: cover;
+    background-position: center;
 }
 
-.hora-film a:hover {
-    background-color:  #29cfb1;
-}
+/* Estilos para móviles */
+@media screen and (max-width: 48rem) {
+    .cartelera-film {
+        max-width: 95%;
+        padding: 1rem;
+        text-align: center;
+    }
 
-.cartelera-dia{
-    color: #EAD2AC;
-    font-size: 100px;
-    padding-left: 20%;
-}
+    .film-title {
+        font-size: 2rem;
+    }
 
+    .hora-film {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hora-film a {
+        width: 80%;
+        font-size: 1rem;
+    }
+}
 </style>

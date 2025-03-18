@@ -12,7 +12,9 @@ class PeliculaNuevaController extends Controller
      */
     public function index()
     {
-        //
+        // $peliculas_nuevas = Pelicula_nueva::paginate(5);
+
+        return response()->json(Pelicula_nueva::all());
     }
 
     /**

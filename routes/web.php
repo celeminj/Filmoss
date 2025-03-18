@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\PeliculaNuevaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,9 @@ Route::get  ('/register', function () {
 Route::get  ('/login', function () {
     return view('auth.login');
 });
+
 Route::get('/catalogo', [PeliculaController::class, 'index']);
+
+
+Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
 
