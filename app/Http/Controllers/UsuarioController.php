@@ -9,24 +9,25 @@ class UsuarioController extends Controller
 {
     public function login(Request $request){
 
-        // $nomUsuari = $request->input('nom');
-        // $contrasenya = $request->input('contrasenya');
+        $correo = $request->input('correo');
+        $contrasenya = $request->input('contrasenya');
+        $user = Usuario::where('correo',$correo)->first();
 
-        // $usuari = Usuari::where('nom',$nomUsuari)->first();
-
-        // if($usuari != null && Hash::check($contrasenya, $usuari->contrasenya)){
-        //     Auth::login($usuari);
-        //     $request->session()->flash('usuari', $usuari);
-        //     $response = redirect('/');
-        // }
-        // else{
-        //     $request->session()->flash('error','Usuari o contrasenya incorrectes');
-        //     $response = redirect('/');
-        // }
+        if($user != null && Hash::check($contrasenya, $user->contrasenya)){
+            Auth::login($user);
+            $response = redirect('/home');
+        }
+        else{
+            $request->session()->flash('error','No existe este correo');
+            $response = redirect('/login')->withInput();
+        }
 
         return $response;
     }
+    public function showLogin(){
 
+        return view("auth.login");
+    }
     public function logout(Request $request){
         Auth::logout();
 

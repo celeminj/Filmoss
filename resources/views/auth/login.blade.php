@@ -1,9 +1,9 @@
 @extends('index.index')
 @section('contenido')
-<link
-href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-rel="stylesheet">
-@vite(['resources/css/login.css'])
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    @vite(['resources/css/login.css'])
 
 
     <div class="text-light">
@@ -21,7 +21,8 @@ rel="stylesheet">
                         <div class="titulo-inicio   ">
                             <h1>INICIAR SESIÓN</h1>
                         </div>
-                        <form>
+                        <form class="container"
+                            action="{{ action([App\Http\Controllers\UsuarioController::class, 'login']) }}" method="POST">
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="form4Example1" class="form-label">Dirección de correo electrónico</label>
                                 <input type="text" name="nombre" class="form-control" id="form4Example1">
@@ -38,7 +39,7 @@ rel="stylesheet">
 
                                 </div>
                                 <div class="boton-reg">
-                                    <button type="submit" class="btn btn-secondary"  id="boton-log">Iniciar sesión</button>
+                                    <button type="submit" class="btn btn-secondary" id="boton-log">Iniciar sesión</button>
                                 </div>
                             </div>
                         </form>
