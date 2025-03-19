@@ -35,7 +35,11 @@
                 <ul class="paginas-nav">
                     <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
                     <li><a id="len2" class="hoverable" href="register">Registrarse</a></li>
-
+                    @if (Auth::check() && Auth::user()->rol->nombre == 'Admin')
+                        <li><a id="len4" class="hoverable" href="gestion">Gestionar Peliculas</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Eventos</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Usuarios</a></li>
+                    @endif
                 </ul>
             </div>
         </nav>
@@ -86,7 +90,8 @@
                             condiciones.</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Política de
                             privacidad.</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Preguntas frecuentes
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Preguntas
+                            frecuentes
                             (FAQ)</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Información sobre
                             cookies</a></li>

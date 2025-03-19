@@ -35,6 +35,7 @@
 
 
                 <button type="submit" class="btn btn-secondary">PAGAR</button>
+                <a href="pelicula">VER</a>
             </form>
         </div>
     </div>

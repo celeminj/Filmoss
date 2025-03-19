@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\PeliculaNuevaController;
 
@@ -45,3 +47,17 @@ Route::get('/catalogo', [PeliculaController::class, 'index']);
 
 Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
 
+Route::get('/pelicula', function(){
+    return view('pelicula.pelicula');
+});
+
+Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
+Route::post('/login', [UsuarioController::class, 'login']);
+Route::post('/logout', [UsuarioController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function (){
+    Route::get('/catalogo' , function () {
+        $user = Auth::user();
+        return view('home' , compact('user'));
+    });
+});
