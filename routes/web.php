@@ -29,14 +29,7 @@ Route::get('/cine', function () {
     return view('cine.cine');
 });
 
-// Login y registro son probisionales para style
-Route::get  ('/register', function () {
-    return view('auth.register');
-});
 
-Route::get  ('/login', function () {
-    return view('auth.login');
-});
 
 Route::get  ('/ticket', function () {
     return view('ticket.ticket');
@@ -48,16 +41,22 @@ Route::get('/catalogo', [PeliculaController::class, 'index']);
 Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
 
 Route::get('/pelicula', function(){
-    return view('pelicula.pelicula');
+    return view('pelicula.index');
 });
 
 Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
-Route::post('/login', [UsuarioController::class, 'login']);
+
+Route::post('/login', [UsuarioController::class, 'login'])->name('login.post');
+
+Route::post('/register', [UsuarioController::class, 'register']);
+
+Route::get('/register', [UsuarioController::class, 'showRegister'])->name('register.post');
+
 Route::post('/logout', [UsuarioController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function (){
     Route::get('/catalogo' , function () {
         $user = Auth::user();
-        return view('home' , compact('user'));
-    });
+        return view('catalogo.catalogo' , compact('user'));
+    })->name('catalogo');
 });
