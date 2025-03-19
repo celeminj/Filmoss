@@ -13,19 +13,17 @@
             </div>
 
             <div class="fondo-container-2">
-                <div class="imagen-fondo" style="background-image: url('{{ asset('images/log.png') }}');">
-
-                </div>
+                <div class="imagen-fondo" style="background-image: url('{{ asset('images/log.png') }}');"></div>
                 <div class="container-2">
                     <div class="fondo-container-2">
                         <div class="titulo-registro">
                             <h1>REGISTRO</h1>
                         </div>
-                        <form>
+                        <form action="{{ action([App\Http\Controllers\UsuarioController::class, 'register']) }}"
+                            method="POST">
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="form4Example1" class="form-label">Nombre de usuario</label>
                                 <input type="text" name="nombre" class="form-control" id="form4Example1">
-
                             </div>
 
                             <div class="mb-3">

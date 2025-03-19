@@ -13,19 +13,18 @@
             </div>
 
             <div class="fondo-container-2">
-                <div class="imagen-fondo" style="background-image: url('{{ asset('images/log.png') }}');">
-
-                </div>
+                <div class="imagen-fondo" style="background-image: url('{{ asset('images/log.png') }}');"></div>
                 <div class="container-2">
                     <div class="fondo-container-2">
-                        <div class="titulo-inicio   ">
+                        <div class="titulo-inicio">
                             <h1>INICIAR SESIÓN</h1>
                         </div>
                         <form class="container"
                             action="{{ action([App\Http\Controllers\UsuarioController::class, 'login']) }}" method="POST">
+                            @csrf
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="form4Example1" class="form-label">Dirección de correo electrónico</label>
-                                <input type="text" name="nombre" class="form-control" id="form4Example1">
+                                <input type="text" name="correo" class="form-control" id="form4Example1">
 
                             </div>
                             <div class="mb-3">

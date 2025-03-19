@@ -31,16 +31,32 @@
                     <li><a id="len2" class="hoverable" href="cartelera">Cartelera</a></li>
                     <li><a id="len3" class="hoverable" href="catalogo">Catalogo</a></li>
                     <li><a id="len4" class="hoverable" href="cine">Cines</a></li>
-                </ul>
-                <ul class="paginas-nav">
-                    <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
-                    <li><a id="len2" class="hoverable" href="register">Registrarse</a></li>
-                    @if (Auth::check() && Auth::user()->rol->nombre == 'Admin')
+                    @if (Auth::check() && Auth::user()->rol->tipo_rol == 'Admin')
                         <li><a id="len4" class="hoverable" href="gestion">Gestionar Peliculas</a></li>
                         <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Eventos</a></li>
                         <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Usuarios</a></li>
                     @endif
                 </ul>
+                <form class="d-flex" role="search">
+                    <ul class="paginas-nav">
+                        @if (Auth::check())
+                            <li class="nav-item dropdown">
+                                <a id="len1" class="hoverable dropdown-toggle" data-bs-toogle="dropdown"
+                                    role="button" aria-expanded="false">{{ Auth::user()->nombre }}
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"
+                                            aria-hidden=true></i>Logout</a>
+                                </div>
+
+                            </li>
+                        @else
+                            <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
+                            <li><a id="len2" class="hoverable" href="register">Registrarse</a></li>
+                        @endif
+                    </ul>
+                </form>
+
             </div>
         </nav>
     </div>
