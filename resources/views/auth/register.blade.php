@@ -5,19 +5,17 @@
         rel="stylesheet">
     @vite(['resources/css/login.css'])
 
-    <br>
-    <br>
-    <br>
+
     <div class="text-light">
-
-
         <div class="containers">
             <div class="container-1">
                 <img src="{{ asset('images/filmo-logo.png') }}" alt="">
             </div>
 
-            <div class="fondo-container-2" style="background-image: url('{{ asset('images/log-in.png') }}');">
+            <div class="fondo-container-2">
+                <div class="imagen-fondo" style="background-image: url('{{ asset('images/log.png') }}');">
 
+                </div>
                 <div class="container-2">
                     <div class="fondo-container-2">
                         <div class="titulo-registro">
@@ -44,12 +42,17 @@
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Soy mayor de 18</label>
                             </div>
-                            <a href="login">¿Ya tienes cuenta? Inicia sesión</a>
-                            <button type="submit" class="btn btn-secondary">Registrarme</button>
+                            <div class="seccion-boton">
+                                <div class="inicio-sesion">
+                                    <a href="login">¿Ya tienes cuenta? Inicia sesión</a>
+                                </div>
+                                <div class="boton-reg">
+                                    <button type="submit" class="btn btn-secondary"
+                                        id="boton-registrarme">Registrarme</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
-
-
             </div>
         </div>
