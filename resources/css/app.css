@@ -184,8 +184,8 @@ body {
 
 .tabla-gestion-usuario{
     display: flex;
-    margin-top: 9rem;
-    height: 50vh;
+    margin-top: 3rem;
+    height: 20vh;
 }
 
 .titulo-gestion{
