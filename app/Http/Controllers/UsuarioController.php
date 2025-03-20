@@ -45,11 +45,10 @@ class UsuarioController extends Controller
     }
 
     public function logout(){
+
         Auth::logout();
 
-
-
-        return redirect('/login');
+        return redirect('/home');
     }
     public function showRegister(){
 
@@ -58,12 +57,21 @@ class UsuarioController extends Controller
 
     public function register(Request $request)
     {
+        // $request->validate([
+        //     'nombre' => 'required|string|max:255',
+        //     'fecha_nacimiento' => 'required|date',
+        //     'correo' => 'required|email|unique:usuario',
+        //     'contrasenya' => 'required|min:6|confirmed',
+        // ]);
+
 
         $user = new Usuario();
         $user->nombre = $request->input("nombre");
         $user->fecha_nacimiento = $request->input("fecha_nacimiento");
         $user->correo = $request->input("correo");
         $user->contrasenya = Hash::make($request->input("contrasenya"));
+        $user->rol_id = 2;
+
 
         if ($user->save()) {
             Auth::login($user);
@@ -74,6 +82,7 @@ class UsuarioController extends Controller
             return back();
         }
     }
+
     /**
      * Display a listing of the resource.
      */
