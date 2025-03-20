@@ -32,9 +32,9 @@
                     <li><a id="len3" class="hoverable" href="catalogo">Catalogo</a></li>
                     <li><a id="len4" class="hoverable" href="cine">Cines</a></li>
                     @if (Auth::check() && Auth::user()->rol->tipo_rol == 'Admin')
-                        <li><a id="len4" class="hoverable" href="gestion">Gestionar Peliculas</a></li>
-                        <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Eventos</a></li>
-                        <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Usuarios</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion">Gestionar Eventos</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion_pelicula">Gestionar Peliculas</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion_usuario">Gestionar Usuarios</a></li>
                     @endif
                 </ul>
                 <form class="d-flex" role="search">
@@ -60,7 +60,7 @@
             </div>
         </nav>
     </div>
-    <div id="film">
+    <div id="app">
         @yield('contenido')
     </div>
 
@@ -116,6 +116,9 @@
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
 
 </html>

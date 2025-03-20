@@ -179,3 +179,17 @@ body {
     color: #2EBFA5;
 }
 
+
+/* gestion_usuario */
+
+.tabla-gestion-usuario{
+    display: flex;
+    margin-top: 9rem;
+    height: 50vh;
+}
+
+.titulo-gestion{
+    color:white;
+    margin-top: 20rem;
+    text-align: center;
+}

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\PeliculaNuevaController;
+use App\Http\Controllers\RolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,11 @@ Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
 Route::get('/pelicula', function(){
     return view('pelicula.index');
 });
+
+
+Route::get('/gestion_usuario', [UsuarioController::class, 'index'])->name('gestion.gestion_usuario');
+
+
 
 Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
 
