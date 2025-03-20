@@ -13,6 +13,7 @@
                     <th scope="col">Fecha de nacimiento</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Rol</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>

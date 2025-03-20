@@ -21,9 +21,14 @@
                         </div>
                         <form action="{{ action([App\Http\Controllers\UsuarioController::class, 'register']) }}"
                             method="POST">
+                            @csrf
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label for="form4Example1" class="form-label">Nombre de usuario</label>
-                                <input type="text" name="nombre" class="form-control" id="form4Example1">
+                                <label for="formNombre" class="form-label">Nombre de usuario</label>
+                                <input type="text" name="nombre" class="form-control" id="formNombre">
+                            </div>
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label for="formInputFecha" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" class="form-control" id="formInputFecha">
                             </div>
 
                             <div class="mb-3">

@@ -41,14 +41,17 @@
                     <ul class="paginas-nav">
                         @if (Auth::check())
                             <li class="nav-item dropdown">
-                                <a id="len1" class="hoverable dropdown-toggle" data-bs-toogle="dropdown"
-                                    role="button" aria-expanded="false">{{ Auth::user()->nombre }}
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"
-                                            aria-hidden=true></i>Logout</a>
+                                <div class="dropdown">
+                                    <a id="len1" class="hoverable dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ Auth::user()->nombre }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <a id="len1" class="hoverable dropdown-item" href="logout"><i
+                                                id="len1" class=" hoverable fa fa-sign-out"
+                                                aria-hidden=true></i>Logout</a>
+                                    </ul>
                                 </div>
-
                             </li>
                         @else
                             <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
@@ -115,7 +118,6 @@
             </div>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
