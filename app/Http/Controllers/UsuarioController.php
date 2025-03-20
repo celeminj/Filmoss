@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +47,7 @@ class UsuarioController extends Controller
     public function logout(){
         Auth::logout();
 
-        // $request->session()->invalidate();
-        // $request->session()->regenerateToken();
+
 
         return redirect('/login');
     }
@@ -80,8 +80,8 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuario = usuario::all();
-
-        return $usuario;
+        $rol = Rol::all();
+        return view('gestion.gestion_usuario', compact('usuario','rol'));
     }
 
     /**
