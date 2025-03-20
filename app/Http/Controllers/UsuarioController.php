@@ -139,6 +139,17 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        try {
+            $usuario->delete();
+            $mensaje = ['success' => 'Registro eliminado correctamente'];
+        } catch (QueryException $ex) {
+            $mensaje = ['error' => Utilitat::errorMessage($ex)];
+        }
+
+        $usuario = Usuario::all();
+
+        return view('gestion.gestion_usuario', compact('mensaje','usuario'));
     }
+
+
 }

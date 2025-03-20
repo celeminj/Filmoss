@@ -45,10 +45,9 @@ Route::get('/pelicula', function(){
     return view('pelicula.index');
 });
 
+Route::delete('/gestion_usuario/{usuario}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
 
 Route::get('/gestion_usuario', [UsuarioController::class, 'index'])->name('gestion.gestion_usuario');
-
-
 
 Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
 

@@ -24,26 +24,30 @@
                             @csrf
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="formNombre" class="form-label">Nombre de usuario</label>
-                                <input type="text" name="nombre" class="form-control" id="formNombre">
+                                <input type="text" name="nombre" class="form-control" id="formNombre" required
+                                    placeholder="Introducir nombre">
                             </div>
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="formInputFecha" class="form-label">Fecha de nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" class="form-control" id="formInputFecha">
+                                <input type="date" name="fecha_nacimiento" class="form-control" id="formInputFecha"
+                                    required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
                                 <input type="email" name="correo" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                    aria-describedby="emailHelp" required placeholder="Introducir correo electronico">
 
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                                <input type="password" name="contrasenya" class="form-control" id="exampleInputPassword1">
+                                <input type="password" name="contrasenya" class="form-control" id="exampleInputPassword1"
+                                    required placeholder="Introducir contraseña">
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Soy mayor de 18</label>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                <label class="form-check-label" for="exampleCheck1">Accepto las politicas sobre informacion
+                                    y cookies</label>
                             </div>
                             <div class="seccion-boton">
                                 <div class="inicio-sesion">
