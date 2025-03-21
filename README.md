@@ -19,8 +19,8 @@ Filmo es una aplicacion web sobre peliculas de muchos géneros, funciona de mane
 ## Ejemplo sobre Filmo 
 
 <p align="center">
-  <a href="https://i.postimg.cc/595n8ftq/Captura.png" target="_blank">
-    <img src="https://i.postimg.cc/sggpXSCP/Screenshot-2025-03-18-at-20-41-59-Landing-Page-Landing-P-rez-Photoroom.png" alt="Captura" width="400" style="border: '3px' solid #000; border-radius: '10px';">
+  <a href="" target="_blank">
+    <img src="https://i.postimg.cc/595n8ftq/Captura.png" alt="Captura" width="400" style="border: '3px' solid #000; border-radius: '10px';">
   </a>
 </p>
 
