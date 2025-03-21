@@ -6,66 +6,53 @@
 
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://github.com/celeminj/Filmoss"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://github.com/celeminj/Filmoss"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Filmo
+## Sobre Filmo
 
-Filmo is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Filmo es una aplicacion web sobre peliculas de muchos géneros, funciona de manera intuitiva y de fácil acceso, hay dos maneras de poder ver peliculas con una subscripcion mensual o anual, otra manera es pagando ticket por cada pelicula que veas de estreno, esta creada por Jordi Celemín y Jordi Perez:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Características
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sus caracterisitcas principales:
+1. Ver peliculas.
+2. Peliculas de estreno en vivo o peliculas resubidas cuando quieras verlas.
+3. Crear tu perfil de usuario para añadir peliculas vistas.
 
-## Learning Laravel
+### Partners
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **[Jordi Celemín](http://celemin.me/?i=1)**
+- **[Jordi Pérez](https://tighten.co)**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalación
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clona este repositorio en tu máquina local:
+   ```bash
+   git clone https://github.com/celeminj/Filmoss.git
 
-## Laravel Sponsors
+## Requisitos
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- [HTML](https://example.com) (HTML 5)
+- [CSS](https://example.com) (CSS)
+- [Vue](https://vuejs.org/) (Vue.JS)
+- [PHP-Laravel](https://laravel.com) (Laravel 8.00)
+- [BOOSTRAP](https://getbootstrap.com/) (Boostrap 5.3v)
+- Sistema operativo (Windows)
 
-### Premium Partners
+## Sobre framework utilizado
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Laravel es un framework de PHP, encapsula todos los componentes para que la estrucutra sea solida y protega información [documentation](https://laravel.com/docs). La documentacion de laravel es muy extensa con muchos videos tutoriales y librerias para todo el framework.
 
-## Contributing
+Si no te gusta leer tienes esta web con videos, [Laracasts](https://laracasts.com/) te puede ayudar con más de 2000 videos sobre laravel.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Contribucion
 
-## Code of Conduct
+Contribuciones sobre la documentación de Laravel [Laravel documentation](https://laravel.com/docs/contributions).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Framework de Laravel
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Laravel es un framework de PHP, encapsula todos los componentes para que la estrucutra sea solida y protega información [MIT license](https://opensource.org/licenses/MIT).
