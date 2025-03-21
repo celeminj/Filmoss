@@ -20,7 +20,7 @@ Filmo es una aplicacion web sobre peliculas de muchos géneros, funciona de mane
 
 <p align="center">
   <a href="" target="_blank">
-    <img src="https://i.postimg.cc/595n8ftq/Captura.png" alt="Captura" width="800" style="border: '3px' solid #000; border-radius: '10px';">
+    <img src="https://i.postimg.cc/595n8ftq/Captura.png" alt="Captura" width="1200" style="border: '3px' solid #000; border-radius: '10px';">
   </a>
 </p>
 
