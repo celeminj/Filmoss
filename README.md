@@ -31,6 +31,13 @@ Sus caracterisitcas principales:
 2. Peliculas de estreno en vivo o peliculas resubidas cuando quieras verlas.
 3. Crear tu perfil de usuario para añadir peliculas vistas.
 
+## Cartelera sobre Filmo 
+
+<p align="center">
+  <a href="" target="_blank">
+    <img src="https://i.postimg.cc/tR1DmFDk/Cartelera.jpg" alt="Captura" width="1200" style="border: '3px' solid #000; border-radius: '10px';">
+  </a>
+</p>
 ### Partners
 
 - **[Jordi Celemín](http://celemin.me/?i=1)**
