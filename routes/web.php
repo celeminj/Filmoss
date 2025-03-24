@@ -48,7 +48,7 @@ Route::get('/catalogo', [PeliculaController::class, 'index']);
 Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
 
 Route::get('/pelicula', function(){
-    return view('pelicula.pelicula');
+    return view('pelicula.index');
 });
 
 Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
