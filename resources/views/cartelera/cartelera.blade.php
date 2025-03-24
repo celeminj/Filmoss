@@ -24,6 +24,6 @@
     <div class="cartelera-dia"><strong>LUNES</strong></div>
 
 
-    <div id="film">
+    <div id="app">
         <film></film>
     </div>

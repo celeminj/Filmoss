@@ -12,7 +12,9 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $rol = rol::all();
+
+        return view('gestion.gestion_usuario', compact('rol'));
     }
 
     /**

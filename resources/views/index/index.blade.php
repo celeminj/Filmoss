@@ -31,20 +31,39 @@
                     <li><a id="len2" class="hoverable" href="cartelera">Cartelera</a></li>
                     <li><a id="len3" class="hoverable" href="catalogo">Catalogo</a></li>
                     <li><a id="len4" class="hoverable" href="cine">Cines</a></li>
-                </ul>
-                <ul class="paginas-nav">
-                    <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
-                    <li><a id="len2" class="hoverable" href="register">Registrarse</a></li>
-                    @if (Auth::check() && Auth::user()->rol->nombre == 'Admin')
-                        <li><a id="len4" class="hoverable" href="gestion">Gestionar Peliculas</a></li>
-                        <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Eventos</a></li>
-                        <li><a id="len4" class="hoverable" href="gestion_peliculas">Gestionar Usuarios</a></li>
+                    @if (Auth::check() && Auth::user()->rol->tipo_rol == 'Admin')
+                        <li><a id="len4" class="hoverable" href="gestion">Gestionar Eventos</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion_pelicula">Gestionar Peliculas</a></li>
+                        <li><a id="len4" class="hoverable" href="gestion_usuario">Gestionar Usuarios</a></li>
                     @endif
                 </ul>
+                <form class="d-flex" role="search">
+                    <ul class="paginas-nav">
+                        @if (Auth::check())
+                            <li class="nav-item dropdown">
+                                <div class="dropdown">
+                                    <a id="len1" class="hoverable dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ Auth::user()->nombre }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <a id="len1" class="hoverable dropdown-item" href="logout"><i
+                                                id="len1" class=" hoverable fa fa-sign-out"
+                                                aria-hidden=true></i>Logout</a>
+                                    </ul>
+                                </div>
+                            </li>
+                        @else
+                            <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
+                            <li><a id="len2" class="hoverable" href="register">Registrarse</a></li>
+                        @endif
+                    </ul>
+                </form>
+
             </div>
         </nav>
     </div>
-    <div id="film">
+    <div id="app">
         @yield('contenido')
     </div>
 
@@ -99,7 +118,9 @@
             </div>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
 
 </html>

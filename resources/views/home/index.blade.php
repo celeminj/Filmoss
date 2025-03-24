@@ -7,3 +7,6 @@
         <h1>HOME</h1>
 
     </div>
+    <div id="scroll">
+        <scroll></scroll>
+    </div>

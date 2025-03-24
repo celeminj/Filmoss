@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\PeliculaNuevaController;
+use App\Http\Controllers\RolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,11 @@ use App\Http\Controllers\PeliculaNuevaController;
 |
 */
 
-Route::get('home', function () {
+Route::get('/', function () {
+    return view('home.index');
+});
+
+Route::get('/home', function () {
     return view('home.index');
 });
 
@@ -29,14 +34,7 @@ Route::get('/cine', function () {
     return view('cine.cine');
 });
 
-// Login y registro son probisionales para style
-Route::get  ('/register', function () {
-    return view('auth.register');
-});
 
-Route::get  ('/login', function () {
-    return view('auth.login');
-});
 
 Route::get  ('/ticket', function () {
     return view('ticket.ticket');
@@ -51,13 +49,43 @@ Route::get('/pelicula', function(){
     return view('pelicula.index');
 });
 
+Route::Resource('usuarios', UsuarioController::class);
+Route::delete('/gestion_usuario/{usuario}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
+
+Route::get('/gestion_usuario', [UsuarioController::class, 'index'])->name('gestion.gestion_usuario');
+
 Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
-Route::post('/login', [UsuarioController::class, 'login']);
-Route::post('/logout', [UsuarioController::class, 'logout']);
+
+Route::post('/login', [UsuarioController::class, 'login'])->name('login.post');
+
+Route::post('/register', [UsuarioController::class, 'register'])->name('register');
+
+Route::get('/register', [UsuarioController::class, 'showRegister']);
+
+Route::get('/logout', [UsuarioController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function (){
     Route::get('/catalogo' , function () {
         $user = Auth::user();
-        return view('home' , compact('user'));
-    });
+        return view('catalogo.catalogo' , compact('user'));
+    })->name('catalogo');
 });
+
+
+
+// Route::put('/editUsuario/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
+
+// Route::get('/editUsuario/{usuario}', [UsuarioController::class, 'index'])->name('usuario.edit');
+
+
+Route::get('/gestion_pelicula', function(){
+    return view('gestion.gestion_pelicula');
+});
+
+
+Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
+    $pelicula = App\Models\Pelicula_nueva::findOrFail($id);
+    return view('ticket.ticket', ['pelicula' => $pelicula, 'hora' => $hora]);
+})->name('ticket');
+
+Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');

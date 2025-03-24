@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -15,7 +18,7 @@ class UsuarioController extends Controller
 
         if($user != null && Hash::check($contrasenya, $user->contrasenya)){
             Auth::login($user);
-            $response = redirect('/home');
+            return redirect()->route('catalogo');
         }
         else{
             $request->session()->flash('error','No existe este correo');
@@ -26,15 +29,26 @@ class UsuarioController extends Controller
     }
     public function showLogin(){
 
+        // $user = new Usuario();
+
+        // $user->nombre = 'sadmin';
+        // $user->fecha_nacimiento = '9999-12-12';
+        // $user->correo = 'sadmin@gmail.com';
+        // $user->contrasenya = \bcrypt('sadmin');
+        // $user->rol_id = 1;
+
+        // $user->save();
+
+
+
         return view("auth.login");
     }
-    public function logout(Request $request){
+
+    public function logout(){
+
         Auth::logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        return redirect('/home');
     }
     public function showRegister(){
 
@@ -43,16 +57,24 @@ class UsuarioController extends Controller
 
     public function register(Request $request)
     {
+        // $request->validate([
+        //     'nombre' => 'required|string|max:255',
+        //     'fecha_nacimiento' => 'required|date',
+        //     'correo' => 'required|email|unique:usuario',
+        //     'contrasenya' => 'required|min:6|confirmed',
+        // ]);
 
 
-        $usuario = new Usuario();
-        $usuario->nombre = $request->input("nombre");
-        $usuario->fecha_nacimiento = $request->input("fecha_nacimiento");
-        $usuario->correo = $request->input("correo");
-        $usuario->contrasenya = Hash::make($request->input("contrasenya"));
+        $user = new Usuario();
+        $user->nombre = $request->input("nombre");
+        $user->fecha_nacimiento = $request->input("fecha_nacimiento");
+        $user->correo = $request->input("correo");
+        $user->contrasenya = Hash::make($request->input("contrasenya"));
+        $user->rol_id = 2;
 
-        if ($usuario->save()) {
-            Auth::login($usuario);
+
+        if ($user->save()) {
+            Auth::login($user);
             session()->flash('success', 'Usuario registrado');
             return redirect('/home');
         } else {
@@ -60,14 +82,15 @@ class UsuarioController extends Controller
             return back();
         }
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $usuario = usuario::all();
-
-        return $usuario;
+        $rol = Rol::all();
+        return view('gestion.gestion_usuario', compact('usuario','rol'));
     }
 
     /**
@@ -108,7 +131,21 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $user = new Usuario();
+        $user->nombre = $request->input("nombre");
+        $user->fecha_nacimiento = $request->input("fecha_nacimiento");
+        $user->correo = $request->input("correo");
+        $user->contrasenya = Hash::make($request->input("contrasenya"));
+
+
+        if ($user->save()) {
+            Auth::login($user);
+            session()->flash('success', 'Usuario Actualizado');
+            return redirect('/home');
+        } else {
+            session()->flash('error', "No se ha podido actualizar");
+            return back();
+        }
     }
 
     /**
@@ -116,6 +153,17 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        try {
+            $usuario->delete();
+            $mensaje = ['success' => 'Registro eliminado correctamente'];
+        } catch (QueryException $ex) {
+            $mensaje = ['error' => Utilitat::errorMessage($ex)];
+        }
+
+        $usuario = Usuario::all();
+
+        return view('gestion.gestion_usuario', compact('mensaje','usuario'));
     }
+
+
 }
