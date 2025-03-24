@@ -1,4 +1,4 @@
-    <template>
+<!--     <template>
         <div class="template-scroll">
             <div class="container-scroll" animate>
         FILMO FILMO FILMO FILMO FILMO FILMO FILMO FILMO
@@ -8,15 +8,15 @@
     </div>
         </div>
 
-    <!-- <div class="container" animate>
+    <div class="container" animate>
         FILMO FILMO FILMO FILMO FILMO FILMO FILMO FILMO
     </div>
     <div class="container" style="color: #ead2acaf;" animate>
         FILMO FILMO FILMO FILMO FILMO FILMO FILMO FILMO
     </div>  -->
-    </template>
+    <!-- </template> -->
 
-
+<!--
     <script>
         let typeSplit = new SplitType('[animate]', {
             types: 'lines, words, chars',
@@ -70,4 +70,4 @@
             white-space: nowrap;
             overflow: hidden;
         }
-    </style>
+    </style> -->

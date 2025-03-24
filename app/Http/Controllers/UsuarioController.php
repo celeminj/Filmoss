@@ -131,7 +131,21 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $user = new Usuario();
+        $user->nombre = $request->input("nombre");
+        $user->fecha_nacimiento = $request->input("fecha_nacimiento");
+        $user->correo = $request->input("correo");
+        $user->contrasenya = Hash::make($request->input("contrasenya"));
+
+
+        if ($user->save()) {
+            Auth::login($user);
+            session()->flash('success', 'Usuario Actualizado');
+            return redirect('/home');
+        } else {
+            session()->flash('error', "No se ha podido actualizar");
+            return back();
+        }
     }
 
     /**
