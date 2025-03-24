@@ -1,0 +1,352 @@
+
+
+.reproductor{
+    color: #1F1E24;
+
+}
+
+.titulo-pelicula h1{
+    font-size: 4.5rem;
+    font-weight: 700;
+}
+
+.categorias p{
+    font-family: "Lexend", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+.edad p{
+    font-family: "Lexend", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    margin-top: -15px;
+}
+
+.categorias{
+    display : flex;
+
+}
+
+.pelicula {
+    position: relative;
+    width: 100%;
+    height: 85%;
+    overflow: hidden;
+}
+
+
+.pelicula iframe {
+    height: 100%;
+    object-fit: cover;
+    width: 100vw; /* Ajusta el ancho relativo a la pantalla */
+
+
+}
+
+.degradado-info {
+    position: absolute;
+    transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
+    width: 85vw; /* Ajusta el ancho relativo a la pantalla */
+    height: 100vw;
+    background: linear-gradient(to right, rgb(31, 189, 168), rgba(39, 82, 76, 0));
+    right: -25%; /* Lo pega al borde derecho */
+
+}
+
+.info-peli {
+    width: 100vw; /* Ajusta el ancho relativo a la pantalla */
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    transform: translateY(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10; /* Asegura que esté por encima */
+    width: 50%; /* Ajusta el ancho según lo necesites */
+}
+
+.descripcion-peli{
+    width: 80%;
+    margin-top: 50px;
+}
+
+.descripcion-peli p{
+    font-family: "Poppins";
+    font-weight: 400;
+}
+
+.otros-botones{
+    display: flex;
+    margin-top: 200px;
+}
+
+.botones-pelicula button{
+    background-color: #1F1E24;
+    border-radius: 10px;
+    color: #2EBFA5;
+    padding: 7px 20px;
+    margin-right: 15px;
+    font-family: "Lexend", sans-serif;
+    font-weight: 700;
+    border-style: none;
+    transition: box-shadow , transform 0.3s;
+
+}
+
+.botones-pelicula button:hover{
+    transform: scale(1.05);
+}
+
+.ver-ya button{
+    padding: 15px 30px;
+    padding-right: 80px;
+    position: absolute;
+    top: 85%;
+    font-size: 20px;
+    transition: box-shadow , transform 0.3s;
+}
+
+.ver-ya button:hover{
+    transform: scale(1.05);
+}
+
+.play-button {
+    width: 0;
+    height: 0;
+    background: transparent;
+    position: absolute;
+    left: 16%;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    width: 40px; /* Ajusta el tamaño */
+    height: 40px;
+    background-color: #2EBFA5; /* Color del triángulo */
+}
+
+.trailer{
+    position: relative;
+    margin-left: 220px;
+    margin-bottom: 15px;
+}
+
+.heart {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: #1F1E24;
+    transform: rotate(-45deg);
+    margin: 10px 20px;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #1F1E24;
+    border-radius: 50%;
+
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+.detalles {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* Ajusta la altura según el contenido */
+    margin-bottom: 50px; /* Agrega espacio debajo */
+
+}
+
+.detalles h1{
+    margin-top: 90px;
+    margin-bottom: 20px;
+    color: #2EBFA5;
+    font-size: 4.5rem;
+    font-weight: 750;
+}
+
+.texto-detalles {
+    color: white;
+    width: 1050px;
+    padding: 40px;
+    background: linear-gradient(to left, rgb(31, 189, 168, 0.6), rgba(39, 82, 76, 0.3));
+    border-radius: 10px;
+
+
+}
+
+.reparto {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin-top: 50px;
+    transition: box-shadow , transform 0.3s;
+}
+
+
+.reparto h1{
+    color: #2EBFA5;
+    font-weight: 700;
+    font-size: 70px;
+}
+
+.actores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 55px;
+    row-gap: 20px;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+
+}
+
+.actor{
+    width: 310px;
+    height: 410px;
+    margin: auto;
+    background: linear-gradient(to top, rgb(31, 189, 168, 0.6), rgba(45, 105, 97, 0.3));
+    border-radius: 10px;
+    transition: box-shadow , transform 0.3s;
+
+}
+
+.actor:hover{
+    transform: scale(1.05);
+
+}
+
+
+.nombre-actor{
+    color: white;
+    margin-top: 340px;
+    margin-left: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nombre-actor h4{
+    font-size: 2.5rem;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+
+@media (max-width: 960px) {
+
+    .pelicula iframe {
+        height: 480px;
+        width: 960px;
+
+    }
+
+    .info-peli {
+        top: 27%;
+        left: 3%;
+    }
+
+    .titulo-pelicula h1{
+        font-size: 2.5rem;
+    }
+
+    .categorias p{
+        font-size: 1rem;
+    }
+
+    .edad p{
+       font-size: 1rem;
+    }
+    .descripcion-peli p{
+        font-size: 0.8rem;
+    }
+
+    .otros-botones{
+        display: flex;
+        position: absolute;
+        top: 32%;
+        left: 0%;
+    }
+
+    .otros-botones button{
+
+        border-radius: 5px;
+        font-size: 0.7rem;
+
+    }
+
+    .ver-ya button{
+        padding: 10px 15px;
+        padding-right: 80px;
+        position: absolute;
+        top: 98%;
+        font-size: 15px;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 101%;
+        left: 27%;
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .trailer{
+    position: relative;
+    }
+
+
+    .detalles{
+
+        width: 100%;
+        height: 5vh;
+        margin-bottom: 400px;
+    }
+
+    .texto-detalles{
+        width: 700px;
+    }
+
+    .titulo-detalles h1{
+        font-size: 3.5rem;
+        margin-bottom: 50px;
+    }
+
+    .reparto{
+        margin-bottom: 10px;
+    }
+    .actor{
+        width: 220px;
+        height: 300px;
+    }
+
+    .nombre-actor{
+        margin-top: 220px;
+        margin-left: 55px;
+
+    }
+
+    .nombre-actor h4{
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+}
