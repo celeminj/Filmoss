@@ -2,8 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuarioController;
+
 use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\PeliculaNuevaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('usuarios', UsuarioController::class);
-Route::apiResource('peliculas', PeliculaController::class);
+Route::apiResource('usuario', UsuarioController::class);
+Route::apiResource('pelicula_nueva', PeliculaNuevaController::class);

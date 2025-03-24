@@ -34,14 +34,16 @@ export default {
                 horarios: ["10:00", "11:00", "12:00", "15:00", "18:00","20:00"]
                  };
             },
-            mounted(){
-                fetch("http://localhost/Filmoss/public/pelicula_nueva")
-                .then(response => response.json())
-                .then(data => {
-                    this.peliculas_nuevas = data;
-                             })
-                            .catch(error => console.error("Error cargando datos:", error));
-                     },
+            created() {
+                    const me = this;
+                    axios.get('pelicula_nueva')
+                    .then(response => {
+                        me.peliculas_nuevas = response.data;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+                },
         computed: {
                     horaActual() {
                         const fechaInicio = new Date();
