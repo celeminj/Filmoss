@@ -1,0 +1,3 @@
+#ocultar-pelicula{
+    display: none;
+}

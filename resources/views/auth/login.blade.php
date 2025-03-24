@@ -20,7 +20,8 @@
                             <h1>INICIAR SESIÓN</h1>
                         </div>
                         <form class="container"
-                            action="{{ action([App\Http\Controllers\UsuarioController::class, 'login']) }}" method="POST">
+                            action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'login']) }}"
+                            method="POST">
                             @csrf
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="form4Example1" class="form-label">Dirección de correo electrónico</label>

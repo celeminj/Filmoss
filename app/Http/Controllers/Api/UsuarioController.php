@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UsuarioResource;
 
 class UsuarioController extends Controller
 {
@@ -38,8 +40,6 @@ class UsuarioController extends Controller
         // $user->rol_id = 1;
 
         // $user->save();
-
-
 
         return view("auth.login");
     }
@@ -87,11 +87,12 @@ class UsuarioController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $usuario = usuario::all();
-        $rol = Rol::all();
-        return view('gestion.gestion_usuario', compact('usuario','rol'));
-    }
+{
+
+    return response()->json(Usuario::with('rol')->get());
+
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -107,7 +108,26 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->nombre = $request->input("nombre");
+        $usuario->fecha_nacimiento = $request->input("fecha_nacimiento");
+        $usuario->correo = $request->input("correo");
+        $usuario->contrasenya = Hash::make($request->input("contrasenya"));
+
+
+        try {
+            $usuario->save();
+          $response = (new UsuarioController)($usuario)
+          ->response()
+          ->setStatusCode(201);
+
+        } catch (QueryException $ex) {
+            $response = response()->json(['error' => Utilitat::errorMessage($ex)], 500);
+
+
+        }
+
+        return $response;
     }
 
     /**
@@ -115,7 +135,8 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        $usuario = Usuario::with('usuarios')->find($usuario->id);
+        return new UsuarioResource($usuario);
     }
 
     /**
@@ -131,22 +152,19 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        $user = new Usuario();
-        $user->nombre = $request->input("nombre");
-        $user->fecha_nacimiento = $request->input("fecha_nacimiento");
-        $user->correo = $request->input("correo");
-        $user->contrasenya = Hash::make($request->input("contrasenya"));
-
-
-        if ($user->save()) {
-            Auth::login($user);
-            session()->flash('success', 'Usuario Actualizado');
-            return redirect('/home');
-        } else {
-            session()->flash('error', "No se ha podido actualizar");
-            return back();
+        try {
+            $usuario->update([
+                'nombre' => $request->input("nombre"),
+                'fecha_nacimiento' => $request->input("fecha_nacimiento"),
+                'correo' => $request->input("correo"),
+                'contrasenya' => Hash::make($request->input("contrasenya"))
+            ]);
+            return response()->json(['message' => 'Usuario actualizado correctamente'], 200);
+        } catch (QueryException $ex) {
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -155,15 +173,9 @@ class UsuarioController extends Controller
     {
         try {
             $usuario->delete();
-            $mensaje = ['success' => 'Registro eliminado correctamente'];
+            return response()->json(['message' => 'Usuario eliminado correctamente'], 200);
         } catch (QueryException $ex) {
-            $mensaje = ['error' => Utilitat::errorMessage($ex)];
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
         }
-
-        $usuario = Usuario::all();
-
-        return view('gestion.gestion_usuario', compact('mensaje','usuario'));
     }
-
-
 }

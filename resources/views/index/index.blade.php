@@ -27,14 +27,17 @@
                         src='https://i.postimg.cc/k4yJmLrR/Captura-de-pantalla-2025-03-18-165617-removebg-preview.png'
                         alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
                 <ul class="paginas-nav">
-                    <li><a id="len1" class="hoverable" href="home">Inicio</a></li>
-                    <li><a id="len2" class="hoverable" href="cartelera">Cartelera</a></li>
-                    <li><a id="len3" class="hoverable" href="catalogo">Catalogo</a></li>
-                    <li><a id="len4" class="hoverable" href="cine">Cines</a></li>
+                    <li><a id="len1" class="hoverable" href="{{ route('home') }}">Inicio</a></li>
+                    <li><a id="len2" class="hoverable" href="{{ route('cartelera') }}">Cartelera</a></li>
+                    <li><a id="len3" class="hoverable" href="{{ route('catalogo') }}">Catalogo</a></li>
+                    <li><a id="len4" class="hoverable" href="{{ route('cine') }}">Cines</a></li>
                     @if (Auth::check() && Auth::user()->rol->tipo_rol == 'Admin')
-                        <li><a id="len4" class="hoverable" href="gestion">Gestionar Eventos</a></li>
-                        <li><a id="len4" class="hoverable" href="gestion_pelicula">Gestionar Peliculas</a></li>
-                        <li><a id="len4" class="hoverable" href="gestion_usuario">Gestionar Usuarios</a></li>
+                        <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion') }}">Gestionar
+                                Eventos</a></li>
+                        <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_pelicula') }}">Gestionar
+                                Peliculas</a></li>
+                        <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_usuario') }}">Gestionar
+                                Usuarios</a></li>
                     @endif
                 </ul>
                 <form class="d-flex" role="search">
@@ -54,8 +57,8 @@
                                 </div>
                             </li>
                         @else
-                            <li><a id="len1" class="hoverable" href="login">Iniciar Sesion</a></li>
-                            <li><a id="len2" class="hoverable" href="register">Registrarse</a></li>
+                            <li><a id="len1" class="hoverable" href="{{ route('login') }}">Iniciar Sesion</a></li>
+                            <li><a id="len2" class="hoverable" href="{{ route('register') }}">Registrarse</a></li>
                         @endif
                     </ul>
                 </form>

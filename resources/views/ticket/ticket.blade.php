@@ -38,8 +38,10 @@
                 </div>
 
                 <button type="submit" class="btn btn-secondary">PAGAR</button>
+
                 <a href="{{ route('pelicula.show', ['pelicula_nueva' => $pelicula->id, 'hora' => $hora]) }}"
                     class="ver-pelicula-btn">VER PELICULA</a>
+
             </form>
         </div>
     </div>

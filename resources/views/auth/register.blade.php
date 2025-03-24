@@ -19,7 +19,7 @@
                         <div class="titulo-registro">
                             <h1>REGISTRO</h1>
                         </div>
-                        <form action="{{ action([App\Http\Controllers\UsuarioController::class, 'register']) }}"
+                        <form action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'register']) }}"
                             method="POST">
                             @csrf
                             <div data-mdb-input-init class="form-outline mb-4">

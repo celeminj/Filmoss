@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\PeliculaController;
-use App\Http\Controllers\PeliculaNuevaController;
+
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\PeliculaNuevaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,25 +21,30 @@ use App\Http\Controllers\RolController;
 
 Route::get('/', function () {
     return view('home.index');
-});
+})->name('home');
+
 
 Route::get('/home', function () {
     return view('home.index');
-});
+})->name('home');
+
 
 Route::get('/cartelera', function () {
     return view('cartelera.cartelera');
-});
+})->name('cartelera');
+
+
 
 Route::get('/cine', function () {
     return view('cine.cine');
-});
+})->name('cine');
 
 
-
-Route::get  ('/ticket', function () {
+Route::get('/ticket', function () {
     return view('ticket.ticket');
-});
+})->name('ticket');
+
+
 
 Route::get('/catalogo', [PeliculaController::class, 'index']);
 
@@ -49,10 +55,15 @@ Route::get('/pelicula', function(){
     return view('pelicula.index');
 });
 
-Route::Resource('usuarios', UsuarioController::class);
+Route::Resource('usuario', UsuarioController::class);
+
+
 Route::delete('/gestion_usuario/{usuario}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
 
-Route::get('/gestion_usuario', [UsuarioController::class, 'index'])->name('gestion.gestion_usuario');
+Route::get('/gestion_usuario', function () {
+    return view('gestion.gestion_usuario');
+})->name('gestion.gestion_usuario');
+
 
 Route::get('/login', [UsuarioController::class, 'showLogin'])->name('login');
 
@@ -76,11 +87,14 @@ Route::middleware(['auth'])->group(function (){
 // Route::put('/editUsuario/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
 
 // Route::get('/editUsuario/{usuario}', [UsuarioController::class, 'index'])->name('usuario.edit');
+Route::get('/gestion', function(){
+    return view('gestion.gestion');
+})->name('gestion.gestion');
 
 
 Route::get('/gestion_pelicula', function(){
     return view('gestion.gestion_pelicula');
-});
+})->name('gestion.gestion_pelicula');
 
 
 Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
