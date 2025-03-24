@@ -13,13 +13,13 @@
             </ul>
             <p>{{pelicula_nueva.descripcion}}</p>
 
-            <div class="hora-film">
-                <a href="ticket">10:00</a>
-                <a href="ticket">11:00</a>
-                <a href="ticket">12:30</a>
-                <a href="ticket">15:00</a>
-                <a href="ticket">18:00</a>
+            <div id="hora-film">
+                <a v-for="horario in horarios" :key="horario" :href="esHorarioDisponible(horario) ? `ticket/${pelicula_nueva.id}/${horario}` : '#'"
+                :class="{ 'disabled': !esHorarioDisponible(horario) }">
+                {{ horario }}
+                </a>
             </div>
+
         </div>
 
     </div>
@@ -27,24 +27,49 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            peliculas_nuevas: [],
-            peliculas_filtradas: []
-        };
-    },
-    mounted(){
-        fetch("http://localhost/Filmoss/public/pelicula_nueva")
-      .then(response => response.json())
-      .then(data => {
-        this.peliculas_nuevas = data;
-      })
-      .catch(error => console.error("Error cargando datos:", error));
-        }
-    }
+        data() {
+            return {
+                peliculas_nuevas: [],
+                peliculas_filtradas: [],
+                horarios: ["10:00", "11:00", "12:00", "15:00", "18:00","20:00"]
+                 };
+            },
+            mounted(){
+                fetch("http://localhost/Filmoss/public/pelicula_nueva")
+                .then(response => response.json())
+                .then(data => {
+                    this.peliculas_nuevas = data;
+                             })
+                            .catch(error => console.error("Error cargando datos:", error));
+                     },
+        computed: {
+                    horaActual() {
+                        const fechaInicio = new Date();
+                        return fechaInicio.getHours();
+                    }
+                    },
+        methods: {
 
+            esHorarioDisponible(horario){
+                const horaHorario  =parseInt(horario.split(":")[0]);
+                return horaHorario > this.horaActual;
+            },
+            redirigirATicket(horario){
+                if (this.esHorarioDisponible(horario)) {
+                    this.$router.push({ name: "ticket", params: { hora: horario } });
+            }
+                },
+            }
+
+    }
 </script>
 <style >
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+    cursor: not-allowed;
+}
 
 .cartelera-fluid{
     display: flex;
@@ -68,7 +93,7 @@ export default {
     background-position: center;
 }
 
-/* Estilos para móviles */
+
 @media screen and (max-width: 48rem) {
     .cartelera-film {
         max-width: 95%;
@@ -80,12 +105,12 @@ export default {
         font-size: 2rem;
     }
 
-    .hora-film {
+    #hora-film {
         flex-direction: column;
         align-items: center;
     }
 
-    .hora-film a {
+    #hora-film a {
         width: 80%;
         font-size: 1rem;
     }
@@ -118,13 +143,13 @@ export default {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.hora-film {
+#hora-film {
     display: flex;
     gap: 5px;
     margin-top: 10px;
 }
 
-.hora-film a {
+#hora-film a {
     margin-top: 20px;
     width: 100%;
     background-color: #2EBFA5;
@@ -137,8 +162,8 @@ export default {
 
 }
 
-.hora-film a:hover {
-    background-color:  #29cfb1;
+#hora-film a:hover {
+    background-color:  #19e0bc;
 }
 
 .cartelera-dia{

@@ -18,7 +18,11 @@ use App\Http\Controllers\RolController;
 |
 */
 
-Route::get('home', function () {
+Route::get('/', function () {
+    return view('home.index');
+});
+
+Route::get('/home', function () {
     return view('home.index');
 });
 
@@ -45,6 +49,7 @@ Route::get('/pelicula', function(){
     return view('pelicula.index');
 });
 
+Route::Resource('usuarios', UsuarioController::class);
 Route::delete('/gestion_usuario/{usuario}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
 
 Route::get('/gestion_usuario', [UsuarioController::class, 'index'])->name('gestion.gestion_usuario');
@@ -65,3 +70,22 @@ Route::middleware(['auth'])->group(function (){
         return view('catalogo.catalogo' , compact('user'));
     })->name('catalogo');
 });
+
+
+
+// Route::put('/editUsuario/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
+
+// Route::get('/editUsuario/{usuario}', [UsuarioController::class, 'index'])->name('usuario.edit');
+
+
+Route::get('/gestion_pelicula', function(){
+    return view('gestion.gestion_pelicula');
+});
+
+
+Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
+    $pelicula = App\Models\Pelicula_nueva::findOrFail($id);
+    return view('ticket.ticket', ['pelicula' => $pelicula, 'hora' => $hora]);
+})->name('ticket');
+
+Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');

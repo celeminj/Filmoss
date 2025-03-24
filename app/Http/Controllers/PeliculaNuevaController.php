@@ -12,7 +12,7 @@ class PeliculaNuevaController extends Controller
      */
     public function index()
     {
-        // $peliculas_nuevas = Pelicula_nueva::paginate(5);
+      //  $peliculas_nuevas = Pelicula_nueva::all();
 
         return response()->json(Pelicula_nueva::all());
     }
@@ -36,9 +36,9 @@ class PeliculaNuevaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pelicula_nueva $pelicula_nueva)
+    public function show(Pelicula_nueva $pelicula_nueva, $hora)
     {
-        //
+        return view('pelicula.index', ['pelicula' => $pelicula_nueva, 'hora' => $hora]);
     }
 
     /**

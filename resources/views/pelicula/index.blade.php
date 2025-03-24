@@ -1,4 +1,12 @@
 @extends('index.index')
+
 @section('contenido')
-    <IFRAME SRC="https://Smoothpre.com/embed/agtchgjvv15l" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=1900
-        HEIGHT=1000 allowfullscreen></IFRAME>
+    <br><br><br>
+    <div class="text-light">
+        <h1>{{ $pelicula->titulo }}</h1>
+        <p><strong>Hora seleccionada:</strong> {{ $hora }}</p>
+
+        <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="1900"
+            height="1000" allowfullscreen></iframe>
+    </div>
+@endsection
