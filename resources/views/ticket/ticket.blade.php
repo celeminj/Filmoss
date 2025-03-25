@@ -17,7 +17,7 @@
                             <h3 class="card-title">{{ $pelicula->titulo }}</h3>
                             <p>{{ $pelicula->descripcion }}</p>
                             <p><strong>Hora:</strong> {{ $hora }}</p>
-                            <form>
+                            <form id="formulario">
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label for="form4Example1" class="form-label">Nombre del titular</label>
                                     <input type="text" name="nombre" class="form-control" id="form4Example1"
