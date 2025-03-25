@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Evento_pelicula;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class EventoPeliculaController extends Controller
 {
     /**
@@ -12,7 +12,7 @@ class EventoPeliculaController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Evento_pelicula::all());
     }
 
     /**
