@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Rol;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RolController extends Controller
 {
@@ -12,9 +16,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        $rol = rol::all();
-
-        return view('gestion.gestion_usuario', compact('rol'));
+        return response()->json(Rol::all());
     }
 
     /**

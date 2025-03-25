@@ -98,14 +98,21 @@
                                 <input type="password" name="contrasenya" class="form-control" id="exampleInputPassword1"
                                     required placeholder="Introducir contraseña" v-model="usuario.contrasenya">
                             </div>
-                                <!-- <div  class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Rol
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item">{{ usuario.rol.tipo_rol}}</a></li>
-                                    </ul>
-                                    </div> -->
+                            <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ usuario.rol ? usuario.rol.tipo_rol : 'Seleccionar Rol' }}
+    </button>
+    <ul class="dropdown-menu">
+        <li v-for="rol in roles" :key="rol.id">
+            <a class="dropdown-item" href="#" @click.prevent="usuario.rol = rol">
+                {{ rol.tipo_rol }}
+            </a>
+        </li>
+    </ul>
+
+    <input type="hidden" v-model="usuario.rol.id">
+</div>
+
                         </form>
         </div>
         <div class="modal-footer">
@@ -123,6 +130,7 @@ export default {
     data() {
         return{
             usuarios: [],
+            roles: [],
             myModal : {},
             usuario: {},
             messageError : "",
@@ -132,8 +140,21 @@ export default {
 
     created() {
        this.selectUsuario();
+       this.getRoles();
     },
         methods: {
+            getRoles(){
+                const me = this;
+                axios.get('rol')
+                .then(response =>{
+                    me.roles = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+
+
+            },
             showForm(){
                 this.myModal = new bootstrap.Modal('#usuarioModal')
                 this.myModal.show();
