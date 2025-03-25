@@ -8,13 +8,13 @@
 
             <div class="fondo-container-2">
                 <div class="imagen-fondo" style="background-image: url('{{ asset('images/log.png') }}');"></div>
-                <div class="container-2">
+                <div class="container-2-reg">
                     <div class="fondo-container-2">
                         <div class="titulo-registro">
                             <h1>REGISTRO</h1>
                         </div>
                         <form action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'register']) }}"
-                            method="POST">
+                            method="POST" id="formulario">
                             @csrf
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="formNombre" class="form-label">Nombre de usuario</label>
@@ -57,3 +57,7 @@
                 </div>
             </div>
         </div>
+
+ @endsection
+
+@section('footer', '')
