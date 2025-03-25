@@ -73,7 +73,9 @@ Route::post('/register', [UsuarioController::class, 'register'])->name('register
 
 Route::get('/register', [UsuarioController::class, 'showRegister']);
 
-Route::get('/logout', [UsuarioController::class, 'logout']);
+Route::get('/logout', [UsuarioController::class, 'logout'])->name('logout');
+
+
 
 Route::middleware(['auth'])->group(function (){
     Route::get('/catalogo' , function () {
