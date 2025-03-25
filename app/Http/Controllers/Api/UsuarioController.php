@@ -107,29 +107,29 @@ class UsuarioController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $usuario = new Usuario();
-        $usuario->nombre = $request->input("nombre");
-        $usuario->fecha_nacimiento = $request->input("fecha_nacimiento");
-        $usuario->correo = $request->input("correo");
-        $usuario->contrasenya = Hash::make($request->input("contrasenya"));
+{
+    $usuario = new Usuario();
+    $usuario->nombre = $request->input("nombre");
+    $usuario->fecha_nacimiento = $request->input("fecha_nacimiento");
+    $usuario->correo = $request->input("correo");
+    $usuario->contrasenya = Hash::make($request->input("contrasenya"));
+    $usuario->rol_id = $request->input("rol_id");
 
+    try {
 
-        try {
-            $usuario->save();
-          $response = (new UsuarioController)($usuario)
-          ->response()
-          ->setStatusCode(201);
+        $usuario->save();
 
-        } catch (QueryException $ex) {
-            $response = response()->json(['error' => Utilitat::errorMessage($ex)], 500);
+        return response()->json([
+            'message' => 'Usuario creado correctamente',
+            'usuario' => $usuario
+        ], 201);
 
-
-        }
-
-        return $response;
+    } catch (QueryException $ex) {
+        return response()->json([
+            'error' => Utilitat::errorMessage($ex)
+        ], 500);
     }
-
+}
     /**
      * Display the specified resource.
      */
@@ -157,7 +157,8 @@ class UsuarioController extends Controller
                 'nombre' => $request->input("nombre"),
                 'fecha_nacimiento' => $request->input("fecha_nacimiento"),
                 'correo' => $request->input("correo"),
-                'contrasenya' => Hash::make($request->input("contrasenya"))
+                'contrasenya' => Hash::make($request->input("contrasenya")),
+                'rol_id' => $request->input("rol_id"),
             ]);
             return response()->json(['message' => 'Usuario actualizado correctamente'], 200);
         } catch (QueryException $ex) {

@@ -23,7 +23,7 @@
                         <td>{{ usuario.contrasenya }}</td>
                         <td>{{ usuario.rol.tipo_rol}}</td>
 
-                        <th> <button @click="editCicle(usuario)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        <th> <button @click="editUsuario(usuario)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
                                     <path
                                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -71,8 +71,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Crear usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            <h5 v-if="insert" class="modal-title">Crear usuario</h5>
+            <h5 v-else class="modal-title">Modificar usuario</h5>
         </div>
         <div class="modal-body">
                         <form>
@@ -98,26 +98,18 @@
                                 <input type="password" name="contrasenya" class="form-control" id="exampleInputPassword1"
                                     required placeholder="Introducir contraseña" v-model="usuario.contrasenya">
                             </div>
-                            <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        {{ usuario.rol ? usuario.rol.tipo_rol : 'Seleccionar Rol' }}
-    </button>
-    <ul class="dropdown-menu">
-        <li v-for="rol in roles" :key="rol.id">
-            <a class="dropdown-item" href="#" @click.prevent="usuario.rol = rol">
-                {{ rol.tipo_rol }}
-            </a>
-        </li>
-    </ul>
-
-    <input type="hidden" v-model="usuario.rol.id">
-</div>
-
-                        </form>
+                                  <select v-model="usuario.rol_id" class="form-select">
+                            <option v-for="rol in roles" :key="rol.id" :value="rol.id">
+                                {{ rol.tipo_rol }}
+                            </option>
+                                    </select>
+                            </form>
+                    <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Añadir</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button v-if="insert" type="button" class="btn btn-secondary" @click="insertUsuarios()">Crear</button>
+            <button v-else type="button" class="btn btn-secondary" @click="updateUsuarios()">Editar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
         </div>
         </div>
     </div>
@@ -135,14 +127,23 @@ export default {
             usuario: {},
             messageError : "",
             isError : false,
+            insert : false
         }
     },
 
     created() {
        this.selectUsuario();
        this.getRoles();
+
     },
         methods: {
+            showForm(){
+                this.insert = true;
+                this.isError = false
+                this.myModal = new bootstrap.Modal('#usuarioModal')
+                this.myModal.show();
+                this.usuario = {};
+            },
             getRoles(){
                 const me = this;
                 axios.get('rol')
@@ -152,15 +153,32 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
-
-
             },
-            showForm(){
-                this.myModal = new bootstrap.Modal('#usuarioModal')
-                this.myModal.show();
+            updateUsuarios(){
+                const me = this;
+                axios.put('usuario'+ me.usuario.id, me.usuario)
+                .then(response => {
+                    me.selectUsuario();
+                    me.myModal.hide();
+                })
+                .catch(error => {
+                    this.isError = true;
+                    me.messageError = error.response.data.message;
+                });
             },
-                    selectUsuario(){
-                        const me = this;
+            insertUsuarios(){
+                const me = this;
+                axios.post('usuario', me.usuario)
+                .then(response => {
+                    me.selectUsuario();
+                    me.myModal.hide();
+                })
+                .catch(error => {
+                    this.isError = true;
+                    me.messageError = error.response.data.message;
+                });
+            },selectUsuario(){
+                const me = this;
                 axios.get('usuario')
                 .then(response => {
                     me.usuarios = response.data;
@@ -169,10 +187,11 @@ export default {
                     console.log(error);
                 });
             },
-            editCicle(usuario){
-                // this.usuario = usuario;
-                // this.myModal = new bootstrap.Modal('#usuarioModal')
-                // this.myModal.show();
+            editUsuario(usuario){
+                this.insert = false;
+                this.usuario = usuario;
+                this.myModal = new bootstrap.Modal('#usuarioModal')
+                this.myModal.show();
             },
         eliminarUsuario(usuario) {
             this.isError = false;
