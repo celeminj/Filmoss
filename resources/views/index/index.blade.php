@@ -67,7 +67,7 @@
     <div id="app">
         @yield('contenido')
     </div>
-
+    @section('footer')
     <div class="container text-primary">
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">
             <div class="col mb-3  text-primary">
@@ -119,6 +119,7 @@
             </div>
         </footer>
     </div>
+    @show
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

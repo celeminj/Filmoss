@@ -1,5 +1,5 @@
 @extends('index.index')
-
+@section('contenido')
 <div class="text-light">
     <div class="containers">
         <div class="container-1">
@@ -41,4 +41,11 @@
             </div>
         </div>
     </div>
+
 </div>
+
+
+@endsection
+
+@section('footer', '')
+
