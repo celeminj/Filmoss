@@ -30,8 +30,32 @@ class PeliculaNuevaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pelicula_nueva = new Pelicula_nueva();
+        $pelicula_nueva->titulo = $request->input("titulo");
+        $pelicula_nueva->image = $request->input("image");
+        $pelicula_nueva->descripcion = $request->input("descripcion");
+        $pelicula_nueva->duracion = $request->input("duracion");
+        $pelicula_nueva->restriccion_edad = $request->input("restriccion_edad");
+        $pelicula_nueva->calificacion = $request->input("calificacion");
+        $pelicula_nueva->idioma = $request->input("idioma");
+        $pelicula_nueva->fecha_estreno = $request->input("fecha_estreno");
+        $pelicula_nueva->pelicula_src = $request->input("pelicula_src");
+
+        try {
+            $pelicula_nueva->save();
+
+            return response()->json([
+                'message' => 'Película creada correctamente',
+                'pelicula' => $pelicula_nueva
+            ], 201);
+
+        } catch (QueryException $ex) {
+            return response()->json([
+                'error' => Utilitat::errorMessage($ex)
+            ], 500);
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -62,6 +86,11 @@ class PeliculaNuevaController extends Controller
      */
     public function destroy(Pelicula_nueva $pelicula_nueva)
     {
-        //
+        try {
+            $pelicula_nueva->delete();
+            return response()->json(['message' => 'Usuario eliminado correctamente'], 200);
+        } catch (QueryException $ex) {
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
+        }
     }
 }
