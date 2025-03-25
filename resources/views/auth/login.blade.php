@@ -13,7 +13,7 @@
                         <div class="titulo-inicio">
                             <h1>INICIAR SESIÓN</h1>
                         </div>
-                        <form class="container"
+                        <form class="container" id="formulario"
                             action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'login']) }}"
                             method="POST">
                             @csrf
@@ -42,3 +42,7 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('footer', '')
