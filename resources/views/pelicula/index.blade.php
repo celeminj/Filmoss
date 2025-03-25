@@ -3,9 +3,9 @@
     <div class="reproductor">
         <div class="pelicula">
             <div class="degradado-info"></div>
-            <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
-                width="1900" height="1000" allowfullscreen></iframe>
-
+            {{-- <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
+                width="1900" height="1000" allowfullscreen></iframe> --}}
+            <img src="{{ $pelicula->image }}" alt="" STYLE="width: 100%; height: 50REM;">
         </div>
 
         <div class="info-peli">
@@ -55,7 +55,7 @@
             <h1>DETALLES</h1>
         </div>
         <div class="texto-detalles">
-            <h1>{{ $pelicula->titulo }}</h1>
+            <h2>{{ $pelicula->titulo }}</h2>
             <p> {{ $pelicula->descripcion }}</p>
             <h4>Género</h4>
             <p>Comedia, acción, animación</p>
