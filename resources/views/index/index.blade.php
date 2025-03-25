@@ -33,7 +33,9 @@
                         <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion') }}">Gestionar
                                 Eventos</a></li>
                         <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_pelicula') }}">Gestionar
-                                Peliculas</a></li>
+                                Peliculas Catalogo</a></li>
+                                <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_pelicula_nueva') }}">Gestionar
+                                Peliculas Cartelera</a></li>
                         <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_usuario') }}">Gestionar
                                 Usuarios</a></li>
                     @endif

@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RolController;
-use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\Api\PeliculaController;
 use App\Http\Controllers\Api\UsuarioController;
-use App\Http\Controllers\PeliculaNuevaController;
+use App\Http\Controllers\Api\PeliculaNuevaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +98,11 @@ Route::get('/gestion_pelicula', function(){
     return view('gestion.gestion_pelicula');
 })->name('gestion.gestion_pelicula');
 
+Route::get('/gestion_pelicula_nuevas', function(){
+    return view('gestion.gestion_pelicula_nueva');
+})->name('gestion.gestion_pelicula_nueva');
+
+
 
 Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
     $pelicula = App\Models\Pelicula_nueva::findOrFail($id);
@@ -105,3 +110,6 @@ Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
 })->name('ticket');
 
 Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');
+
+
+Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
