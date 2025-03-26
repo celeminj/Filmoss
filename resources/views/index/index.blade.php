@@ -21,10 +21,12 @@
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a href="home"><img
+                <a href="home" class="navbar"><img
                         src='https://i.postimg.cc/k4yJmLrR/Captura-de-pantalla-2025-03-18-165617-removebg-preview.png'
                         alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
+                        <button id="desplegable-toggle" class="menu-boton">☰</button>
                 <ul class="paginas-nav">
+
                     <li><a id="len1" class="hoverable" href="{{ route('home') }}">Inicio</a></li>
                     <li><a id="len2" class="hoverable" href="{{ route('cartelera') }}">Cartelera</a></li>
                     <li><a id="len3" class="hoverable" href="{{ route('catalogo') }}">Catalogo</a></li>
@@ -41,6 +43,7 @@
                 <form class="d-flex" role="search">
                     <ul class="paginas-nav">
                         @if (Auth::check())
+                            <li class="usuario-movil">{{ Auth::user()->nombre }}</li>
                             <li class="nav-item dropdown">
                                 <div class="dropdown">
                                     <a id="len1" class="hoverable dropdown-toggle" type="button"
@@ -125,4 +128,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.getElementById("desplegable-toggle");
+    const closeButton = document.getElementById("cerrar-menu");
+    const navMenu = document.querySelector(".paginas-nav");
+
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        navMenu.classList.toggle("active");
+    });
+
+    closeButton.addEventListener("click", function () {
+        navMenu.classList.remove("active");
+    });
+
+    // Si haces clic fuera del menú, se cierra
+    document.addEventListener("click", function (event) {
+        if (!navMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            navMenu.classList.remove("active");
+        }
+    });
+});
+
+
+
+</script>
 </html>
