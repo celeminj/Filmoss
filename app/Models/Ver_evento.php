@@ -11,4 +11,6 @@ class Ver_evento extends Model
     protected $table = 'ver_evento';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+
 }

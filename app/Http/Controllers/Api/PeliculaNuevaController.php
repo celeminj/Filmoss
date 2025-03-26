@@ -80,7 +80,22 @@ class PeliculaNuevaController extends Controller
      */
     public function update(Request $request, Pelicula_nueva $pelicula_nueva)
     {
-        //
+        try {
+            $pelicula_nueva->update([
+                'titulo' => $request->input("titulo"),
+                'image' => $request->input("image"),
+                'descripcion' => $request->input("descripcion"),
+                'duracion' => $request->input("duracion"),
+                'restriccion_edad' => $request->input("restriccion_edad"),
+                'calificacion' => $request->input("calificacion"),
+                'idioma' => $request->input("idioma"),
+                'fecha_estreno' => $request->input("fecha_estreno"),
+                'pelicula_src' => $request->input("pelicula_src"),
+            ]);
+            return response()->json(['message' => 'Pelicula Nueva actualizada correctamente'], 200);
+        } catch (QueryException $ex) {
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
+        }
     }
 
     /**

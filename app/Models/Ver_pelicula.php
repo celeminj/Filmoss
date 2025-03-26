@@ -12,4 +12,6 @@ class Ver_pelicula extends Model
     protected $table = 'ver_pelicula';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+
 }

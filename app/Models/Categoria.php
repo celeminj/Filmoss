@@ -12,4 +12,8 @@ class Categoria extends Model
     protected $table = 'categoria';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+    public function pelicula (){
+        return $this->belongsToMany('App\Models\Pelicula', 'categoria_pelicula', 'categoria_id', 'pelicula_id');
+    }
 }

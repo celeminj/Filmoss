@@ -11,4 +11,6 @@ class Asiste_evento_pelicula extends Model
     protected $table = 'asiste_evento_pelicula';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+
 }

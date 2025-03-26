@@ -12,4 +12,6 @@ class Cartelera_peliculas_nueva extends Model
     protected $table = 'cartelera_peliculas_nueva';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+
 }
