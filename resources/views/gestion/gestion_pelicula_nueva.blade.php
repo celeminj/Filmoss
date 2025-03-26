@@ -2,10 +2,10 @@
 @section('contenido')
 
     <div class="titulo-gestion">
-        <h1>GESTION DE PELICULAS</h1>
+        <h1>GESTION DE PELICULAS NUEVAS</h1>
     </div>
 
 
     <div id="app">
-        <pelicula-crud></pelicula-crud>
+        <peliculas-crud></peliculas-crud>
     </div>
