@@ -159,7 +159,7 @@ export default {
             },
             updateUsuarios(){
                 const me = this;
-                axios.put('usuario'+ me.usuario.id, me.usuario)
+                axios.put('usuario/'+ me.usuario.id, me.usuario)
                 .then(response => {
                     me.selectUsuario();
                     me.myModal.hide();
@@ -171,7 +171,7 @@ export default {
             },
             insertUsuarios(){
                 const me = this;
-                axios.post('usuario', me.usuario)
+                axios.post('usuario/', me.usuario)
                 .then(response => {
                     me.selectUsuario();
                     me.myModal.hide();

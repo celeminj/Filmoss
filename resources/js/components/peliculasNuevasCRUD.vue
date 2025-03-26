@@ -193,7 +193,7 @@ export default {
             },
             updateUsuarios(){
                 const me = this;
-                axios.put('pelicula_nueva'+ me.pelicula_nueva.id, me.pelicula_nueva)
+                axios.put('pelicula_nueva/'+ me.pelicula_nueva.id, me.pelicula_nueva)
                 .then(response => {
                     me.selectUsuario();
                     me.myModal.hide();
@@ -205,7 +205,7 @@ export default {
             },
             insertUsuarios(){
                 const me = this;
-                axios.post('pelicula_nueva', me.pelicula_nueva)
+                axios.post('pelicula_nueva/', me.pelicula_nueva)
                 .then(response => {
                     me.selectUsuario();
                     me.myModal.hide();

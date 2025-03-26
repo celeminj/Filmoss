@@ -8,6 +8,7 @@ import UsuarioUpdate from './components/usuarioUpdate.vue';
 import peliculasNuevasCRUD from './components/peliculasNuevasCRUD.vue';
 import eventosCRUD from './components/eventosCRUD.vue';
 import peliculasCRUD from './components/peliculasCRUD.vue';
+
 const app = createApp({});
 
 app.component('film', film);
@@ -16,5 +17,6 @@ app.component('usuario-update', UsuarioUpdate);
 app.component('peliculas-crud', peliculasNuevasCRUD);
 app.component('pelicula-crud', peliculasCRUD);
 app.component('eventos-crud', eventosCRUD);
+
 
 app.mount('#app');
