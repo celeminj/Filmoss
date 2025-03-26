@@ -2,10 +2,12 @@
 @section('contenido')
     <div class="reproductor">
         <div class="pelicula">
-            <div class="degradado-info"></div>
+            <div class="degradado-info">
+                <a href="https://Smoothpre.com/embed/agtchgjvv15l"></a>
+            </div>
             {{-- <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
                 width="1900" height="1000" allowfullscreen></iframe> --}}
-            <img src="{{ $pelicula->image }}" alt="" STYLE="width: 100%; height: 50REM;">
+            <a href="https://Smoothpre.com/embed/agtchgjvv15l"><img src="{{ $pelicula->image }}" alt="" STYLE="width: 120REM; height: 58REM;"></a>
         </div>
 
         <div class="info-peli">
