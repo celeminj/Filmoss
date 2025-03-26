@@ -27,50 +27,47 @@
 
 .categorias{
     display : flex;
-
 }
 
 .pelicula {
     position: relative;
     width: 100%;
-    height: 85%;
+    height: 100%;
     overflow: hidden;
 }
 
-
-.pelicula iframe {
-    height: 100%;
-    object-fit: cover;
-    width: 100vw; /* Ajusta el ancho relativo a la pantalla */
-
-
+.pelicula img {
+    width: 100%; /* Hace que la imagen sea responsiva */
+    max-width: 120rem; /* Máximo tamaño en pantallas grandes */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Evita espacios no deseados */
 }
 
-.degradado-info {
+.degradado-info a{
     position: absolute;
     transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
     width: 85vw; /* Ajusta el ancho relativo a la pantalla */
-    height: 100vw;
-    background: linear-gradient(to right, rgb(31, 189, 168), rgba(39, 82, 76, 0));
-    right: -25%; /* Lo pega al borde derecho */
+    height: 96.5vw;
+    background: linear-gradient(to right, #00ffdd, rgba(39, 82, 76, 0));
+    right: -15%; /* Lo pega al borde derecho */
 
 }
 
 .info-peli {
     width: 100vw; /* Ajusta el ancho relativo a la pantalla */
     position: absolute;
-    top: 45%;
+    top: 60%;
     left: 5%;
     transform: translateY(-50%);
     padding: 20px;
     border-radius: 10px;
     z-index: 10; /* Asegura que esté por encima */
-    width: 50%; /* Ajusta el ancho según lo necesites */
+    width: 35%; /* Ajusta el ancho según lo necesites */
 }
 
 .descripcion-peli{
-    width: 80%;
-    margin-top: 50px;
+    width: 100%;
+
 }
 
 .descripcion-peli p{
@@ -104,7 +101,7 @@
     padding: 15px 30px;
     padding-right: 80px;
     position: absolute;
-    top: 85%;
+    top: 87.5%;
     font-size: 20px;
     transition: box-shadow , transform 0.3s;
 }
@@ -118,7 +115,8 @@
     height: 0;
     background: transparent;
     position: absolute;
-    left: 16%;
+    left: 22%;
+    top: 89.2%;
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
     width: 40px; /* Ajusta el tamaño */
     height: 40px;
@@ -128,7 +126,7 @@
 .trailer{
     position: relative;
     margin-left: 220px;
-    margin-bottom: 15px;
+
 }
 
 .heart {
@@ -138,6 +136,8 @@
     background-color: #1F1E24;
     transform: rotate(-45deg);
     margin: 10px 20px;
+    transition: box-shadow , transform 0.4s;
+
 }
 
 .heart::before,
@@ -154,11 +154,17 @@
 .heart::before {
     top: -10px;
     left: 0;
+
 }
 
 .heart::after {
     left: 10px;
     top: 0;
+}
+
+.heart:hover{
+    transform: scale(1.5);
+    transform: rotate(315deg);
 }
 
 .detalles {
@@ -191,7 +197,7 @@
 }
 
 .reparto {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -252,27 +258,29 @@
 
 @media (max-width: 960px) {
 
-    .pelicula iframe {
-        height: 480px;
-        width: 960px;
 
+
+    .pelicula img {
+        max-width: 100%; /* La imagen ocupará el 90% del ancho de la pantalla */
+        max-height: 49%; /* Mantiene proporciones */
     }
 
     .info-peli {
+        height: 30%;
         top: 27%;
         left: 3%;
     }
 
     .titulo-pelicula h1{
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .categorias p{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .edad p{
-       font-size: 1rem;
+       font-size: 0.8rem;
     }
     .descripcion-peli p{
         font-size: 0.8rem;
@@ -281,14 +289,14 @@
     .otros-botones{
         display: flex;
         position: absolute;
-        top: 32%;
-        left: 0%;
+        top: 29.5%;
+        left: -5%;
     }
 
     .otros-botones button{
 
         border-radius: 5px;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
 
     }
 
@@ -302,22 +310,182 @@
 
     .play-button {
         position: absolute;
-        top: 101%;
-        left: 27%;
+        top: 100%;
+        left: 38%;
         width: 30px;
         height: 30px;
 
     }
 
-    .trailer{
-    position: relative;
+    .heart {
+
+        width: 13px;
+        height: 13px;
+        background-color: #1F1E24;
+        transform: rotate(-45deg);
+        margin: 10px 10px;
+        transition: box-shadow , transform 0.4s;
+
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        background-color: #1F1E24;
+        border-radius: 50%;
+
+    }
+
+    .heart::before {
+        top: -7px;
+        left: 0;
+
+    }
+
+    .heart::after {
+        left: 7px;
+        top: 0;
     }
 
 
     .detalles{
-
+        margin-top: -200;
         width: 100%;
-        height: 5vh;
+        height: 0vh;
+        margin-bottom: 400px;
+    }
+
+    .texto-detalles{
+        width: 700px;
+    }
+
+    .titulo-detalles h1{
+        font-size: 3.5rem;
+        margin-bottom: 50px;
+    }
+
+    .reparto{
+        margin-bottom: 10px;
+    }
+    .actor{
+        width: 220px;
+        height: 300px;
+    }
+
+    .nombre-actor{
+        margin-top: 220px;
+        margin-left: 55px;
+
+    }
+
+    .nombre-actor h4{
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .pelicula img {
+
+        max-width: 100%; /* La imagen ocupará el 90% del ancho de la pantalla */
+        max-height: 30%; /* Mantiene proporciones */
+    }
+
+    .info-peli {
+        height: 30%;
+        top: 27%;
+        left: 3%;
+    }
+
+    .titulo-pelicula h1{
+        font-size: 2rem;
+    }
+
+    .categorias p{
+        font-size: 0.8rem;
+    }
+
+    .edad p{
+       font-size: 0.8rem;
+    }
+    .descripcion-peli p{
+        font-size: 0.8rem;
+    }
+
+    .otros-botones{
+        display: flex;
+        position: absolute;
+        top: 29.5%;
+        left: -5%;
+    }
+
+    .otros-botones button{
+
+        border-radius: 5px;
+        font-size: 0.6rem;
+
+    }
+
+    .ver-ya button{
+        padding: 10px 15px;
+        padding-right: 80px;
+        position: absolute;
+        top: 98%;
+        font-size: 15px;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 100%;
+        left: 38%;
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .heart {
+
+        width: 13px;
+        height: 13px;
+        background-color: #1F1E24;
+        transform: rotate(-45deg);
+        margin: 10px 10px;
+        transition: box-shadow , transform 0.4s;
+
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        background-color: #1F1E24;
+        border-radius: 50%;
+
+    }
+
+    .heart::before {
+        top: -7px;
+        left: 0;
+
+    }
+
+    .heart::after {
+        left: 7px;
+        top: 0;
+    }
+
+
+    .detalles{
+        margin-top: -200;
+        width: 100%;
+        height: 0vh;
         margin-bottom: 400px;
     }
 
