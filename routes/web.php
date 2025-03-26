@@ -46,7 +46,7 @@ Route::get('/ticket', function () {
 
 
 
-Route::get('/catalogo', [PeliculaController::class, 'index']);
+//Route::get('/catalogo', [PeliculaController::class, 'index']);
 
 
 Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
@@ -56,7 +56,6 @@ Route::get('/pelicula', function(){
 });
 
 Route::Resource('usuario', UsuarioController::class);
-
 
 Route::delete('/gestion_usuario/{usuario}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
 
@@ -113,3 +112,6 @@ Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::
 
 
 Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
+
+Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
+

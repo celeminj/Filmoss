@@ -2,31 +2,26 @@
     <div><button @click="showForm()" class="anadirBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-</svg><strong> AÑADIR USUARIO</strong></button></div>
+</svg><strong> AÑADIR EVENTOS</strong></button></div>
          <div  class="tabla-usuarios">
             <table class="table">
                 <thead >
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Fecha de nacimiento</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Contraseña</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Titulo Evento</th>
+                    <th scope="col">Fecha inicio</th>
+                    <th scope="col">Fecha final</th>
                 </tr>
             </thead>
             <tbody>
 
-                    <tr v-for="usuario in usuarios" :key="usuario.id">
-                        <th scope="row">{{ usuario.id }}</th>
-                        <td>{{ usuario.nombre }}</td>
-                        <td>{{ usuario.fecha_nacimiento }}</td>
-                        <td>{{ usuario.correo }}</td>
-                        <td>{{ usuario.contrasenya }}</td>
-                        <td>{{ usuario.rol.tipo_rol}}</td>
+                    <tr v-for="evento_pelicula in evento_peliculas" :key="evento_pelicula.id">
+                        <th scope="row">{{ evento_pelicula.id }}</th>
+                        <td>{{ evento_pelicula.titulo_evento }}</td>
+                        <td>{{ evento_pelicula.fecha_inicio }}</td>
+                        <td>{{ evento_pelicula.fecha_final }}</td>
 
-                        <th> <button @click="editUsuario(usuario)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        <th> <button @click="editUsuario(evento_pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
                                     <path
                                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -34,7 +29,7 @@
                                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                 </svg></button></th>
                                 <th>
-                                    <button  @click="$event => eliminarUsuario(usuario)" style="border: none; background: none; cursor: pointer; color:rgb(255, 0, 0)">
+                                    <button  @click="$event => eliminarUsuario(evento_pelicula)" style="border: none; background: none; cursor: pointer; color:rgb(255, 0, 0)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
                                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
@@ -47,22 +42,22 @@
 
     </div>
     <!-- Modal para borrar-->
-    <div class="modal" tabindex="-1"  id="deleteModal">
+    <div class="modal" tabindex="-1"  id="deleteEventoModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Borrar usuario</h5>
+            <h5 class="modal-title">Borrar evento</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
             </button>
         </div>
         <div class="modal-body">
-            <p>¿ Seguro que quieres borrar a <strong>{{ usuario.nombre }}</strong> ?</p>
+            <p>¿ Seguro que quieres borrar a <strong>{{ evento_pelicula.titulo_evento }}</strong> ?</p>
 
             <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" @click="$event => deleteUsuario(usuario.id) ">Borrar</button>
+            <button type="button" class="btn btn-primary" @click="$event => deleteUsuario(evento_pelicula.id) ">Borrar</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         </div>
         </div>
@@ -70,47 +65,38 @@
 </div>
 
    <!-- modal insert/update -->
-   <div class="modal" tabindex="-1"  id="usuarioModal">
+   <div class="modal" tabindex="-1"  id="eventoModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 v-if="insert" class="modal-title">Crear usuario</h5>
-            <h5 v-else class="modal-title">Modificar usuario</h5>
+            <h5 v-if="insert" class="modal-title">Crear Evento</h5>
+            <h5 v-else class="modal-title">Modificar Evento</h5>
         </div>
         <div class="modal-body">
                         <form>
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label for="formNombre" class="form-label">Nombre de usuario</label>
-                                <input type="text" name="nombre" class="form-control" id="formNombre" required
-                                    placeholder="Introducir nombre" v-model="usuario.nombre">
+                                <label for="formNombre" class="form-label">Nombre de evento</label>
+                                <input type="text" name="titulo_evento" class="form-control" id="formNombre" required
+                                    placeholder="Introducir titulo" v-model="evento_pelicula.titulo_evento">
                             </div>
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label for="formInputFecha" class="form-label">Fecha de nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" class="form-control" id="formInputFecha"
-                                    required v-model="usuario.fecha_nacimiento">
+                                <label for="formInputFecha" class="form-label">Fecha de inicio</label>
+                                <input type="date" name="fecha_inicio" class="form-control" id="formInputFecha"
+                                    required v-model="evento_pelicula.fecha_inicio">
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
-                                <input type="email" name="correo" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" required placeholder="Introducir correo electronico" v-model="usuario.correo">
+                                <label for="exampleInputEvento" class="form-label">Fecha final</label>
+                                <input type="date" name="fecha_final" class="form-control" id="exampleInputEvento"
+                                    aria-describedby="eventoHelp" required placeholder="Introducir fecha final" v-model="evento_pelicula.fecha_final">
 
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                                <input type="password" name="contrasenya" class="form-control" id="exampleInputPassword1"
-                                    required placeholder="Introducir contraseña" v-model="usuario.contrasenya">
-                            </div>
-                                  <select v-model="usuario.rol_id" class="form-select">
-                            <option v-for="rol in roles" :key="rol.id" :value="rol.id">
-                                {{ rol.tipo_rol }}
-                            </option>
-                                    </select>
+
                             </form>
                     <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
         </div>
         <div class="modal-footer">
-            <button v-if="insert" type="button" class="btn btn-secondary" @click="insertUsuarios()">Crear</button>
+            <button v-if="insert" type="button" class="btn btn-secondary" @click="insertUsuarios()">Añadir</button>
             <button v-else type="button" class="btn btn-secondary" @click="updateUsuarios()">Editar</button>
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
         </div>
@@ -124,10 +110,10 @@ import * as bootstrap from 'bootstrap';
 export default {
     data() {
         return{
-            usuarios: [],
+            evento_peliculas: [],
             roles: [],
             myModal : {},
-            usuario: {},
+            evento_pelicula: {},
             messageError : "",
             isError : false,
             insert : false
@@ -143,9 +129,9 @@ export default {
             showForm(){
                 this.insert = true;
                 this.isError = false
-                this.myModal = new bootstrap.Modal('#usuarioModal')
+                this.myModal = new bootstrap.Modal('#eventoModal')
                 this.myModal.show();
-                this.usuario = {};
+                this.evento_pelicula = {};
             },
             getRoles(){
                 const me = this;
@@ -159,7 +145,7 @@ export default {
             },
             updateUsuarios(){
                 const me = this;
-                axios.put('usuario'+ me.usuario.id, me.usuario)
+                axios.put('evento_pelicula'+ me.evento_pelicula.id, me.evento_pelicula)
                 .then(response => {
                     me.selectUsuario();
                     me.myModal.hide();
@@ -171,7 +157,7 @@ export default {
             },
             insertUsuarios(){
                 const me = this;
-                axios.post('usuario', me.usuario)
+                axios.post('evento_pelicula', me.evento_pelicula)
                 .then(response => {
                     me.selectUsuario();
                     me.myModal.hide();
@@ -182,29 +168,29 @@ export default {
                 });
             },selectUsuario(){
                 const me = this;
-                axios.get('usuario')
+                axios.get('evento_pelicula')
                 .then(response => {
-                    me.usuarios = response.data;
+                    me.evento_peliculas = response.data;
                 })
                 .catch(error => {
                     console.log(error);
                 });
             },
-            editUsuario(usuario){
+            editUsuario(evento_pelicula){
                 this.insert = false;
-                this.usuario = usuario;
-                this.myModal = new bootstrap.Modal('#usuarioModal')
+                this.evento_pelicula = evento_pelicula;
+                this.myModal = new bootstrap.Modal('#eventoModal')
                 this.myModal.show();
             },
-        eliminarUsuario(usuario) {
+        eliminarUsuario(evento_pelicula) {
             this.isError = false;
-            this.usuario = usuario;
-           this.myModal = new bootstrap.Modal('#deleteModal')
+            this.evento_pelicula = evento_pelicula;
+           this.myModal = new bootstrap.Modal('#deleteEventoModal')
               this.myModal.show();
         },
         deleteUsuario(id){
             const me = this;
-            axios.delete("usuario/" + id)
+            axios.delete("evento_pelicula/" + id)
             .then(response => {
                 me.selectUsuario()
                 me.myModal.hide()

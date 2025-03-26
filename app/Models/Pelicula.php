@@ -15,4 +15,15 @@ class Pelicula extends Model
 
     public $timestamps = false;
 
+    public function usuario(){
+        return $this->belongsToMany('App\Models\Usuario', 'ver_pelicula', 'pelicula_id', 'usuario_id');
+    }
+
+    public function categoria_pelicula(){
+        return $this->belongsToMany('App\Models\Categoria', 'categoria_pelicula', 'pelicula_id', 'categoria_pelicula_id');
+    }
+
+    public function actor_pelicula(){
+        return $this->belongsToMany('App\Models\Actor', 'actor_pelicula', 'pelicula_id', 'actor_id');
+    }
 }

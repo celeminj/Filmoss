@@ -20,4 +20,12 @@ class Usuario extends Authenticatable
     public function rol(){
         return $this->belongsTo(Rol::class, 'rol_id');
     }
+
+    public function pelicula(){
+        return $this->belongsToMany(Pelicula::class, 'ver_pelicula', 'usuario_id', 'pelicula_id');
+    }
+
+    public function subscripcion(){
+        return $this->belongsToMany(Subscripcion::class, 'subscripcion_usuario', 'usuario_id', 'subscripcion_id');
+    }
 }

@@ -17,7 +17,7 @@ class PeliculaController extends Controller
     {
         // $peliculas = Pelicula::paginate(12);
 
-        return response()->json(Pelicula::paginate(12));
+        return response()->json(Pelicula::all());
     }
 
     /**
@@ -63,9 +63,15 @@ class PeliculaController extends Controller
      * Display the specified resource.
      */
     public function show(Pelicula $pelicula)
-    {
-        return view('pelicula.index', ['pelicula' => $pelicula]);
+{
+    try {
+        $pelicula = Pelicula::findOrFail($id);
+        return response()->json($pelicula);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Película no encontrada'], 404);
     }
+}
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +86,22 @@ class PeliculaController extends Controller
      */
     public function update(Request $request, Pelicula $pelicula)
     {
-        //
+        try {
+            $pelicula->update([
+                'titulo' => $request->input("titulo"),
+                'image' => $request->input("image"),
+                'descripcion' => $request->input("descripcion"),
+                'duracion' => $request->input("duracion"),
+                'restriccion_edad' => $request->input("restriccion_edad"),
+                'calificacion' => $request->input("calificacion"),
+                'idioma' => $request->input("idioma"),
+                'fecha_estreno' => $request->input("fecha_estreno"),
+                'pelicula_src' => $request->input("pelicula_src"),
+            ]);
+            return response()->json(['message' => 'Pelicula actualizada correctamente'], 200);
+        } catch (QueryException $ex) {
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
+        }
     }
 
     /**
@@ -90,11 +111,11 @@ class PeliculaController extends Controller
     {
         try {
             $pelicula->delete();
-    
+
             return response()->json([
                 'message' => 'Película eliminada correctamente'
             ], 200);
-    
+
         } catch (QueryException $ex) {
             return response()->json([
                 'error' => Utilitat::errorMessage($ex)

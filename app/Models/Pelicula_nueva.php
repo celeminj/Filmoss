@@ -15,4 +15,16 @@ class Pelicula_nueva extends Model
 
     public $timestamps = false;
 
+
+    public function actor(){
+        return $this->belongsToMany('App\Models\Actor', 'actor_pelicula_nueva', 'pelicula_nueva_id', 'actor_id');
+    }
+
+    public function evento_pelicula(){
+        return $this->belongsToMany('App\Models\Evento', 'evento_pelicula_nueva', 'pelicula_nueva_id', 'evento_id');
+    }
+
+    public function cartelera(){
+        return $this->belongsToMany('App\Models\Cartelera', 'cartelera_pelicula_nueva', 'pelicula_nueva_id', 'cartelera_id');
+    }
 }

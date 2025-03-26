@@ -13,4 +13,9 @@ class Subscripcion extends Model
     protected $table = 'subscripcion';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+
+    public function usuario(){
+        return $this->belongsToMany('App\Models\Usuario', 'subscripcion_usuario', 'subscripcion_id', 'usuario_id');
+    }
 }
