@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Actor;
+use App\Models\Usuario;
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pelicula extends Model
 {
@@ -16,14 +19,14 @@ class Pelicula extends Model
     public $timestamps = false;
 
     public function usuario(){
-        return $this->belongsToMany('App\Models\Usuario', 'ver_pelicula', 'pelicula_id', 'usuario_id');
+        return $this->belongsToMany(Usuario::class, 'ver_pelicula', 'pelicula_id', 'usuario_id');
     }
 
     public function categoria_pelicula(){
-        return $this->belongsToMany('App\Models\Categoria', 'categoria_pelicula', 'pelicula_id', 'categoria_pelicula_id');
+        return $this->belongsToMany(Categoria::class, 'categoria_pelicula', 'pelicula_id', 'categoria_pelicula_id');
     }
 
     public function actor_pelicula(){
-        return $this->belongsToMany('App\Models\Actor', 'actor_pelicula', 'pelicula_id', 'actor_id');
+        return $this->belongsToMany(Actor::class, 'actor_pelicula', 'pelicula_id', 'actor_id');
     }
 }

@@ -181,7 +181,7 @@ export default {
             },
             updatePeliculas(){
                 const me = this;
-                axios.put('pelicula'+ me.pelicula.id, me.pelicula)
+                axios.put('pelicula/'+ me.pelicula.id, me.pelicula)
                 .then(response => {
                     me.selectPelicula();
                     me.myModal.hide();
@@ -193,7 +193,7 @@ export default {
             },
             insertPeliculas(){
                 const me = this;
-                axios.post('pelicula', me.pelicula)
+                axios.post('pelicula/', me.pelicula)
                 .then(response => {
                     me.selectPelicula();
                     me.myModal.hide();

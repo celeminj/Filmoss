@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Clases\Utilitat;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -87,17 +88,17 @@ class PeliculaController extends Controller
     public function update(Request $request, Pelicula $pelicula)
     {
         try {
-            $pelicula->update([
-                'titulo' => $request->input("titulo"),
-                'image' => $request->input("image"),
-                'descripcion' => $request->input("descripcion"),
-                'duracion' => $request->input("duracion"),
-                'restriccion_edad' => $request->input("restriccion_edad"),
-                'calificacion' => $request->input("calificacion"),
-                'idioma' => $request->input("idioma"),
-                'fecha_estreno' => $request->input("fecha_estreno"),
-                'pelicula_src' => $request->input("pelicula_src"),
-            ]);
+                $pelicula->titulo = $request->input("titulo");
+            $pelicula->image = $request->input("image");
+            $pelicula->descripcion = $request->input("descripcion");
+            $pelicula->duracion = $request->input("duracion");
+            $pelicula->restriccion_edad = $request->input("restriccion_edad");
+            $pelicula->calificacion = $request->input("calificacion");
+            $pelicula->idioma = $request->input("idioma");
+            $pelicula->fecha_estreno = $request->input("fecha_estreno");
+            $pelicula->pelicula_src = $request->input("pelicula_src");
+
+        $pelicula->save();
             return response()->json(['message' => 'Pelicula actualizada correctamente'], 200);
         } catch (QueryException $ex) {
             return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
