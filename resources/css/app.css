@@ -251,3 +251,63 @@ body {
 
 
 }
+
+
+/* Estilos para pantallas grandes (default) */
+#ticket {
+    left: 20rem;
+    width: 80rem;
+    height: 47rem;
+    border-radius: 15px;
+    background-color: #222;
+    color: #EAD2AC;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    transition: box-shadow 0.3s;
+}
+
+#ticket:hover {
+    box-shadow: #2EBFA5 0px 0px 20px;
+}
+
+/* Para pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+    #ticket {
+        width: 90%;
+        height: auto;
+        left: 5%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    #ticket {
+        width: 95%;
+        left: 2.5%;
+        height: auto;
+        padding: 15px;
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Para pantallas muy pequeñas (móviles pequeños) */
+@media (max-width: 480px) {
+    #ticket {
+        width: 100%;
+        left: 0;
+        height: auto;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
