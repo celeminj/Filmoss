@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RolController;
-use App\Http\Controllers\Api\PeliculaController;
+use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\Api\PeliculaController;
 use App\Http\Controllers\Api\PeliculaNuevaController;
 
 /*
@@ -101,6 +102,9 @@ Route::get('/gestion_pelicula_nuevas', function(){
     return view('gestion.gestion_pelicula_nueva');
 })->name('gestion.gestion_pelicula_nueva');
 
+Route::get('/gestion_cines', function(){
+    return view('gestion.gestion_cine');
+})->name('gestion.gestion_cine');
 
 
 Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
@@ -114,4 +118,3 @@ Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::
 Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
 
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
-
