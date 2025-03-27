@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/css/app.scss', 'resources/js/app.js', 'resources/css/peli-catalogo.css', 'resources/css/login.css'])
+    @vite(['resources/css/app.css', 'resources/css/app.scss', 'resources/js/app.js', 'resources/css/pelicatalogo.css', 'resources/css/login.css'])
     <title>Filmo</title>
 </head>
 
@@ -24,7 +24,7 @@
                 <a href="home" class="navbar"><img
                         src='https://i.postimg.cc/k4yJmLrR/Captura-de-pantalla-2025-03-18-165617-removebg-preview.png'
                         alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
-                {{-- <button id="desplegable-toggle" class="menu-boton">☰</button> --}}
+                <button id="desplegable-toggle" class="menu-boton">☰</button>
                 <ul class="paginas-nav">
 
                     <li><a id="len1" class="hoverable" href="{{ route('home') }}">Inicio</a></li>
@@ -41,6 +41,8 @@
                                 Peliculas Cartelera</a></li>
                         <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_usuario') }}">Gestionar
                                 Usuarios</a></li>
+                        <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_cine') }}">Gestionar
+                                Cines</a></li>
                     @endif
                 </ul>
                 <form class="d-flex" role="search">
@@ -133,29 +135,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const menuButton = document.getElementById("desplegable-toggle");
-        const closeButton = document.getElementById("cerrar-menu");
-        const navMenu = document.querySelector(".paginas-nav");
-
-        menuButton.addEventListener("click", function(event) {
-            event.stopPropagation();
-            navMenu.classList.toggle("active");
-        });
-
-        closeButton.addEventListener("click", function() {
-            navMenu.classList.remove("active");
-        });
-
-        // Si haces clic fuera del menú, se cierra
-        document.addEventListener("click", function(event) {
-            if (!navMenu.contains(event.target) && !menuButton.contains(event.target)) {
-                navMenu.classList.remove("active");
-            }
-        });
-    });
-</script>
 
 </html>

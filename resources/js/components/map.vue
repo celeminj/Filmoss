@@ -1,14 +1,7 @@
 <template>
-    <div class="text-primary" id="cines">
+    <div class="text-primary" id="cines" v-for="cine in cines" :key="cine.id">
         <div class="card-cines">
-            <h2>CINES SPLAU</h2>
-        </div>
-        <div class="card-cines">
-            <h2>SANT CUGAT</h2>
-        </div>
-
-        <div class="card-cines">
-            <h2>CINES BARCELONA</h2>
+            <h2>{{cines.nombre}}</h2>
         </div>
     </div>
     <div ref="mapContainer" class="map-container"></div>
