@@ -44,7 +44,7 @@
 
     </div>
     <!-- Modal para borrar-->
-    <div class="modal" tabindex="-1"  id="deleteModalCineCine">
+    <div class="modal" tabindex="-1"  id="deleteModalCine">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -71,13 +71,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 v-if="insert" class="modal-title">Crear Pelicula nueva</h5>
-            <h5 v-else class="modal-title">Modificar Pelicula</h5>
+            <h5 v-if="insert" class="modal-title">Crear Cine nuevo</h5>
+            <h5 v-else class="modal-title">Modificar Cine</h5>
         </div>
         <div class="modal-body">
                         <form>
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label for="cineNombre" class="form-label">Titulo de la pelicula</label>
+                                <label for="cineNombre" class="form-label">Titulo del Cine</label>
                                 <input type="text" name="nombre" class="form-control" id="cineNombre" required
                                     placeholder="Introducir Nombre" v-model="cine.nombre">
                             </div>
@@ -151,7 +151,7 @@ export default {
             },
             insertCine(){
                 const me = this;
-                axios.post('cine/', me.cine)
+                axios.post('cine', me.cine)
                 .then(response => {
                     me.selectCine();
                     me.myModal.hide();
@@ -162,26 +162,26 @@ export default {
                 });
             },selectCine(){
                 const me = this;
-                axios.get('cine')
+                axios.get('cine/')
                 .then(response => {
-                    me.cine = response.data;
+                    me.cines = response.data;
                 })
                 .catch(error => {
                     console.log(error);
                 });
             },
-            editCine(cine){
+            editCine(cine) {
                 this.insert = false;
                 this.cine = cine;
-                this.myModal = new bootstrap.Modal('#cineModal')
+                this.myModal = new bootstrap.Modal('#cineModal');
                 this.myModal.show();
             },
-        eliminarCine(cine) {
-            this.isError = false;
-            this.cine = cine;
-           this.myModal = new bootstrap.Modal('#deleteModalCineCine')
-              this.myModal.show();
-        },
+            eliminarCine(cine) {
+                this.isError = false;
+                this.cine = cine;
+                this.myModal = new bootstrap.Modal('#deleteModalCine');
+                this.myModal.show();
+            },
         deleteCine(id){
             const me = this;
             axios.delete("cine/" + id)

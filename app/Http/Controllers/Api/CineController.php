@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
+use App\Models\Cine;
 use App\Clases\Utilitat;
 use Illuminate\Http\Request;
-use App\Models\Cine;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\QueryException;
+use App\Http\Resources\CineResource;
 
 class CineController extends Controller
 {
@@ -17,20 +18,18 @@ class CineController extends Controller
         return response()->json(Cine::all());
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'longitud' => 'required|numeric',
+            'latitud' => 'required|numeric',
+            'image' => 'required|string|max:255',
+        ]);
+
         $cine = new Cine();
         $cine->nombre = $request->input("nombre");
         $cine->longitud = $request->input("longitud");
@@ -44,7 +43,6 @@ class CineController extends Controller
                 'message' => 'Cine creado correctamente',
                 'cine' => $cine
             ], 201);
-
         } catch (QueryException $ex) {
             return response()->json([
                 'error' => Utilitat::errorMessage($ex)
@@ -57,15 +55,7 @@ class CineController extends Controller
      */
     public function show(Cine $cine)
     {
-        return response()->json($cine);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Cine $cine)
-    {
-        //
+        return new CineResource($cine);
     }
 
     /**
@@ -74,21 +64,16 @@ class CineController extends Controller
     public function update(Request $request, Cine $cine)
     {
         try {
+
             $cine->nombre = $request->input("nombre");
             $cine->longitud = $request->input("longitud");
             $cine->latitud = $request->input("latitud");
             $cine->image = $request->input("image");
 
-            $cine->save();
-
-            return response()->json([
-                'message' => 'Cine actualizado correctamente',
-                'cine' => $cine
-            ], 200);
+                $cine->save();
+            return response()->json(['message' => 'Cine actualizado correctamente'], 200);
         } catch (QueryException $ex) {
-            return response()->json([
-                'error' => Utilitat::errorMessage($ex)
-            ], 500);
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
         }
     }
 
@@ -101,9 +86,7 @@ class CineController extends Controller
             $cine->delete();
             return response()->json(['message' => 'Cine eliminado correctamente'], 200);
         } catch (QueryException $ex) {
-            return response()->json([
-                'error' => Utilitat::errorMessage($ex)
-            ], 500);
+            return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
         }
     }
 }

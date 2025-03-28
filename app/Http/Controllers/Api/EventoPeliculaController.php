@@ -30,6 +30,8 @@ class EventoPeliculaController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $evento_pelicula = new Evento_pelicula();
         $evento_pelicula->titulo_evento = $request->input("titulo_evento");
         $evento_pelicula->fecha_inicio = $request->input("fecha_inicio");
@@ -39,8 +41,8 @@ class EventoPeliculaController extends Controller
             $evento_pelicula->save();
 
             return response()->json([
-                'message' => 'Película creada correctamente',
-                'pelicula' => $evento_pelicula
+                'message' => 'Evento creado correctamente',
+                'evento' => $evento_pelicula
             ], 201);
 
         } catch (QueryException $ex) {
