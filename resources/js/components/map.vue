@@ -1,55 +1,87 @@
 <template>
-    <div class="text-primary" id="cines" v-for="cine in cines" :key="cine.id">
-        <div class="card-cines">
-            <h2>{{cines.nombre}}</h2>
-        </div>
+    <div class="text-primary" id="cines">
+      <div class="card-cines" v-for="cine in cines" :key="cine.id" :style="{
+        background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})` }">
+        <h2>{{ cine.nombre }}</h2>
+      </div>
     </div>
     <div ref="mapContainer" class="map-container"></div>
   </template>
 
   <script>
   import mapboxgl from 'mapbox-gl';
+  import axios from 'axios';
 
   export default {
     name: 'MapboxMap',
+    data() {
+      return {
+        cines: [],
+        map: null,
+      };
+    },
     mounted() {
-      // Aquí es donde inicializamos el mapa una vez que el componente está montado
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw'; // Sustituye con tu token de Mapbox
-      this.map = new mapboxgl.Map({
-        container: this.$refs.mapContainer, // Referencia al div donde se mostrará el mapa
-        style: 'mapbox://styles/mapbox/navigation-night-v1', // Estilo del mapa, puedes elegir otro estilo
-        center: [2.055501, 41.357301], // Coordenadas iniciales [longitud, latitud]
-        zoom: 14, // Nivel de zoom
-      });
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw';
+      this.getCines();
+      this.initMap();
+    },
+    methods: {
+      initMap() {
+        this.map = new mapboxgl.Map({
+          container: this.$refs.mapContainer,
+          style: 'mapbox://styles/mapbox/navigation-night-v1',
+          center: [2.055501, 41.357301],
+          zoom: 14,
+        });
+      },
+
+
+      getCines() {
+        axios.get('cine/')
+          .then(response => {
+            this.cines = response.data;
+            this.addMarkersToMap();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
+
+      addMarkersToMap() {
+        this.cines.forEach(cine => {
+          new mapboxgl.Marker()
+            .setLngLat([cine.longitud, cine.latitud])
+            .addTo(this.map);
+        });
+      },
     },
     destroyed() {
-      // Limpiar cuando el componente se destruya para evitar fugas de memoria
       if (this.map) {
         this.map.remove();
       }
-    },
+    }
   };
   </script>
 
   <style scoped>
-#cines{
+  #cines {
     display: flex;
     justify-content: center;
     color: #EAD2AC;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     cursor: pointer;
-}
+  }
 
-.card-cines h2{
+  .card-cines h2 {
     font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     margin: 0;
     padding: 0;
-}
+  }
 
-.card-cines {
+  .card-cines {
     width: 20vw;
     height: 25vh;
     color: #EAD2AC;
@@ -66,22 +98,18 @@
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+  }
 
-}
-
-.card-cines:hover {
-    background-image: url('https://elartevisualblog.wordpress.com/wp-content/uploads/2016/09/disney-cine-82069.gif');
-}
-
-.card-cines:hover {
+  .card-cines:hover {
     color: #2EBFA5;
     background-size: cover;
     background-position: center;
     transform: scale(1.02);
-}
+  }
+
   .map-container {
+    position: relative;
     width: 100%;
-    margin-top: 10px;
-    height: 500px;
+    height: 400px;
   }
   </style>

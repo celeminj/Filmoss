@@ -31,6 +31,7 @@ Route::apiResource('usuario', UsuarioController::class);
 Route::apiResource('pelicula_nueva', PeliculaNuevaController::class);
 Route::apiResource('pelicula', PeliculaController::class);
 Route::apiResource('evento_pelicula', EventoPeliculaController::class);
+
 Route::apiResource('cine', CineController::class);
 
 

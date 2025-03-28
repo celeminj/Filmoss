@@ -121,7 +121,7 @@ export default {
     },
 
     created() {
-       this.selectUsuario();
+       this.selectEvento();
        this.getRoles();
 
     },
@@ -147,7 +147,7 @@ export default {
                 const me = this;
                 axios.put('evento_pelicula/'+ me.evento_pelicula.id, me.evento_pelicula)
                 .then(response => {
-                    me.selectUsuario();
+                    me.selectEvento();
                     me.myModal.hide();
                 })
                 .catch(error => {
@@ -159,14 +159,14 @@ export default {
                 const me = this;
                 axios.post('evento_pelicula/', me.evento_pelicula)
                 .then(response => {
-                    me.selectUsuario();
+                    me.selectEvento();
                     me.myModal.hide();
                 })
                 .catch(error => {
                     this.isError = true;
                     me.messageError = error.response.data.message;
                 });
-            },selectUsuario(){
+            },selectEvento(){
                 const me = this;
                 axios.get('evento_pelicula')
                 .then(response => {
@@ -192,7 +192,7 @@ export default {
             const me = this;
             axios.delete("evento_pelicula/" + id)
             .then(response => {
-                me.selectUsuario()
+                me.selectEvento()
                 me.myModal.hide()
         })
         .catch(error => {

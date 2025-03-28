@@ -206,7 +206,7 @@ export default {
                 const me = this;
                 axios.get('pelicula')
                 .then(response => {
-                    me.pelicula = response.data;
+                    me.peliculas = response.data;
                 })
                 .catch(error => {
                     console.log(error);
