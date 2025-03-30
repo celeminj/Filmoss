@@ -1,5 +1,5 @@
 import './bootstrap';
-
+import 'gsap';
 import {createApp} from 'vue';
 
 import film from './components/Film.vue';

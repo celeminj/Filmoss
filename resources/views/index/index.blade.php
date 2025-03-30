@@ -22,9 +22,9 @@
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a href="home" class="navbar"><img
-                        src='https://i.postimg.cc/k4yJmLrR/Captura-de-pantalla-2025-03-18-165617-removebg-preview.png'
-                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
+                <a href="home" class="navbar" ><img id="icono-filmo"
+                        src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
+                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n'/></a>
                 <button id="desplegable-toggle" class="menu-boton">☰</button>
                 <ul class="paginas-nav">
 
@@ -129,9 +129,6 @@
             </footer>
         </div>
     @show
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
