@@ -3,21 +3,24 @@
     <div class="reproductor">
         <div class="pelicula">
             <div class="degradado-info">
-                <a href="{{ $pelicula->pelicula_src }}"></a>
+                <a href="https://Smoothpre.com/embed/agtchgjvv15l"></a>
             </div>
             {{-- <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
                 width="1900" height="1000" allowfullscreen></iframe> --}}
-            <a href="{{ $pelicula->pelicula_src }}"><img src="{{ $pelicula->image }}" alt="" STYLE="width: 120rem; height: 100%;"></a>
+            <a href="https://Smoothpre.com/embed/agtchgjvv15l"><img src="{{ $pelicula->image }}" alt="" STYLE="width: 120REM; height: 58REM;"></a>
         </div>
 
         <div class="info-peli">
             <div class="titulo-pelicula">
                 <h1>{{ $pelicula->titulo }}</h1>
-                <p>Hora seleccionada:
-                    <strong>
-                        {{ $hora }}
-                    </strong>
-                </p>
+                <div class="hora">
+                    <p>Hora seleccionada:
+                        <strong>
+                            {{ $hora }}
+                        </strong>
+                    </p>
+                </div>
+
             </div>
             <div class="categorias">
                 <p>Comedia, acción, animación</p>
@@ -35,7 +38,7 @@
             <div class="botones-pelicula">
                 <div class="ver-ya">
                     <button>VER YA</button>
-                    <a href="{{ $pelicula->pelicula_src }}">
+                    <a href="https://Smoothpre.com/embed/agtchgjvv15l">
                         <div class="play-button"></div>
                     </a>
                 </div>
@@ -63,7 +66,7 @@
             <p>Comedia, acción, animación</p>
             <h4>Fecha de estreno</h4>
             <p>{{ $pelicula->fecha_estreno }}</p>
-            <h4>Nota {{ $pelicula->calificacion }}/10</h4>
+            <h4>{{ $pelicula->calificacion }}/10</h4>
             <p>Edad: + {{ $pelicula->restriccion_edad }}</p>
         </div>
 
@@ -77,6 +80,7 @@
         </div>
     </div>
 @endsection
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         let container = document.querySelector(".actores");
