@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Evento_pelicula;
+use App\Clases\Utilitat;
 use Illuminate\Http\Request;
+use App\Models\Evento_pelicula;
 use App\Http\Controllers\Controller;
+
 class EventoPeliculaController extends Controller
 {
     /**
@@ -28,6 +30,8 @@ class EventoPeliculaController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $evento_pelicula = new Evento_pelicula();
         $evento_pelicula->titulo_evento = $request->input("titulo_evento");
         $evento_pelicula->fecha_inicio = $request->input("fecha_inicio");
@@ -37,8 +41,8 @@ class EventoPeliculaController extends Controller
             $evento_pelicula->save();
 
             return response()->json([
-                'message' => 'Película creada correctamente',
-                'pelicula' => $evento_pelicula
+                'message' => 'Evento creado correctamente',
+                'evento' => $evento_pelicula
             ], 201);
 
         } catch (QueryException $ex) {
@@ -75,11 +79,11 @@ class EventoPeliculaController extends Controller
     public function update(Request $request, Evento_pelicula $evento_pelicula)
     {
         try {
-            $evento_pelicula->update([
-                'titulo_evento' => $request->input("titulo_evento"),
-                'fecha_inicio' => $request->input("fecha_inicio"),
-                'fecha_final' => $request->input("fecha_final"),
-            ]);
+            $evento_pelicula->titulo_evento = $request->input("titulo_evento");
+            $evento_pelicula->fecha_inicio = $request->input("fecha_inicio");
+            $evento_pelicula->fecha_final = $request->input("fecha_final");
+
+            $evento_pelicula->save();
             return response()->json(['message' => 'Evento actualizado correctamente'], 200);
         } catch (QueryException $ex) {
             return response()->json(['error' => Utilitat::errorMessage($ex)], 500);

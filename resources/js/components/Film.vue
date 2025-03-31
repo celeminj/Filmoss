@@ -1,4 +1,20 @@
-<template >
+<template>
+  
+   <div class="container-fluid">
+    <div class="cartelera-dia"><strong>EVENTO</strong></div>
+    
+    <ul class="paginas-nav">
+            <li><a id="len1" class="hoverable">Lunes</a></li>
+            <li><a id="len2" class="hoverable">Martes</a></li>
+            <li><a id="len3" class="hoverable">Miercoles</a></li>
+            <li><a id="len4" class="hoverable">Jueves</a></li>
+            <li><a id="len4" class="hoverable">Viernes</a></li>
+            <li><a id="len4" class="hoverable">Sabado</a></li>
+            <li><a id="len4" class="hoverable">Domingo</a></li>
+        </ul>
+   </div>
+   <div class="cartelera-dia"><strong>LUNES</strong></div>
+
     <div class="cartelera-fluid">
         <div class="cartelera-film" v-for="pelicula_nueva in peliculas_nuevas " :key="pelicula_nueva.id"  :style="{
          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${pelicula_nueva.image})` }">

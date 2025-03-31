@@ -3,11 +3,11 @@
     <div class="reproductor">
         <div class="pelicula">
             <div class="degradado-info">
-                <a href="https://Smoothpre.com/embed/agtchgjvv15l"></a>
+                <a href="{{ $pelicula->pelicula_src }}"></a>
             </div>
             {{-- <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
                 width="1900" height="1000" allowfullscreen></iframe> --}}
-            <a href="https://Smoothpre.com/embed/agtchgjvv15l"><img src="{{ $pelicula->image }}" alt="" STYLE="width: 120REM; height: 58REM;"></a>
+            <a href="{{ $pelicula->pelicula_src }}"><img src="{{ $pelicula->image }}" alt="" STYLE="width: 120rem; height: 100%;"></a>
         </div>
 
         <div class="info-peli">
@@ -35,7 +35,7 @@
             <div class="botones-pelicula">
                 <div class="ver-ya">
                     <button>VER YA</button>
-                    <a href="https://Smoothpre.com/embed/agtchgjvv15l">
+                    <a href="{{ $pelicula->pelicula_src }}">
                         <div class="play-button"></div>
                     </a>
                 </div>
@@ -63,7 +63,7 @@
             <p>Comedia, acción, animación</p>
             <h4>Fecha de estreno</h4>
             <p>{{ $pelicula->fecha_estreno }}</p>
-            <h4>{{ $pelicula->calificacion }}/10</h4>
+            <h4>Nota {{ $pelicula->calificacion }}/10</h4>
             <p>Edad: + {{ $pelicula->restriccion_edad }}</p>
         </div>
 

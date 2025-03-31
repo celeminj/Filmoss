@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Rol;
 use App\Models\Usuario;
+use App\Clases\Utilitat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -153,13 +154,13 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         try {
-            $usuario->update([
-                'nombre' => $request->input("nombre"),
-                'fecha_nacimiento' => $request->input("fecha_nacimiento"),
-                'correo' => $request->input("correo"),
-                'contrasenya' => Hash::make($request->input("contrasenya")),
-                'rol_id' => $request->input("rol_id"),
-            ]);
+            $usuario->nombre = $request->input("nombre");
+            $usuario->fecha_nacimiento = $request->input("fecha_nacimiento");
+            $usuario->correo = $request->input("correo");
+            $usuario->contrasenya = Hash::make($request->input("contrasenya"));
+            $usuario->rol_id = $request->input("rol_id");
+
+            $usuario->save();
             return response()->json(['message' => 'Usuario actualizado correctamente'], 200);
         } catch (QueryException $ex) {
             return response()->json(['error' => Utilitat::errorMessage($ex)], 500);

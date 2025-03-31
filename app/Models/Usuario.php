@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Rol;
+use App\Models\Pelicula;
+use App\Models\Subscripcion;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;

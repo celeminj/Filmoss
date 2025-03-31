@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pelicula;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Categoria extends Model
 {
@@ -14,6 +15,6 @@ class Categoria extends Model
     public $timestamps = false;
 
     public function pelicula (){
-        return $this->belongsToMany('App\Models\Pelicula', 'categoria_pelicula', 'categoria_id', 'pelicula_id');
+        return $this->belongsToMany(Pelicula::class, 'categoria_pelicula', 'categoria_id', 'pelicula_id');
     }
 }

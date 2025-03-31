@@ -2,7 +2,7 @@
     <div><button @click="showForm()" class="anadirBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-</svg><strong> AÑADIR EVENTOS</strong></button></div>
+</svg><strong>AÑADIR EVENTOS</strong></button></div>
          <div  class="tabla-usuarios">
             <table class="table">
                 <thead >
@@ -11,6 +11,7 @@
                     <th scope="col">Titulo Evento</th>
                     <th scope="col">Fecha inicio</th>
                     <th scope="col">Fecha final</th>
+                    <th scope="col">Pelicula añadidas</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +22,7 @@
                         <td>{{ evento_pelicula.fecha_inicio }}</td>
                         <td>{{ evento_pelicula.fecha_final }}</td>
 
-                        <th> <button @click="editUsuario(evento_pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        <th> <button @click="editEvento(evento_pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
                                     <path
                                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -111,7 +112,6 @@ export default {
     data() {
         return{
             evento_peliculas: [],
-            roles: [],
             myModal : {},
             evento_pelicula: {},
             messageError : "",
@@ -121,8 +121,7 @@ export default {
     },
 
     created() {
-       this.selectUsuario();
-       this.getRoles();
+       this.selectEvento();
 
     },
         methods: {
@@ -133,21 +132,11 @@ export default {
                 this.myModal.show();
                 this.evento_pelicula = {};
             },
-            getRoles(){
-                const me = this;
-                axios.get('rol')
-                .then(response =>{
-                    me.roles = response.data;
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-            },
             updateUsuarios(){
                 const me = this;
-                axios.put('evento_pelicula'+ me.evento_pelicula.id, me.evento_pelicula)
+                axios.put('evento_pelicula/'+ me.evento_pelicula.id, me.evento_pelicula)
                 .then(response => {
-                    me.selectUsuario();
+                    me.selectEvento();
                     me.myModal.hide();
                 })
                 .catch(error => {
@@ -159,14 +148,14 @@ export default {
                 const me = this;
                 axios.post('evento_pelicula', me.evento_pelicula)
                 .then(response => {
-                    me.selectUsuario();
+                    me.selectEvento();
                     me.myModal.hide();
                 })
                 .catch(error => {
                     this.isError = true;
                     me.messageError = error.response.data.message;
                 });
-            },selectUsuario(){
+            },selectEvento(){
                 const me = this;
                 axios.get('evento_pelicula')
                 .then(response => {
@@ -176,7 +165,7 @@ export default {
                     console.log(error);
                 });
             },
-            editUsuario(evento_pelicula){
+            editEvento(evento_pelicula){
                 this.insert = false;
                 this.evento_pelicula = evento_pelicula;
                 this.myModal = new bootstrap.Modal('#eventoModal')
@@ -192,7 +181,7 @@ export default {
             const me = this;
             axios.delete("evento_pelicula/" + id)
             .then(response => {
-                me.selectUsuario()
+                me.selectEvento()
                 me.myModal.hide()
         })
         .catch(error => {

@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RolController;
-use App\Http\Controllers\Api\PeliculaController;
+use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\Api\PeliculaController;
 use App\Http\Controllers\Api\PeliculaNuevaController;
 
 /*
@@ -35,18 +36,10 @@ Route::get('/cartelera', function () {
 
 
 
-Route::get('/cine', function () {
-    return view('cine.cine');
-})->name('cine');
-
-
 Route::get('/ticket', function () {
     return view('ticket.ticket');
 })->name('ticket');
 
-
-
-//Route::get('/catalogo', [PeliculaController::class, 'index']);
 
 
 Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
@@ -83,11 +76,6 @@ Route::middleware(['auth'])->group(function (){
     })->name('catalogo');
 });
 
-
-
-// Route::put('/editUsuario/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
-
-// Route::get('/editUsuario/{usuario}', [UsuarioController::class, 'index'])->name('usuario.edit');
 Route::get('/gestion', function(){
     return view('gestion.gestion');
 })->name('gestion.gestion');
@@ -100,6 +88,16 @@ Route::get('/gestion_pelicula', function(){
 Route::get('/gestion_pelicula_nuevas', function(){
     return view('gestion.gestion_pelicula_nueva');
 })->name('gestion.gestion_pelicula_nueva');
+
+Route::get('/gestion_cines', function(){
+    return view('gestion.gestion_cine');
+})->name('gestion.gestion_cine');
+
+
+Route::get('/cines', function () {
+    $cines = App\Models\Cine::all();
+    return view('cine.cine', ['cines' => $cines]);
+})->name('cine');
 
 
 
@@ -114,4 +112,3 @@ Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::
 Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
 
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
-

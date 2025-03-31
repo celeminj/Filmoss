@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -12,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/css/app.scss', 'resources/js/app.js', 'resources/css/peli-catalogo.css', 'resources/css/login.css'])
+    @vite(['resources/css/app.css', 'resources/css/app.scss', 'resources/js/app.js'])
     <title>Filmo</title>
 </head>
 
@@ -21,10 +22,10 @@
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a href="home" class="navbar"><img
-                        src='https://i.postimg.cc/k4yJmLrR/Captura-de-pantalla-2025-03-18-165617-removebg-preview.png'
-                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
-                        <button id="desplegable-toggle" class="menu-boton">☰</button>
+                <a href="home" class="navbar" ><img id="icono-filmo"
+                        src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
+                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n'/></a>
+                <button id="desplegable-toggle" class="menu-boton">☰</button>
                 <ul class="paginas-nav">
 
                     <li><a id="len1" class="hoverable" href="{{ route('home') }}">Inicio</a></li>
@@ -36,10 +37,13 @@
                                 Eventos</a></li>
                         <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_pelicula') }}">Gestionar
                                 Peliculas Catalogo</a></li>
-                                <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_pelicula_nueva') }}">Gestionar
+                        <li><a id="len4" class="hoverable"
+                                href="{{ route('gestion.gestion_pelicula_nueva') }}">Gestionar
                                 Peliculas Cartelera</a></li>
                         <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_usuario') }}">Gestionar
                                 Usuarios</a></li>
+                        <li><a id="len4" class="hoverable" href="{{ route('gestion.gestion_cine') }}">Gestionar
+                                Cines</a></li>
                     @endif
                 </ul>
                 <form class="d-flex" role="search">
@@ -73,87 +77,61 @@
         @yield('contenido')
     </div>
     @section('footer')
-    <div class="container text-primary">
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">
-            <div class="col mb-3  text-primary">
-                <a href="home"><img
-                        src='https://i.postimg.cc/xXT44s4v/Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n.png'
-                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
-                <p class="text-primary">Donde estés, donde quieras.</p>
-            </div>
+        <div class="container text-primary">
+            <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">
+                <div class="col mb-3  text-primary">
+                    <a href="home"><img
+                            src='https://i.postimg.cc/xXT44s4v/Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n.png'
+                            alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
+                    <p class="text-primary">Donde estés, donde quieras.</p>
+                </div>
 
-            <div class="col mb-3">
+                <div class="col mb-3">
 
-            </div>
+                </div>
 
-            <div class="col mb-3">
-                <ul class="nav flex-column ">
-                    <li class="nav-item mb-2 "><a href="home" class="nav-link p-0 text-primary">Inicio</a></li>
-                    <li class="nav-item mb-2"><a href="cartelera" class="nav-link p-0 text-primary">Cartelera</a></li>
-                    <li class="nav-item mb-2"><a href="catalogo" class="nav-link p-0 text-primary">Catalogo</a></li>
-                    <li class="nav-item mb-2"><a href="cine" class="nav-link p-0 text-primary">Cines</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Sobre Nosotros</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col mb-3">
+                    <ul class="nav flex-column ">
+                        <li class="nav-item mb-2 "><a href="home" class="nav-link p-0 text-primary">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="cartelera" class="nav-link p-0 text-primary">Cartelera</a></li>
+                        <li class="nav-item mb-2"><a href="catalogo" class="nav-link p-0 text-primary">Catalogo</a></li>
+                        <li class="nav-item mb-2"><a href="cine" class="nav-link p-0 text-primary">Cines</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Sobre Nosotros</a>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="col mb-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="mailto:elcorreoquequieres@correo.com"
-                            class="nav-link p-0 text-primary">Correo electrónico</a>
-                    </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Enlaces</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Instagram</a></li>
-                    <li class="nav-item mb-2"><a href="https://x.com/Film00o" class="nav-link p-0 text-primary">X</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col mb-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="mailto:elcorreoquequieres@correo.com"
+                                class="nav-link p-0 text-primary">Correo electrónico</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Enlaces</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Instagram</a></li>
+                        <li class="nav-item mb-2"><a href="https://x.com/Film00o" class="nav-link p-0 text-primary">X</a>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="col mb-3">
-                <ul class="nav flex-column ">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Términos y
-                            condiciones.</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Política de
-                            privacidad.</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Preguntas
-                            frecuentes
-                            (FAQ)</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Información sobre
-                            cookies</a></li>
-                </ul>
-            </div>
-        </footer>
-    </div>
+                <div class="col mb-3">
+                    <ul class="nav flex-column ">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Términos y
+                                condiciones.</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Política de
+                                privacidad.</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Preguntas
+                                frecuentes
+                                (FAQ)</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Información sobre
+                                cookies</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
     @show
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const menuButton = document.getElementById("desplegable-toggle");
-    const closeButton = document.getElementById("cerrar-menu");
-    const navMenu = document.querySelector(".paginas-nav");
-
-    menuButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        navMenu.classList.toggle("active");
-    });
-
-    closeButton.addEventListener("click", function () {
-        navMenu.classList.remove("active");
-    });
-
-    // Si haces clic fuera del menú, se cierra
-    document.addEventListener("click", function (event) {
-        if (!navMenu.contains(event.target) && !menuButton.contains(event.target)) {
-            navMenu.classList.remove("active");
-        }
-    });
-});
-
-
-
-</script>
 </html>

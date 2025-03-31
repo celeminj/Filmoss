@@ -3,7 +3,7 @@
   <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
 </svg><strong> AÑADIR PELICULA</strong></button></div>
-         <div  class="tabla-usuarios">
+         <div  class="tabla-peliculas">
             <table class="table">
                 <thead >
                 <tr>
@@ -159,7 +159,6 @@ export default {
     data() {
         return{
             peliculas: [],
-            roles: [],
             myModal : {},
             pelicula: {},
             messageError : "",
@@ -175,13 +174,13 @@ export default {
         methods: {
             showForm() {
                 this.insert = true;
-                this.pelicula = {}; // Resetear los valores
-                let modal = new bootstrap.Modal(document.getElementById('peliculaModal'));
-                modal.show();
+                this.myModal = new bootstrap.Modal('#peliculaModal')
+                this.myModal.show();
+                this.pelicula = {};
             },
             updatePeliculas(){
                 const me = this;
-                axios.put('pelicula'+ me.pelicula.id, me.pelicula)
+                axios.put('pelicula/'+ me.pelicula.id, me.pelicula)
                 .then(response => {
                     me.selectPelicula();
                     me.myModal.hide();
@@ -206,7 +205,7 @@ export default {
                 const me = this;
                 axios.get('pelicula')
                 .then(response => {
-                    me.pelicula = response.data;
+                    me.peliculas = response.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -244,7 +243,7 @@ export default {
     </script>
 
 <style>
-.tabla-usuarios{
+.tabla-peliculas{
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: #ffffff;
