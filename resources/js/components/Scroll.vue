@@ -1,400 +1,200 @@
 <template>
-    <div>
-      <div class="overlay" :class="{'active': isMenuOpen}"></div>
-
-      <section id="home" v-scroll-fade>
-        <div class="bg-effect bg-effect-1"></div>
-        <div class="section-content">
-          <h1 class="section-title">Welcome</h1>
-          <p class="section-description">Experience the future of design with our premium solutions</p>
-        </div>
-      </section>
-
-      <section id="about" v-scroll-fade>
-        <div class="bg-effect bg-effect-2"></div>
-        <div class="section-content">
-          <h1 class="section-title">About Us</h1>
-          <p class="section-description">Pushing boundaries and creating extraordinary experiences since 2024</p>
-        </div>
-      </section>
-
-      <section id="services" v-scroll-fade>
-        <div class="bg-effect bg-effect-1"></div>
-        <div class="section-content">
-          <h1 class="section-title">Services</h1>
-          <p class="section-description">Innovative solutions tailored to your unique needs</p>
-        </div>
-      </section>
-
-      <section id="portfolio" v-scroll-fade>
-        <div class="bg-effect bg-effect-2"></div>
-        <div class="section-content">
-          <h1 class="section-title">Portfolio</h1>
-          <p class="section-description">Discover our groundbreaking projects and success stories</p>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="bg-effect bg-effect-1"></div>
-        <div class="section-content">
-            <h1 class="section-title">Contact</h1>
-            <p class="section-description">Let's create something amazing together</p>
-        </div>
-    </section>
+    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
+    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
+    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
+    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
+  <div class="presenta-text">
+    <h1 class="cartelera-inicio">PRESENTA</h1>
+  </div>
+  <hr class="barra-blanca">
+  <div class="scroll-container">
+    <img ref="scrollImage" src="" alt="Imagen que sigue" class="scroll-image" />
+    <img ref="staticImage" src="/public/images/fondo.jpg" alt="" class="static-imagen">
+    <div class="descripcionFilmo">
+      <div v-for="(item, index) in items" :key="index" :style="{ opacity: opacityValue(index) }">
+        <span v-html="item"></span>
+      </div>
     </div>
-  </template>
+  </div>
+  <div class="presenta-text">
+    <h1 class="cartelera-inicio"><strong>CARTELERA</strong></h1>
+    <hr class="barra-blanca">
+    <div >
+      <a  class="btnInicio" href="cartelera"><strong>VER MÁS</strong></a>
+    </div>
+    
+  </div>
+  <img src="https://i.postimg.cc/1RgXJd7G/abeibqt571p91-1.png" alt="" class="imagen-inicio">
+</template>
 
-  <script>
-  export default {
-    data() {
-      return {
-        isMenuOpen: false,
-        scrolled: false,
-      };
+<script>
+import Lenis from 'lenis';
+import gsap from 'gsap';
+import SplitType from 'split-type';
+export default {
+  data() {
+    return {
+      items: [
+        "<span class='filmo'>Filmo</span> es una plataforma diseñada para los amantes del cine, donde podrás ",
+        "disfrutar de una extensa variedad de películas, series y dibujos de todos los géneros.",
+        "Filmo te ofrece una experiencia única para explorar y descubrir nuevos contenidos,",
+        "facilitando tu acceso a todo lo que el mundo del cine tiene para ofrecer."
+      ],
+      stopScrollAt: 1000, 
+    };
+  },
+  methods: {
+    opacityValue(index) {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const itemPosition = index * 100;
+      const distance = Math.max(0, itemPosition - scrollPosition + windowHeight);
+      return Math.min(1, distance / windowHeight);
     },
-    methods: {
-      toggleMenu() {
-        this.isMenuOpen = !this.isMenuOpen;
-        document.body.style.overflow = this.isMenuOpen ? 'hidden' : '';
-      },
-      handleScroll() {
-        this.scrolled = window.scrollY > 50;
-      },
-    },
-    mounted() {
-      window.addEventListener('scroll', this.handleScroll);
-    },
-    beforeDestroy() {
-      window.removeEventListener('scroll', this.handleScroll);
-    },
-  };
-  </script>
-
-  <style scoped>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  :root {
-    --gradient: linear-gradient(45deg, #ff3366, #ff6b6b, #4834d4, #686de0);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --border: 1px solid rgba(255, 255, 255, 0.1);
-    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  }
-
-  body {
-    background: #0a0a0a;
-    min-height: 100vh;
-  }
-
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.2rem 5%;
-    backdrop-filter: blur(12px);
-    background: var(--glass-bg);
-    border-bottom: var(--border);
-    z-index: 1000;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow);
-  }
-
-  .navbar.scrolled {
-    padding: 0.8rem 5%;
-    background: rgba(10, 10, 10, 0.95);
-  }
-
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient 8s linear infinite;
-    background-size: 300%;
-    letter-spacing: -0.5px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    padding: 0.5rem 0;
-    transition: all 0.3s ease;
-    font-size: 1.05rem;
-    letter-spacing: 0.3px;
-  }
-
-  .nav-links a::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient);
-    background-size: 300%;
-    transition: width 0.3s ease;
-  }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    right: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient);
-    background-size: 300%;
-    transition: width 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: #fff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-  }
-
-  .nav-links a:hover::before,
-  .nav-links a:hover::after {
-    width: 100%;
-    animation: gradient 8s linear infinite;
-  }
-
-  .mobile-nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    z-index: 1001;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-  }
-
-  .mobile-nav-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .mobile-nav-toggle .bar {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 2px;
-    background: white;
-    transition: all 0.4s ease;
-  }
-
-  .mobile-nav-toggle .bar:nth-child(1) { top: 14px; }
-  .mobile-nav-toggle .bar:nth-child(2) { top: 19px; }
-  .mobile-nav-toggle .bar:nth-child(3) { top: 24px; }
-
-  @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  @media (max-width: 768px) {
-    .nav-links {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      height: 100vh;
-      width: 80%;
-      max-width: 400px;
-      background: linear-gradient(135deg, rgba(10, 10, 10, 0.99), rgba(20, 20, 20, 0.99));
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-      padding: 2rem;
-      backdrop-filter: blur(10px);
+    handleScroll() {
+      const scrollY = window.scrollY;
+      const img = this.$refs.scrollImage;
+      const staticImg = this.$refs.staticImage;
+      const staticPosition = staticImg.offsetTop;
+      
+      if (scrollY < staticPosition) {
+        img.style.transform = `translateY(${scrollY}px)`;
+      } else {
+        img.style.position = 'absolute';
+        img.style.top = `${staticPosition}px`;
+      }
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+   
+    new SplitType('[animate]', {
+    types: 'lines, words, chars',
+    tagName: 'span'
+  });
 
-    .nav-links::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03));
-      pointer-events: none;
-    }
 
-    .nav-links.active {
-      right: 0;
-    }
+gsap.to(this.$refs.animatedBox, {
+  x: 300,  // Mueve a la derecha 300px
+  y: 100,  // Mueve hacia abajo 100px
+  duration: 2,
+  ease: 'power2.out'
+});
 
-    .nav-links a {
-      font-size: 1.2rem;
-      opacity: 0;
-      transform: translateX(20px);
-      transition: all 0.4s ease;
-    }
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
 
-    .nav-links.active a {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
 
-    .nav-links a:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links a:nth-child(2) { transition-delay: 0.2s; }
-    .nav-links a:nth-child(3) { transition-delay: 0.3s; }
-    .nav-links a:nth-child(4) { transition-delay: 0.4s; }
-    .nav-links a:nth-child(5) { transition-delay: 0.5s; }
+    requestAnimationFrame(raf);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+};
+</script>
 
-    .mobile-nav-toggle {
-      display: block;
-    }
-
-    .mobile-nav-toggle.active .bar:nth-child(1) {
-      transform: translate(-50%, 5px) rotate(45deg);
-      width: 24px;
-    }
-
-    .mobile-nav-toggle.active .bar:nth-child(2) {
-      opacity: 0;
-    }
-
-    .mobile-nav-toggle.active .bar:nth-child(3) {
-      transform: translate(-50%, -5px) rotate(-45deg);
-      width: 24px;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(4px);
-    }
-
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+<style scoped>
+.animated-cont{
+  color: #ead2ac4c;
+  font-size: 7rem;
+  text-align: center;
+  font-weight: 800;
+  transition-duration: 1s;
+  }
+  .animated-cont:hover{
+  color: #2EBFA5;;
   }
 
-  .section-title {
-    font-size: 3rem;
-  }
-
-  .section-description {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-
-  section {
-    min-height: 100vh;
-    padding: 120px 5% 80px;
-    display: flex;
+.text-filmo-container{
+  display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
+    height: 100vh;
+    flex-direction: column;
+}
 
-  section:nth-child(even) {
-    background: var(--section-bg);
-  }
-
-  .section-content {
-    max-width: 1400px;
-    width: 100%;
+.barra-blanca {
+  width: 50%;
+  height: 2px; 
+  background-color: #ffffff; 
+  margin: auto;
+  border: none; 
+  margin-bottom: 80px;
+}
+.cartelera-inicio{
+  text-align: center;
+    color: #EAD2AC;
+    font-size: 100px;
+    margin-bottom: 80px;
+}
+.btnInicio {
+  padding: 8px;
+    color: #000;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 7px;
+    width: 9rem;
+    height: 2.7rem;
     text-align: center;
-    position: relative;
-    z-index: 1;
-  }
+    background-color: #EAD2AC;
+    font-family: "Lexend", sans-serif;
+    display: block; 
+    margin: 0 auto; 
+    text-decoration: none;
+    cursor: pointer;
+}
 
-  .section-title {
-    font-size: 8vw;
-    font-weight: 800;
-    margin-bottom: 2rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient 8s linear infinite;
-    background-size: 300%;
-    line-height: 1.1;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-  }
-
-  .section-description {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .bg-effect {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    width: 400px;
-    height: 400px;
-    background: var(--gradient);
-    filter: blur(80px);
-    z-index: 0;
-    opacity: 0.5;
-  }
-
-  .bg-effect-1 {
-    animation: bg-animation 4s ease infinite;
-  }
-
-  .bg-effect-2 {
-    animation: bg-animation 8s ease infinite;
-  }
-
-  @keyframes bg-animation {
-    0% {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1.2);
-    }
-  }
-
-  [v-scroll-fade] {
-    opacity: 0;
-    transition: opacity 1.5s ease;
-  }
-
-  [v-scroll-fade].in-view {
-    opacity: 1;
-  }
-  </style>
+.imagen-inicio{
+  margin-top: 80px;
+  width: 100%;
+}
+.text-filmo-container {
+  height: 100vh;
+}
+.scroll-container {
+  height: 250vh; /* Ajustado para más espacio de scroll */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.scroll-image {
+  position: absolute;
+  top: 100px;
+  left: 25%;
+  transform: translateX(-50%);
+  width: 51rem;
+  transition: transform 0.2s ease;
+}
+.static-imagen {
+  position: absolute;
+  top: 1000px; /* Ajustado para coincidir con la parada del scroll */
+  left: 25%;
+  z-index: -1;
+  transform: translateX(-50%);
+  width: 51rem;
+}
+.descripcionFilmo {
+  margin-top: 100px;
+  width: 100%;
+  text-align: right;
+}
+.descripcionFilmo div {
+  font-family: "Poppins", sans-serif;
+  color: #EAD2AC;
+  font-size: 2rem;
+  padding: 10px;
+  margin: 0 70 auto;
+  transition: opacity 0.5s ease;
+}
+.filmo {
+  font-weight: bold;
+}
+</style>
