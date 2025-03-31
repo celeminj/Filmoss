@@ -25,7 +25,7 @@
                 <a href="home" class="navbar" ><img id="icono-filmo"
                         src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
                         alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n'/></a>
-                <button id="desplegable-toggle" class="menu-boton">☰</button>
+
                 <ul class="paginas-nav">
 
                     <li><a id="len1" class="hoverable" href="{{ route('home') }}">Inicio</a></li>
