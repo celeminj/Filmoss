@@ -8,7 +8,7 @@
   </div>
   <hr class="barra-blanca">
   <div class="scroll-container">
-    <img ref="scrollImage" src="" alt="Imagen que sigue" class="scroll-image" />
+    <img ref="scrollImage" src="/public/images/personas.png" alt="Imagen que sigue" class="scroll-image" />
     <img ref="staticImage" src="/public/images/fondo.jpg" alt="" class="static-imagen">
     <div class="descripcionFilmo">
       <div v-for="(item, index) in items" :key="index" :style="{ opacity: opacityValue(index) }">
@@ -22,7 +22,7 @@
     <div >
       <a  class="btnInicio" href="cartelera"><strong>VER MÁS</strong></a>
     </div>
-    
+
   </div>
   <img src="https://i.postimg.cc/1RgXJd7G/abeibqt571p91-1.png" alt="" class="imagen-inicio">
 </template>
@@ -40,7 +40,7 @@ export default {
         "Filmo te ofrece una experiencia única para explorar y descubrir nuevos contenidos,",
         "facilitando tu acceso a todo lo que el mundo del cine tiene para ofrecer."
       ],
-      stopScrollAt: 1000, 
+      stopScrollAt: 1000,
     };
   },
   methods: {
@@ -56,7 +56,7 @@ export default {
       const img = this.$refs.scrollImage;
       const staticImg = this.$refs.staticImage;
       const staticPosition = staticImg.offsetTop;
-      
+
       if (scrollY < staticPosition) {
         img.style.transform = `translateY(${scrollY}px)`;
       } else {
@@ -67,7 +67,7 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
-   
+
     new SplitType('[animate]', {
     types: 'lines, words, chars',
     tagName: 'span'
@@ -121,10 +121,10 @@ gsap.to(this.$refs.animatedBox, {
 
 .barra-blanca {
   width: 50%;
-  height: 2px; 
-  background-color: #ffffff; 
+  height: 2px;
+  background-color: #ffffff;
   margin: auto;
-  border: none; 
+  border: none;
   margin-bottom: 80px;
 }
 .cartelera-inicio{
@@ -144,8 +144,8 @@ gsap.to(this.$refs.animatedBox, {
     text-align: center;
     background-color: #EAD2AC;
     font-family: "Lexend", sans-serif;
-    display: block; 
-    margin: 0 auto; 
+    display: block;
+    margin: 0 auto;
     text-decoration: none;
     cursor: pointer;
 }
