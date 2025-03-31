@@ -22,12 +22,13 @@
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a href="home" class="navbar" ><img id="icono-filmo"
-                        src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
-                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n'/></a>
+                <a href="home" class="navbar"><img id="icono-filmo" src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
+                        alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
 
                 <ul class="paginas-nav">
-
+                    <div id="app">
+                        <nav-desplegable></nav-desplegable>
+                    </div>
                     <li><a id="len1" class="hoverable" href="{{ route('home') }}">Inicio</a></li>
                     <li><a id="len2" class="hoverable" href="{{ route('cartelera') }}">Cartelera</a></li>
                     <li><a id="len3" class="hoverable" href="{{ route('catalogo') }}">Catalogo</a></li>
