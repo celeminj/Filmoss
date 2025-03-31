@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\RolController;
 use App\Http\Controllers\Api\CineController;
+use App\Http\Controllers\Api\ActorController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\Api\PeliculaController;
 use App\Http\Controllers\Api\PeliculaNuevaController;
@@ -31,6 +32,5 @@ Route::apiResource('usuario', UsuarioController::class);
 Route::apiResource('pelicula_nueva', PeliculaNuevaController::class);
 Route::apiResource('pelicula', PeliculaController::class);
 Route::apiResource('evento_pelicula', EventoPeliculaController::class);
-
 Route::apiResource('cine', CineController::class);
-
+Route::apiResource('actor', ActorController::class);

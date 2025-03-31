@@ -11,8 +11,12 @@ import peliculasCRUD from './components/peliculasCRUD.vue';
 import mapa from './components/map.vue';
 import cinesCRUD from './components/cinesCRUD.vue';
 import categoriaFilm from './components/categoriaFilm.vue';
+import navDesplegable from './components/navDesplegable.vue';
+import actorCRUD from './components/actorCRUD.vue';
 const app = createApp({});
 
+app.component('nav-desplegable', navDesplegable);
+app.component('actor-crud', actorCRUD);
 app.component('film', film);
 app.component('scroll', scroll);
 app.component('usuario-update', UsuarioUpdate);

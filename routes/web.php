@@ -93,6 +93,10 @@ Route::get('/gestion_cines', function(){
     return view('gestion.gestion_cine');
 })->name('gestion.gestion_cine');
 
+Route::get('/gestion_actores', function(){
+    return view('gestion.gestion_actor');
+})->name('gestion.gestion_actor');
+
 
 Route::get('/categoria', function(){
     return view('categoria.categoria');
