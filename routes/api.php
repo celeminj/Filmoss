@@ -34,4 +34,3 @@ Route::apiResource('evento_pelicula', EventoPeliculaController::class);
 
 Route::apiResource('cine', CineController::class);
 
-

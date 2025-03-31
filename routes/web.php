@@ -94,6 +94,11 @@ Route::get('/gestion_cines', function(){
 })->name('gestion.gestion_cine');
 
 
+Route::get('/categoria', function(){
+    return view('categoria.categoria');
+})->name('categoria.categoria');
+
+
 Route::get('/cines', function () {
     $cines = App\Models\Cine::all();
     return view('cine.cine', ['cines' => $cines]);

@@ -11,7 +11,8 @@
     </div>
     <div class="text-primary" id="categorias">
         <div class="card-categorias" data-bg="accion">
-            <h2>ACCIÓN</h2>
+            <a href="categoria" class="a">
+                <h2>ACCIÓN</h2>
         </div>
         <div class="card-categorias" data-bg="aventura">
             <h2>AVENTURA</h2>
