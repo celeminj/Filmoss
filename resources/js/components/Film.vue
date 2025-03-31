@@ -1,8 +1,8 @@
 <template>
-  
-   <div class="container-fluid">
-    <div class="cartelera-dia"><strong>EVENTO</strong></div>
-    
+
+   <div class="container-fluid" v-for="evento_pelicula in evento_peliculas" :key="evento_pelicula.id">
+    <div class="cartelera-dia"><strong>{{evento_pelicula.titulo_evento}}</strong></div>
+
     <ul class="paginas-nav">
             <li><a id="len1" class="hoverable">Lunes</a></li>
             <li><a id="len2" class="hoverable">Martes</a></li>
@@ -42,10 +42,13 @@
 
 </template>
 <script>
+import axios from 'axios';
+
 export default {
         data() {
             return {
                 peliculas_nuevas: [],
+                evento_peliculas: [],
                 peliculas_filtradas: [],
                 horarios: ["10:00", "11:00", "12:00", "15:00", "18:00","20:00"]
                  };
@@ -59,7 +62,16 @@ export default {
                     .catch(error => {
                         console.log(error);
                     });
+
+                    axios.get('evento_pelicula')
+                    .then(response => {
+                        me.evento_peliculas = response.data;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
                 },
+
         computed: {
                     horaActual() {
                         const fechaInicio = new Date();
@@ -188,6 +200,7 @@ export default {
     color: #EAD2AC;
     font-size: 100px;
     padding-left: 20%;
+    text-transform: uppercase;
 }
 
 </style>
