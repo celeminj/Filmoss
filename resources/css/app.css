@@ -91,6 +91,114 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     font-family: 'Arial Black', sans-serif;
 }
+
+/* Catalogo */
+
+.foto-principal{
+    background-color: #8d8d8d;
+    width: 90vw;
+    height: 85vh;
+    margin: 0px 85px;
+    border-radius: 10px;
+
+}
+
+.degradado-foto-catalogo{
+    background: linear-gradient(to right, #0f0f0f, rgba(39, 82, 76, 0));
+    border-radius: 10px;
+    height: 85vh;
+
+}
+
+.flecha-siguiente-peli-foto{
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(to right, #00ffdd, rgba(255, 255, 255, 0.2));
+    border-radius: 50px;
+    position: absolute;
+    top: 58%;
+    left: 3.2%;
+    border: none;
+}
+
+.flecha-anterior-peli-foto{
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(to left, #00ffdd, rgba(255, 255, 255, 0.2));
+    border-radius: 50px;
+    position: absolute;
+    top: 58%;
+    left: 87.5%;
+    border: none;
+}
+
+
+.botones-foto{
+
+    margin: 0px 0px;
+
+}
+
+
+.flecha-siguiente-peli-foto{
+    margin: -50px -20px;
+}
+
+.flecha-anterior-peli-foto{
+    margin: -50px 160px;
+}
+
+.interior-foto{
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio (izquierda) */
+    position: relative;
+
+}
+
+.titulo-peli-catalogo{
+
+    margin-top: 200px;
+    margin-bottom: 50px;
+}
+
+.titulo-peli-catalogo h1{
+    font-weight: 800;
+    color:#2EBFA5;
+    margin-left: 77px;
+}
+
+.descripcion-peli-catalogo{
+    width: 500px;
+    color:#2EBFA5;
+    margin-left: 80px;
+}
+
+.peliculas-foto-catalogo{
+    height: 250px;
+    width: 550px;
+    margin-left: auto;
+    display: flex;
+
+}
+
+.peli-foto-catalogo{
+    height: 250px;
+    width: 170px;
+    background-color: #2EBFA5;
+    margin: 0px 7px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.peli-foto-catalogo:hover{
+
+    transform: scale(1.05);
+}
+
+
+
 #categoria-titulo , #categoria-titulo h1 {
     display: flex;
     justify-content: left;
@@ -105,16 +213,6 @@ body {
     justify-content:space-evenly;
     cursor: pointer;
 }
-
-.card-categorias h2{
-    font-size: 4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
 .card-categorias {
     width: 20vw;
     height: 25vh;
@@ -134,6 +232,18 @@ body {
     text-align: center;
 
 }
+
+.card-categorias h2{
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+
 
 
 .card-categorias[data-bg="accion"]:hover {
@@ -161,6 +271,103 @@ body {
     transform: scale(1.02);
 }
 
+.catalogo h4{
+    color: #EAD2AC;
+    margin-top: 100px;
+    margin-left: 250px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.peliculas-destacadas h4{
+    margin-left: 150px;
+}
+
+.pelis-destacadas{
+    height: 200px;
+    width: 1620px;
+    margin-left: 150px;
+    display: flex;
+}
+
+.destacada1{
+    background-color: #2EBFA5;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.destacada2{
+    /* eliminar cuando haya implementado bucle */
+    background-color: #2EBFA5;
+    width: 400px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+.seguir-viendo h4{
+    margin-left: 150px;
+    margin-bottom: 50px;
+}
+
+.contenedor-seguir-viendo{
+    height: 700px;
+    width: 1400px;
+    margin-left: 250px;
+    display: flex;
+}
+
+.seguir-viendo-peli{
+    width: 700px;
+    height: 850px;
+
+}
+
+.seguir-viendo-peli1{
+    width: 700px;
+    height: 480px;
+    background-color: #2EBFA5;
+    border-radius: 10px;
+}
+
+.seguir-viendo-peli2{
+    margin-top: 22px;
+    width: 700px;
+    height: 230px;
+    background-color: #2EBFA5;
+    border-radius: 10px;
+}
+
+.seguir-viendo-pelis{
+    width: 700px;
+    height: 850px;
+
+    margin-left: 35px;
+}
+
+.seguir-viendo-pelis-1{
+    width: 682px;
+    background-color:#2EBFA5;
+    height: 230px;
+    border-radius: 10px;
+}
+
+.seguir-viendo-pelis-2{
+    margin-top: 22px;
+    width: 682px;
+    background-color:#2EBFA5;
+    height: 230px;
+    border-radius: 10px;
+}
+
+.seguir-viendo-pelis-3{
+    margin-top: 22px;
+    width: 682px;
+    background-color:#2EBFA5;
+    height: 230px;
+    border-radius: 10px;
+}
+
+/* Fin Catalogo */
 
 /*  cartelera */
 
@@ -311,7 +518,6 @@ body {
 
 
 /* Peli catalogo */
-
 
 
 .reproductor{
