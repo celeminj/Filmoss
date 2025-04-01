@@ -7,7 +7,8 @@
             </div>
             {{-- <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
                 width="1900" height="1000" allowfullscreen></iframe> --}}
-            <a href="https://Smoothpre.com/embed/agtchgjvv15l"><img src="{{ $pelicula->image }}" alt="" STYLE="width: 120REM; height: 58REM;"></a>
+            <a href="https://Smoothpre.com/embed/agtchgjvv15l"><img src="{{ $pelicula->image }}" alt=""
+                    STYLE="width: 120REM; height: 58REM;"></a>
         </div>
 
         <div class="info-peli">
@@ -76,7 +77,7 @@
             <h1>REPARTO</h1>
         </div>
         <div class="actores">
-
+            {{-- {{ $pelicula->$actor_pelicula_nueva->$actor }} --}}
         </div>
     </div>
 @endsection

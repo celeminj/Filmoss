@@ -202,6 +202,7 @@ export default {
     </script>
 
 <style>
+
 .tabla-cines{
     margin-top: 20px;
     margin-bottom: 20px;
