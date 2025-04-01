@@ -13,8 +13,14 @@ import cinesCRUD from './components/cinesCRUD.vue';
 import categoriaFilm from './components/categoriaFilm.vue';
 import navDesplegable from './components/navDesplegable.vue';
 import actorCRUD from './components/actorCRUD.vue';
+import PeliculaDestacada from './components/peliculaDestacada.vue';
+import seguirViendoPelicula from './components/seguirViendoPelicula.vue';
+import peliculas from './components/peliculas.vue';
 const app = createApp({});
 
+app.component('pelicula',peliculas)
+app.component('seguir-viendo',seguirViendoPelicula);
+app.component('pelicula-destacada', PeliculaDestacada);
 app.component('nav-desplegable', navDesplegable);
 app.component('actor-crud', actorCRUD);
 app.component('film', film);

@@ -1,5 +1,5 @@
 <template>
-
+    <div class="pelicula-contenedor">
    <div class="container-fluid" v-for="evento_pelicula in evento_peliculas" :key="evento_pelicula.id">
     <div class="cartelera-dia"><strong>{{evento_pelicula.titulo_evento}}</strong></div>
 
@@ -20,7 +20,10 @@
 
     <div class="cartelera-fluid">
         <div class="cartelera-film" v-for="pelicula_nueva in peliculas_nuevas " :key="pelicula_nueva.id"  :style="{
-         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${pelicula_nueva.image})` }">
+         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${pelicula_nueva.image})`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }">
 
             <div class="film-title">
              {{ pelicula_nueva.titulo}}
@@ -40,6 +43,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 <script>
 import axios from 'axios';
@@ -119,10 +123,13 @@ export default {
     }
 </script>
 <style>
+.pelicula-contenedor{
+    margin-top: 10rem;
+}
 .dia-grande{
     display: flex;
     justify-content: left;
-    margin-top: 20px;
+    margin-top: 25px;
     color: #EAD2AC;
     font-size: 110px;
     padding-left: 20%;
@@ -132,6 +139,7 @@ export default {
     text-transform: uppercase;
     background: none;
     border: none;
+    margin-top: 20px;
 }
 .dia-semana:hover{
     color: #2EBFA5;

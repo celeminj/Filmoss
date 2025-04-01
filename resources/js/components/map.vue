@@ -65,6 +65,7 @@
 
   <style scoped>
   #cines {
+    margin-top: 15rem;
     display: flex;
     justify-content: center;
     color: #EAD2AC;
@@ -108,6 +109,7 @@
   }
 
   .map-container {
+    margin-top: 5rem;
     position: relative;
     width: 100%;
     height: 400px;

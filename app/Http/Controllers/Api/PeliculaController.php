@@ -11,6 +11,8 @@ use Illuminate\Database\QueryException;
 
 class PeliculaController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
@@ -63,15 +65,17 @@ class PeliculaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pelicula $pelicula)
-{
-    try {
-        $pelicula = Pelicula::findOrFail($id);
+    public function show($id)
+    {
+        $pelicula = Pelicula::find($id);
+
+        if (!$pelicula) {
+            return response()->json(['error' => 'Película no encontrada'], 404);
+        }
+
         return response()->json($pelicula);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Película no encontrada'], 404);
     }
-}
+
 
 
     /**

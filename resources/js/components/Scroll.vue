@@ -1,4 +1,5 @@
 <template>
+    <div class="contenedor-home">
     <div class="animated-cont" animate>FILMOFILMOFILMO</div>
     <div class="animated-cont" animate>FILMOFILMOFILMO</div>
     <div class="animated-cont" animate>FILMOFILMOFILMO</div>
@@ -8,8 +9,8 @@
   </div>
   <hr class="barra-blanca">
   <div class="scroll-container">
-    <img ref="scrollImage" src="/public/images/personas.png" alt="Imagen que sigue" class="scroll-image" />
-    <img ref="staticImage" src="/public/images/fondo.jpg" alt="" class="static-imagen">
+    <!-- <img ref="scrollImage" src="/public/images/personas.png" alt="Imagen que sigue" class="scroll-image" />
+    <img ref="staticImage" src="/public/images/fondo.jpg" alt="" class="static-imagen"> -->
     <div class="descripcionFilmo">
       <div class="text-line" v-for="(item, index) in items" :key="index" :style="{ opacity: opacityValue(index) }">
         <span v-html="item"></span>
@@ -25,6 +26,7 @@
 
   </div>
   <img src="https://i.postimg.cc/1RgXJd7G/abeibqt571p91-1.png" alt="" class="imagen-inicio">
+</div>
 </template>
 
 <script>
@@ -118,6 +120,9 @@ gsap.to(this.$refs.animatedBox, {
 </script>
 
 <style scoped>
+.contenedor-home{
+    margin-top: 8rem;
+}
 .animated-cont{
   color: #ead2ac4c;
   font-size: 7rem;
@@ -130,6 +135,7 @@ gsap.to(this.$refs.animatedBox, {
   }
 
 .text-filmo-container{
+
   display: flex;
     justify-content: center;
     align-items: center;
@@ -146,6 +152,7 @@ gsap.to(this.$refs.animatedBox, {
   margin-bottom: 80px;
 }
 .cartelera-inicio{
+    margin-top: 9rem;
   text-align: center;
     color: #EAD2AC;
     font-size: 100px;
