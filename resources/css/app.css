@@ -286,30 +286,8 @@ body {
     font-size: 20px;
 }
 
-.peliculas-destacadas h4{
-    margin-left: 150px;
-}
 
-.pelis-destacadas{
-    height: 200px;
-    width: 1620px;
-    margin-left: 150px;
-    display: flex;
-}
 
-.destacada1{
-    background-color: #2EBFA5;
-    width: 400px;
-    border-radius: 10px;
-}
-
-.destacada2{
-    /* eliminar cuando haya implementado bucle */
-    background-color: #2EBFA5;
-    width: 400px;
-    margin-left: 20px;
-    border-radius: 10px;
-}
 
 .seguir-viendo h4{
     margin-left: 150px;

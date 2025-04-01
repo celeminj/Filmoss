@@ -45,7 +45,7 @@ Route::get('/ticket', function () {
 Route::get('/pelicula_nueva', [PeliculaNuevaController::class, 'index']);
 
 Route::get('/pelicula', function(){
-    return view('pelicula.index');
+    return view('pelicula_nueva.index');
 });
 
 Route::Resource('usuario', UsuarioController::class);
@@ -118,6 +118,8 @@ Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
 Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');
 
 
-Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
+// Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
 
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
+
+Route::get('/pelicula/{id}', [PeliculaController::class, 'show']);
