@@ -11,7 +11,7 @@
     <img ref="scrollImage" src="/public/images/personas.png" alt="Imagen que sigue" class="scroll-image" />
     <img ref="staticImage" src="/public/images/fondo.jpg" alt="" class="static-imagen">
     <div class="descripcionFilmo">
-      <div v-for="(item, index) in items" :key="index" :style="{ opacity: opacityValue(index) }">
+      <div class="text-line" v-for="(item, index) in items" :key="index" :style="{ opacity: opacityValue(index) }">
         <span v-html="item"></span>
       </div>
     </div>
@@ -63,6 +63,21 @@ export default {
         img.style.position = 'absolute';
         img.style.top = `${staticPosition}px`;
       }
+    },
+    textAnimation(){
+        gsap.fromTo(
+            ".text-line",
+            { opacity: 0, y: 50, transform: "translate3d(0, 50px, 0)" },
+            {
+            duration: 1,
+            opacity: 1,
+            y: 0,
+            transform: "translate3d(0, 0, 0)",
+            ease: "power4.out",
+            stagger: 0.6, // Retraso de 0.05s entre cada frase
+            delay: 0.01,
+            }
+        );
     }
   },
   mounted() {
@@ -75,8 +90,8 @@ export default {
 
 
 gsap.to(this.$refs.animatedBox, {
-  x: 300,  // Mueve a la derecha 300px
-  y: 100,  // Mueve hacia abajo 100px
+  x: 3,  // Mueve a la derecha 300px
+  y: 1,  // Mueve hacia abajo 100px
   duration: 2,
   ease: 'power2.out'
 });
@@ -92,6 +107,9 @@ gsap.to(this.$refs.animatedBox, {
     };
 
     requestAnimationFrame(raf);
+
+    this.textAnimation();
+
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
