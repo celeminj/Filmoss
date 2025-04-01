@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\ActorResource;
+// use App\Http\Resources\ActorResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ActorResource extends JsonResource

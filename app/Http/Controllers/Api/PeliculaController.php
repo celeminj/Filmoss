@@ -67,13 +67,15 @@ class PeliculaController extends Controller
      */
     public function show($id)
     {
+      
+
         $pelicula = Pelicula::find($id);
 
         if (!$pelicula) {
-            return response()->json(['error' => 'Película no encontrada'], 404);
+            abort(404, 'Película no encontrada'); // Usamos abort() para manejar el error 404
         }
 
-        return response()->json($pelicula);
+        return view('pelicula.index', ['pelicula' => $pelicula]);
     }
 
 
