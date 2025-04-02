@@ -67,13 +67,21 @@
 
     </div>
     <div class="reparto">
-        <div class="titulo-reparto">
-            <h1>REPARTO</h1>
-        </div>
-        <div class="actores">
-            @foreach ($pelicula->actores as $actor)
-                <div>{{ $actor->nombre }} {{ $actor->apellido }}</div>
-            @endforeach
-        </div>
+    <div class="titulo-reparto">
+        <h1>REPARTO</h1>
     </div>
+    <div class="actores">
+    @foreach ($pelicula->actores as $actor)
+        <div class="actor" style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+            <div class="imagen">
+                <div class="nombre-actor" >
+                    <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+</div>
+
 @endsection

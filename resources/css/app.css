@@ -750,13 +750,13 @@ body {
 .nombre-actor{
     color: white;
     margin-top: 340px;
-    margin-left: 80px;
+    padding: 15px;
     justify-content: center;
     align-items: center;
 }
 
 .nombre-actor h4{
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-family: "Poppins";
     font-weight: 600;
 }
