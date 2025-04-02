@@ -47,9 +47,14 @@ class PeliculaController extends Controller
         $pelicula->fecha_estreno = $request->input("fecha_estreno");
         $pelicula->pelicula_src = $request->input("pelicula_src");
 
-        try {
+        if ($request->has('actores')) {
             $pelicula->save();
+            $pelicula->actores()->attach($request->input('actores'));
+        } else {
+            $pelicula->save();
+        }
 
+        try {
             return response()->json([
                 'message' => 'Película creada correctamente',
                 'pelicula' => $pelicula
@@ -67,12 +72,11 @@ class PeliculaController extends Controller
      */
     public function show($id)
     {
-      
 
-        $pelicula = Pelicula::find($id);
+        $pelicula = Pelicula::with(['actores'])->find($id);
 
         if (!$pelicula) {
-            abort(404, 'Película no encontrada'); // Usamos abort() para manejar el error 404
+            abort(404, 'Película no encontrada');
         }
 
         return view('pelicula.index', ['pelicula' => $pelicula]);

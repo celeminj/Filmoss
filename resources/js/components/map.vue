@@ -109,6 +109,7 @@
   }
 
   .map-container {
+  display:grid;
     margin-top: 5rem;
     position: relative;
     width: 100%;
