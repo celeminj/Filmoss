@@ -1,6 +1,6 @@
 @extends('index.index')
 @section('contenido')
-<div class="reproductor">
+    <div class="reproductor">
         <div class="pelicula">
             <div class="degradado-info">
                 <a href="{{ $pelicula->pelicula_src }}"></a>
@@ -16,13 +16,6 @@
         <div class="info-peli">
             <div class="titulo-pelicula">
                 <h1>{{ $pelicula->titulo }}</h1>
-                <div class="hora">
-                    <p>Hora seleccionada:
-                        <strong>
-                        </strong>
-                    </p>
-                </div>
-
             </div>
             <div class="categorias">
                 <p>Comedia, acción, animación</p>
@@ -68,7 +61,7 @@
             <p>Comedia, acción, animación</p>
             <h4>Fecha de estreno</h4>
             <p>{{ $pelicula->fecha_estreno }}</p>
-            <h4>{{ $pelicula->calificacion }}/10</h4>
+            <h4>Calificacion: {{ $pelicula->calificacion }}/10</h4>
             <p>Edad: + {{ $pelicula->restriccion_edad }}</p>
         </div>
 
@@ -78,7 +71,9 @@
             <h1>REPARTO</h1>
         </div>
         <div class="actores">
-            {{-- {{ $pelicula->$actor_pelicula_nueva->$actor }} --}}
+            @foreach ($pelicula->actores as $actor)
+                <div>{{ $actor->nombre }} {{ $actor->apellido }}</div>
+            @endforeach
         </div>
     </div>
 @endsection
