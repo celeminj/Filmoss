@@ -17,6 +17,7 @@
                     <th scope="col">Idioma</th>
                     <th scope="col">Fecha de estreno</th>
                     <th scope="col">Link de la pelicula</th>
+                    <th>Actores</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -33,7 +34,11 @@
                         <td>{{ pelicula.idioma}}</td>
                         <td>{{ pelicula.fecha_estreno}}</td>
                         <td>{{ pelicula.pelicula_src}}</td>
-
+                        <span v-if="pelicula.actores">
+                            <span v-for="actor in pelicula.actores" :key="actor.id">
+                                {{ actor.nombre }}
+                            </span>
+                        </span>
                         <th> <button @click="editPelicula(pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
                                     <path
