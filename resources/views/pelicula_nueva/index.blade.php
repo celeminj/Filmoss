@@ -16,6 +16,14 @@
         <div class="info-peli">
             <div class="titulo-pelicula">
                 <h1>{{ $pelicula->titulo }}</h1>
+                <div class="hora">
+                    <p>Hora seleccionada:
+                        <strong>
+                            {{ $hora }}
+                        </strong>
+                    </p>
+                </div>
+
             </div>
             <div class="categorias">
                 <p>Comedia, acción, animación</p>
@@ -61,27 +69,43 @@
             <p>Comedia, acción, animación</p>
             <h4>Fecha de estreno</h4>
             <p>{{ $pelicula->fecha_estreno }}</p>
-            <h4>Calificacion: {{ $pelicula->calificacion }}/10</h4>
+            <h4>{{ $pelicula->calificacion }}/10</h4>
             <p>Edad: + {{ $pelicula->restriccion_edad }}</p>
         </div>
 
     </div>
     <div class="reparto">
-    <div class="titulo-reparto">
-        <h1>REPARTO</h1>
-    </div>
-    <div class="actores">
-    @foreach ($pelicula->actores as $actor)
-        <div class="actor" style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
-            <div class="imagen">
-                <div class="nombre-actor" >
-                    <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
-                </div>
-            </div>
+        <div class="titulo-reparto">
+            <h1>REPARTO</h1>
         </div>
-    @endforeach
-</div>
-
-</div>
-
+        <div class="actores">
+            {{-- {{ $pelicula->$actor_pelicula_nueva->$actor }} --}}
+        </div>
+    </div>
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let container = document.querySelector(".actores");
+
+        if (container) {
+            for (let i = 0; i < 9; i++) {
+                agregarActor(container, i + 1);
+            }
+        }
+    });
+
+    function agregarActor(container, index) {
+        let actorHTML = `
+                <div class="actor">
+                    <div class="imagen">
+                        <div class="nombre-actor">
+                            <h4>Actor ${index}</h4>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+        container.innerHTML += actorHTML;
+    }
+</script>

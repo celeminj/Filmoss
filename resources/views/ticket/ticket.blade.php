@@ -8,7 +8,7 @@
             <!-- Columna para la imagen -->
             <div class="col-md-5 d-flex ">
                 <img src="{{ $pelicula->image }}" alt="Trendy Pants and Shoes" id="image" class="img-fluid rounded-start"
-                    style=" height: 700px;" />
+                    style=" height: 700px; object-fit: cover;" />
             </div>
             <!-- Columna para el formulario -->
             <div class="col-md-7">

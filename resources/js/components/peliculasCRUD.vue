@@ -4,7 +4,7 @@
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
 </svg><strong> AÑADIR PELICULA</strong></button></div>
          <div  class="tabla-peliculas">
-            <table class="table">
+            <table class="tables">
                 <thead >
                 <tr>
                     <th scope="col">ID</th>
@@ -17,6 +17,8 @@
                     <th scope="col">Idioma</th>
                     <th scope="col">Fecha de estreno</th>
                     <th scope="col">Link de la pelicula</th>
+                    <th>Actores</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +34,11 @@
                         <td>{{ pelicula.idioma}}</td>
                         <td>{{ pelicula.fecha_estreno}}</td>
                         <td>{{ pelicula.pelicula_src}}</td>
-
+                        <span v-if="pelicula.actores">
+                            <span v-for="actor in pelicula.actores" :key="actor.id">
+                                {{ actor.nombre }}
+                            </span>
+                        </span>
                         <th> <button @click="editPelicula(pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
                                     <path
@@ -137,8 +143,15 @@
                                 <label for="exampleInputEmail1" class="form-label">URL de la pelicula</label>
                                 <input type="text" name="pelicula_src" class="form-control" id="exampleInputEmail1"
                                      required placeholder="URL de la pelicula" v-model="pelicula.pelicula_src">
-
                             </div>
+                            <div class="mb-3">
+                        <label for="actores" class="form-label">Seleccionar Actores</label>
+                        <select v-model="pelicula.actores" class="form-control" id="actores" multiple>
+                            <option v-for="actor in actores" :key="actor.id" :value="actor.id">
+                                {{ actor.nombre }}
+                            </option>
+                        </select>
+                    </div>
 
                             </form>
                     <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
@@ -160,6 +173,7 @@ export default {
         return{
             peliculas: [],
             myModal : {},
+            actores: [],
             pelicula: {},
             messageError : "",
             isError : false,
@@ -169,7 +183,7 @@ export default {
 
     created() {
        this.selectPelicula();
-
+       this.selectActores();
     },
         methods: {
             showForm() {
@@ -178,6 +192,16 @@ export default {
                 this.myModal.show();
                 this.pelicula = {};
             },
+            selectActores() {
+            const me = this;
+            axios.get('actor')
+                .then(response => {
+                    me.actores = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
             updatePeliculas(){
                 const me = this;
                 axios.put('pelicula/'+ me.pelicula.id, me.pelicula)
@@ -252,7 +276,7 @@ export default {
     padding: 10px;
     display: flex;
     color: #ffffff;
-    width: 100rem;
+    width: 100%;
     margin-left: 10rem;
 }
 .editarBoton{

@@ -66,7 +66,7 @@ class PeliculaNuevaController extends Controller
      */
     public function show(Pelicula_nueva $pelicula_nueva, $hora)
     {
-        return view('pelicula.index', ['pelicula' => $pelicula_nueva, 'hora' => $hora]);
+        return view('pelicula_nueva.index', ['pelicula' => $pelicula_nueva, 'hora' => $hora]);
     }
 
     /**

@@ -11,16 +11,22 @@ use Illuminate\Database\QueryException;
 
 class PeliculaController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     // $peliculas = Pelicula::paginate(12);
+
+    //     return response()->json(Pelicula::all());
+    // }
     public function index()
     {
-        // $peliculas = Pelicula::paginate(12);
-
-        return response()->json(Pelicula::all());
+        return response()->json(Pelicula::with('actores')->get());
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -45,9 +51,13 @@ class PeliculaController extends Controller
         $pelicula->fecha_estreno = $request->input("fecha_estreno");
         $pelicula->pelicula_src = $request->input("pelicula_src");
 
-        try {
-            $pelicula->save();
+        $pelicula->save();
+        
+        if ($request->has('actores') && is_array($request->actores)) {
+            $pelicula->actores()->attach($request->actores);
+        }
 
+        try {
             return response()->json([
                 'message' => 'Película creada correctamente',
                 'pelicula' => $pelicula
@@ -63,15 +73,18 @@ class PeliculaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pelicula $pelicula)
-{
-    try {
-        $pelicula = Pelicula::findOrFail($id);
-        return response()->json($pelicula);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Película no encontrada'], 404);
+    public function show($id)
+    {
+
+        $pelicula = Pelicula::with(['actores'])->find($id);
+
+        if (!$pelicula) {
+            abort(404, 'Película no encontrada');
+        }
+
+        return view('pelicula.index', ['pelicula' => $pelicula]);
     }
-}
+
 
 
     /**
@@ -97,8 +110,11 @@ class PeliculaController extends Controller
             $pelicula->idioma = $request->input("idioma");
             $pelicula->fecha_estreno = $request->input("fecha_estreno");
             $pelicula->pelicula_src = $request->input("pelicula_src");
-
-        $pelicula->save();
+            $pelicula->save();
+        
+        if ($request->has('actores') && is_array($request->actores)) {
+            $pelicula->actores()->attach($request->actores);
+        }
             return response()->json(['message' => 'Pelicula actualizada correctamente'], 200);
         } catch (QueryException $ex) {
             return response()->json(['error' => Utilitat::errorMessage($ex)], 500);

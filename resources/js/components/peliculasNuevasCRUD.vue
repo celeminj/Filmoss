@@ -4,7 +4,7 @@
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
 </svg><strong> AÑADIR PELICULA NUEVA</strong></button></div>
          <div  class="tabla-peliculas-nuevas">
-            <table class="table">
+            <table class="tables-peliculaNueva">
                 <thead >
                 <tr>
                     <th scope="col">ID</th>
@@ -17,6 +17,7 @@
                     <th scope="col">Idioma</th>
                     <th scope="col">Fecha de estreno</th>
                     <th scope="col">Link de la pelicula</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
