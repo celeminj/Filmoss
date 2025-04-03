@@ -103,6 +103,10 @@ Route::get('/categoria', function(){
 })->name('categoria.categoria');
 
 
+Route::get('/gestion_categoria', function(){
+    return view('gestion.gestion_categoria');
+})->name('gestion.gestion_categoria');
+
 Route::get('/cines', function () {
     $cines = App\Models\Cine::all();
     return view('cine.cine', ['cines' => $cines]);

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\ActorController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\Api\PeliculaController;
+use App\Http\Controllers\Api\CategoriaController;
 use App\Http\Controllers\Api\PeliculaNuevaController;
 use App\Http\Controllers\Api\EventoPeliculaController;
 
@@ -34,3 +35,4 @@ Route::apiResource('pelicula', PeliculaController::class);
 Route::apiResource('evento_pelicula', EventoPeliculaController::class);
 Route::apiResource('cine', CineController::class);
 Route::apiResource('actor', ActorController::class);
+Route::apiResource('categoria', CategoriaController::class);
