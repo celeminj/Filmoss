@@ -57,6 +57,10 @@
                                     <li><a id="len4" class="hoverable"
                                             href="{{ route('gestion.gestion_actor') }}">Gestionar
                                             Actores</a></li>
+                                    <li><a id="len4" class="hoverable"
+                                            href="{{ route('gestion.gestion_categoria') }}">Gestionar
+                                            Categorias</a></li>
+
                                 </ul>
                             </div>
                         </li>

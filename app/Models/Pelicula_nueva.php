@@ -19,7 +19,7 @@ class Pelicula_nueva extends Model
     public $timestamps = false;
 
 
-    public function actor(){
+    public function actores(){
         return $this->belongsToMany(Actor::class, 'actor_pelicula_nueva', 'pelicula_nueva_id', 'actor_id');
     }
 

@@ -18,7 +18,7 @@ class PeliculaNuevaController extends Controller
     {
       //  $peliculas_nuevas = Pelicula_nueva::all();
 
-        return response()->json(Pelicula_nueva::all());
+      return response()->json(Pelicula_nueva::with('actores')->get());
     }
 
     /**
@@ -45,9 +45,13 @@ class PeliculaNuevaController extends Controller
         $pelicula_nueva->fecha_estreno = $request->input("fecha_estreno");
         $pelicula_nueva->pelicula_src = $request->input("pelicula_src");
 
-        try {
-            $pelicula_nueva->save();
+        $pelicula_nueva->save();
 
+        if ($request->has('actores') && is_array($request->actores)) {
+            $pelicula_nueva->actores()->sync($request->actores);
+        }
+
+        try {
             return response()->json([
                 'message' => 'Película creada correctamente',
                 'pelicula' => $pelicula_nueva
@@ -66,8 +70,10 @@ class PeliculaNuevaController extends Controller
      */
     public function show(Pelicula_nueva $pelicula_nueva, $hora)
     {
+        $pelicula_nueva->load('actores');
         return view('pelicula_nueva.index', ['pelicula' => $pelicula_nueva, 'hora' => $hora]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -95,6 +101,10 @@ class PeliculaNuevaController extends Controller
             $pelicula_nueva->pelicula_src = $request->input("pelicula_src");
 
                 $pelicula_nueva->save();
+                if ($request->has('actores') && is_array($request->actores)) {
+                    $pelicula_nueva->actores()->sync($request->actores);
+                }
+
             return response()->json(['message' => 'Pelicula Nueva actualizada correctamente'], 200);
         } catch (QueryException $ex) {
             return response()->json(['error' => Utilitat::errorMessage($ex)], 500);

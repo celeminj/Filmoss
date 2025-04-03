@@ -17,6 +17,7 @@ import actorCRUD from './components/actorCRUD.vue';
 import PeliculaDestacada from './components/peliculaDestacada.vue';
 import seguirViendoPelicula from './components/seguirViendoPelicula.vue';
 import peliculas from './components/peliculas.vue';
+import categoriaCURD from './components/categoriaCURD.vue';
 const app = createApp({});
 
 app.component('pelicula',peliculas)
@@ -33,6 +34,6 @@ app.component('eventos-crud', eventosCRUD);
 app.component('mapa', mapa);
 app.component('cines-crud', cinesCRUD);
 app.component('categoria-film', categoriaFilm);
-
+app.component('categoria-crud', categoriaCURD)
 
 app.mount('#app');

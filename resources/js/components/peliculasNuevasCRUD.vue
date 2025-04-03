@@ -17,7 +17,8 @@
                     <th scope="col">Idioma</th>
                     <th scope="col">Fecha de estreno</th>
                     <th scope="col">Link de la pelicula</th>
-                    <th>Acciones</th>
+                    <th scope="col">Actores</th>
+                    <th scope="col">Accion</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,11 @@
                         <td>{{ pelicula_nueva.idioma}}</td>
                         <td>{{ pelicula_nueva.fecha_estreno}}</td>
                         <td>{{ pelicula_nueva.pelicula_src}}</td>
+                        <span v-if="pelicula_nueva.actores">
+    <span v-for="actor in pelicula_nueva.actores" :key="actor.id">
+        {{ actor.nombre }}
+    </span>
+</span>
 
                         <th> <button @click="editPeliculaNueva(pelicula_nueva)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
@@ -138,9 +144,15 @@
                                 <label for="exampleInputEmail1" class="form-label">URL de la pelicula</label>
                                 <input type="text" name="pelicula_src" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" required placeholder="Introducir correo electronico" v-model="pelicula_nueva.pelicula_src">
-
                             </div>
-
+                            <div class="mb-3">
+                        <label for="actores" class="form-label">Seleccionar Actores</label>
+                        <select v-model="pelicula_nueva.actores" class="form-control" id="actores" multiple>
+                            <option v-for="actor in actores" :key="actor.id" :value="actor.id">
+                                {{ actor.nombre }}
+                            </option>
+                        </select>
+                    </div>
                             </form>
                     <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
         </div>
@@ -162,6 +174,7 @@ export default {
             pelicula_nuevas: [],
             myModal : {},
             pelicula_nueva: {},
+            actores: [],
             messageError : "",
             isError : false,
             insert : false
@@ -170,7 +183,7 @@ export default {
 
     created() {
        this.selectPeliculaNueva();
-
+       this.selectActores();
     },
         methods: {
             showForm(){
@@ -179,6 +192,16 @@ export default {
                 this.myModal.show();
                 this.pelicula_nueva = {};
             },
+            selectActores() {
+            const me = this;
+            axios.get('actor')
+                .then(response => {
+                    me.actores = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
             updatePeliculaNueva(){
                 const me = this;
                 axios.put('pelicula_nueva/'+ me.pelicula_nueva.id, me.pelicula_nueva)

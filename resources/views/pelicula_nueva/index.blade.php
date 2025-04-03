@@ -79,33 +79,16 @@
             <h1>REPARTO</h1>
         </div>
         <div class="actores">
-            {{-- {{ $pelicula->$actor_pelicula_nueva->$actor }} --}}
-        </div>
-    </div>
-@endsection
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let container = document.querySelector(".actores");
-
-        if (container) {
-            for (let i = 0; i < 9; i++) {
-                agregarActor(container, i + 1);
-            }
-        }
-    });
-
-    function agregarActor(container, index) {
-        let actorHTML = `
-                <div class="actor">
+            @foreach ($pelicula->actores as $actor)
+                <div class="actor"
+                    style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
                     <div class="imagen">
                         <div class="nombre-actor">
-                            <h4>Actor ${index}</h4>
+                            <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
                         </div>
                     </div>
                 </div>
-            `;
-
-        container.innerHTML += actorHTML;
-    }
-</script>
+            @endforeach
+        </div>
+    </div>
+@endsection
