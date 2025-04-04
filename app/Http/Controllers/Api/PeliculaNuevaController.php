@@ -101,6 +101,8 @@ class PeliculaNuevaController extends Controller
             $pelicula_nueva->pelicula_src = $request->input("pelicula_src");
 
                 $pelicula_nueva->save();
+
+                $pelicula_nueva->actores()->detach();
                 if ($request->has('actores') && is_array($request->actores)) {
                     $pelicula_nueva->actores()->sync($request->actores);
                 }

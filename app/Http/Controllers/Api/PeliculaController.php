@@ -16,17 +16,12 @@ class PeliculaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     // $peliculas = Pelicula::paginate(12);
-
-    //     return response()->json(Pelicula::all());
-    // }
     public function index()
     {
-        return response()->json(Pelicula::with('actores')->get());
+        return response()->json(Pelicula::with(['actores', 'categorias'])->get());
     }
-    
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -52,9 +47,14 @@ class PeliculaController extends Controller
         $pelicula->pelicula_src = $request->input("pelicula_src");
 
         $pelicula->save();
-        
+
+
         if ($request->has('actores') && is_array($request->actores)) {
             $pelicula->actores()->attach($request->actores);
+        }
+
+        if ($request->has('categorias') && is_array($request->categorias)) {
+            $pelicula->categorias()->attach($request->categorias);
         }
 
         try {
@@ -111,9 +111,14 @@ class PeliculaController extends Controller
             $pelicula->fecha_estreno = $request->input("fecha_estreno");
             $pelicula->pelicula_src = $request->input("pelicula_src");
             $pelicula->save();
-        
+
+            $pelicula->actores()->detach();
         if ($request->has('actores') && is_array($request->actores)) {
             $pelicula->actores()->attach($request->actores);
+        }
+        $pelicula->categorias()->detach();
+        if ($request->has('categorias') && is_array($request->categorias)) {
+            $pelicula->categorias()->attach($request->categorias);
         }
             return response()->json(['message' => 'Pelicula actualizada correctamente'], 200);
         } catch (QueryException $ex) {

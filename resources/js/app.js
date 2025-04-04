@@ -18,6 +18,9 @@ import PeliculaDestacada from './components/peliculaDestacada.vue';
 import seguirViendoPelicula from './components/seguirViendoPelicula.vue';
 import peliculas from './components/peliculas.vue';
 import categoriaCURD from './components/categoriaCURD.vue';
+import categoria from './components/categoria.vue';
+import animationCatalogo from './components/animationCatalogo.vue';
+import inicio from './components/inicio.vue';
 const app = createApp({});
 
 app.component('pelicula',peliculas)
@@ -35,5 +38,7 @@ app.component('mapa', mapa);
 app.component('cines-crud', cinesCRUD);
 app.component('categoria-film', categoriaFilm);
 app.component('categoria-crud', categoriaCURD)
-
+app.component('categorias', categoria);
+app.component('animation-catalogo', animationCatalogo);
+// app.component('inicio', inicio);
 app.mount('#app');

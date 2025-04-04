@@ -159,8 +159,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="categorias" class="form-label">Seleccionar categorias</label>
-                        <select v-model="pelicula.categorias" class="form-control" id="categorias" multiple>
+                        <label for="inCategorias" class="inputCategoria">Seleccionar categorias</label>
+                        <select v-model="pelicula.categorias" class="form-control" id="inCategorias" multiple>
                             <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">
                                 {{ categoria.categoria }}
                             </option>
@@ -290,32 +290,52 @@ export default {
     mounted() {}
 
 }
-    </script>
+</script>
 
-<style>
-.tabla-peliculas{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: #EAD2AC 0px 0px 10px;
-    border-radius: 20px;
-    padding: 10px;
-    display: flex;
-    color: #ffffff;
-    width: 100%;
-    margin-left: 10rem;
+<style scoped>
+.tabla-peliculas {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100vw;
 }
-.editarBoton{
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #2EBFA5;
+
+.tables {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  background-color: #f8f9fa;
+  color: #343a40;
 }
-    .anadirBoton{
-        margin-left: 10rem;
-        border: none;
-        background: none;
-        cursor: pointer;
-        color: #2EBFA5;
-    }
+
+.tables th {
+  background-color: #001934;
+  color: white;
+  padding: 10px;
+}
+
+.tables td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+}
+
+.tabla-peliculas {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: #EAD2AC 0px 0px 10px;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  color: #ffffff;
+  width: 100rem;
+  margin-left: 10rem;
+}
+
+.editarBoton, .anadirBoton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #2EBFA5;
+}
+
 </style>
