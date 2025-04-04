@@ -102,19 +102,16 @@ body {
 /* Catalogo */
 
 .foto-principal{
-    background-color: #8d8d8d;
     width: 90vw;
-    height: 85vh;
+    height: 600px;
     margin: 0px 85px;
     border-radius: 10px;
-
 }
 
 .degradado-foto-catalogo{
     background: linear-gradient(to right, #0f0f0f, rgba(39, 82, 76, 0));
     border-radius: 10px;
-    height: 85vh;
-
+    height: 600px;
 }
 
 .flecha-siguiente-peli-foto{
@@ -156,7 +153,7 @@ body {
 }
 
 .interior-foto{
-    padding: 80px;
+    padding: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Alinea los elementos al inicio (izquierda) */
@@ -171,6 +168,7 @@ body {
 }
 
 .titulo-peli-catalogo h1{
+    text-transform: uppercase;
     font-weight: 800;
     color:#2EBFA5;
     margin-left: 77px;
@@ -220,63 +218,7 @@ body {
     justify-content:space-evenly;
     cursor: pointer;
 }
-.card-categorias {
-    width: 20vw;
-    height: 25vh;
-    color: #EAD2AC;
-    border-radius: 20px;
-    position: relative;
-    border: none;
-    overflow: hidden;
-    background-color: #222;
-    transition: transform 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
 
-}
-
-.card-categorias h2{
-    font-size: 4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-
-
-
-
-.card-categorias[data-bg="accion"]:hover {
-
-    background-image: url('https://64.media.tumblr.com/61d1c199771da715b77c65e0b7326ce4/18f68a7ecd7c022c-e5/s540x810/3b63e706d448df08bd1323bb94ef8c7e33c2f12f.gif');
-}
-
-.card-categorias[data-bg="aventura"]:hover {
-    background-image: url('https://media0.giphy.com/media/bnDYyn2HMzqpDEUecP/giphy.gif?cid=6c09b952ebzi8kdna39atqxtgch8dxsl7bftpvdri5xuvmm9&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g');
-}
-
-.card-categorias[data-bg="ciencia-ficcion"]:hover {
-    background-image: url('https://2.bp.blogspot.com/-JSbIpC1k0d0/Vh2qFB-Ip1I/AAAAAAAACjc/VfDbt-8IK0g/s640/alien%2B8.gif');
-}
-
-.card-categorias[data-bg="comedia"]:hover {
-    background-image: url('https://i.makeagif.com/media/12-06-2020/f75TL5.gif');
-}
-
-
-.card-categorias:hover {
-    color: #2EBFA5;
-    background-size: cover;
-    background-position: center;
-    transform: scale(1.02);
-}
 
 .catalogo h4{
     color: #EAD2AC;
@@ -286,71 +228,6 @@ body {
     font-size: 20px;
 }
 
-
-
-
-.seguir-viendo h4{
-    margin-left: 150px;
-    margin-bottom: 50px;
-}
-
-.contenedor-seguir-viendo{
-    height: 700px;
-    width: 1400px;
-    margin-left: 250px;
-    display: flex;
-}
-
-.seguir-viendo-peli{
-    width: 700px;
-    height: 850px;
-
-}
-
-.seguir-viendo-peli1{
-    width: 700px;
-    height: 480px;
-    background-color: #2EBFA5;
-    border-radius: 10px;
-}
-
-.seguir-viendo-peli2{
-    margin-top: 22px;
-    width: 700px;
-    height: 230px;
-    background-color: #2EBFA5;
-    border-radius: 10px;
-}
-
-.seguir-viendo-pelis{
-    width: 700px;
-    height: 850px;
-
-    margin-left: 35px;
-}
-
-.seguir-viendo-pelis-1{
-    width: 682px;
-    background-color:#2EBFA5;
-    height: 230px;
-    border-radius: 10px;
-}
-
-.seguir-viendo-pelis-2{
-    margin-top: 22px;
-    width: 682px;
-    background-color:#2EBFA5;
-    height: 230px;
-    border-radius: 10px;
-}
-
-.seguir-viendo-pelis-3{
-    margin-top: 22px;
-    width: 682px;
-    background-color:#2EBFA5;
-    height: 230px;
-    border-radius: 10px;
-}
 
 /* Fin Catalogo */
 

@@ -6,6 +6,7 @@ use App\Clases\Utilitat;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 
 class CategoriaController extends Controller
 {
@@ -49,7 +50,7 @@ class CategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categoria $categoria)
+    public function show(Categoria $categoria,$id)
     {
         try {
             $categoria = Categoria::with('categoria_pelicula')->findOrFail($id);
@@ -63,9 +64,10 @@ class CategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, Categoria $categoria,$id)
     {
         try {
+            $categoria = Categoria::findOrFail($id);
             $categoria->categoria = $request->input("categoria");
             $categoria->image = $request->input("image");
 
@@ -83,9 +85,10 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(Categoria $categoria,$id)
     {
         try {
+            $categoria = Categoria::findOrFail($id);
             $categoria->categoria_pelicula()->detach();
 
             $categoria->delete();
@@ -101,3 +104,4 @@ class CategoriaController extends Controller
         }
     }
 }
+

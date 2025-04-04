@@ -180,31 +180,25 @@ export default {
     mounted(){}
 }
 </script>
-<style>
+<style scoped>
+.tabla-peliculas {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: #EAD2AC 0px 0px 10px;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  color: #ffffff;
+  width: 100rem;
+  margin-left: 10rem;
+}
 
-.tabla-categoria{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: #EAD2AC 0px 0px 10px;
-    border-radius: 20px;
-    padding: 10px;
-    display: flex;
-    color: #ffffff;
-    width: 100rem;
-    margin-left: 10rem;
+.editarBoton, .anadirBoton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #2EBFA5;
 }
-.editarBoton{
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #2EBFA5;
-}
-    .anadirBoton{
-        margin-left: 10rem;
-        border: none;
-        background: none;
-        cursor: pointer;
-        color: #2EBFA5;
-    }
 </style>
+
