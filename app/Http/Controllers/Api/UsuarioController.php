@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UsuarioResource;
+use Illuminate\Database\QueryException;
 
 class UsuarioController extends Controller
 {

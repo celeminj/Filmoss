@@ -76,17 +76,21 @@
             <h1>REPARTO</h1>
         </div>
         <div class="actores">
-            @foreach ($pelicula->actores as $actor)
-                <div class="actor"
-                    style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
-                    <div class="imagen">
-                        <div class="nombre-actor">
-                            <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
-                        </div>
-                    </div>
+    @foreach ($pelicula->actores as $actor)
+        <div class="actor"
+             style="background-image: url('{{ asset($actor->imagen) }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+            <div class="imagen">
+                <div class="nombre-actor">
+                    <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
                 </div>
-            @endforeach
+            </div>
         </div>
+    @endforeach
+    
+</div>
+
+
+
 
     </div>
 @endsection
