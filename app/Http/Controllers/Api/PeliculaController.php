@@ -132,6 +132,8 @@ class PeliculaController extends Controller
     public function destroy(Pelicula $pelicula)
     {
         try {
+            $pelicula->actores()->detach();
+            $pelicula->categorias()->detach();
             $pelicula->delete();
 
             return response()->json([
