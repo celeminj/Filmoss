@@ -70,43 +70,46 @@ class ActorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Actor $actor)
-{
-    $request->validate([
-        'nombre' => 'required|string|max:255',
-        'apellido' => 'required|string|max:255',
-        'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
-    ]);
+        public function update(Request $request, Actor $actor)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
 
-    try {
-        $actor->nombre = $request->input("nombre");
-        $actor->apellido = $request->input("apellido");
+        try {
+            $actor->nombre = $request->input("nombre");
+            $actor->apellido = $request->input("apellido");
 
-        // Actualizar la imagen si se proporciona
-        if ($request->hasFile('imagen')) {
-            // Eliminar la imagen anterior
-            if ($actor->imagen) {
-                Storage::delete($actor->imagen);
+            if ($request->hasFile('imagen')) {
+                if ($actor->imagen) {
+                    Storage::delete($actor->imagen);
+                }
+
+                $file = $request->file('imagen');
+                $fileName = 'actor-' . time() . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/imagenes', $fileName);
+
+                $actor->imagen = 'storage/imagenes/' . $fileName;
+            }
+            
+            if ($request->has('pelicula_id')) {
+                $actor->pelicula()->sync($request->input('pelicula_id')); 
             }
 
-            $file = $request->file('imagen');
-            $fileName = 'actor-' . $actor->nombre . '-' . time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/imagenes', $fileName);
+            if ($request->has('pelicula_nueva_id')) {
+                $actor->pelicula_nueva()->sync($request->input('pelicula_nueva_id')); 
+            }
 
-            $actor->imagen = 'storage/imagenes/' . $fileName;
+            $actor->save();
+
+            return response()->json(['message' => 'Actor actualizado correctamente', 'actor' => $actor], 200);
+        } catch (QueryException $ex) {
+            return response()->json(['error' => $ex->getMessage()], 500);
         }
-
-        // Detach relaciones si es necesario (puedes personalizar esto)
-        $actor->pelicula()->detach();
-        $actor->pelicula_nueva()->detach();
-
-        $actor->save();
-
-        return response()->json(['message' => 'Actor actualizado correctamente', 'actor' => $actor], 200);
-    } catch (QueryException $ex) {
-        return response()->json(['error' => $ex->getMessage()], 500);
     }
-}
+
 
 
     /**
@@ -117,18 +120,15 @@ class ActorController extends Controller
         try {
             $actor->pelicula()->detach();
             $actor->pelicula_nueva()->detach();
-            // Verifica si hay una imagen asociada y elimínala del almacenamiento
+
             if ($actor->imagen) {
-                Storage::delete($actor->imagen); // Ajusta según la ruta almacenada
+                Storage::delete($actor->imagen); 
             }
     
-            // Elimina el actor de la base de datos
             $actor->delete();
     
-            // Respuesta exitosa
             return response()->json(['message' => 'Actor eliminado correctamente'], 200);
         } catch (QueryException $ex) {
-            // Captura el mensaje exacto del error para depuración
             return response()->json(['error' => $ex->getMessage()], 500);
         }
     }
