@@ -2,35 +2,44 @@
       <h4>Sigue por donde lo dejaste</h4>
     <div class="seguir-viendo">
 
-      <div class="seguir-viendo-peli">
-        <div
-          class="seguir-viendo-peli1"
-          :style="{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${peliculas[0]?.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }"
-        >
-          <p>{{ peliculas[0]?.titulo }}</p>
-        </div>
-      </div>
+      <div  v-if="peliculas.length > 0">
+  <a class="seguir-viendo-peli" :href="`/Filmoss/public/pelicula/${peliculas[0].id}`">
+    <div
+      class="seguir-viendo-peli1"
+      :style="{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${peliculas[0].image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }"
+    >
+      <p>{{ peliculas[0].titulo }}</p>
+    </div>
+  </a>
+</div>
 
-      <!-- Contenedor Derecho en Columnas -->
+
       <div class="pelis-container">
-        <div class="seguir-viendo-peli2"
-             v-for="(pelicula, index) in ultimasPeliculas"
-             :key="index"
-             :style="{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${pelicula.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-              }"
-        >
-          <p>{{ pelicula.titulo }}</p>
-        </div>
-      </div>
+  <a
+    v-for="(pelicula, index) in ultimasPeliculas"
+    :key="index"
+    :href="`/Filmoss/public/pelicula/${pelicula.id}`"
+    class="seguir-viendo-link"
+  >
+    <div
+      class="seguir-viendo-peli2"
+      :style="{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${pelicula.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }"
+    >
+      <p>{{ pelicula.titulo }}</p>
+    </div>
+  </a>
+</div>
+
     </div>
   </template>
 
@@ -68,13 +77,18 @@
     margin-bottom: 50px;
     margin-top: 100px;
     margin-left: 250px;
+  
 }
 
 .seguir-viendo-peli {
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    transition: all .5s;
 }
-
+.seguir-viendo-peli:hover{
+  transform: scale(1.05);
+}
 .seguir-viendo-peli1 {
     width: 700px;
     height: 480px;
@@ -88,13 +102,20 @@
     padding: 10px;
     font-weight: bold;
     text-align: start;
-    margin-top: 400px;
+    padding-top: 400px;
     margin-left: 20px;
+    
 }
 .pelis-container {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    
+}
+.seguir-viendo-link {
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
 }
 
 .seguir-viendo-peli2 {
@@ -103,6 +124,9 @@
     border-radius: 10px;
     margin-bottom: 20px;
 }
+.seguir-viendo-peli2:hover{
+  box-shadow: 10px 10px #2ebfa457;
+}
 .seguir-viendo-peli2 p {
     color: #2EBFA5;
     text-transform: uppercase;
@@ -110,7 +134,7 @@
     padding: 10px;
     font-weight: bold;
     text-align: start;
-    margin-top: 160px;
+    padding-top: 180px;
     margin-left: 20px;
 }
   </style>
