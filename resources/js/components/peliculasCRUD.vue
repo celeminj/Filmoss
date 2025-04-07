@@ -18,6 +18,7 @@
                     <th scope="col">Fecha de estreno</th>
                     <th scope="col">Link de la pelicula</th>
                     <th>Actores</th>
+                    <th>Categorias</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -37,6 +38,11 @@
                         <span v-if="pelicula.actores">
                             <span v-for="actor in pelicula.actores" :key="actor.id">
                                 {{ actor.nombre }}
+                            </span>
+                        </span>
+                        <span v-if="pelicula.categoria_pelicula">
+                            <span v-for="categoria in pelicula.categoria_pelicula" :key="categoria.id">
+                                {{ categoria.categoria }}
                             </span>
                         </span>
                         <th> <button @click="editPelicula(pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -152,6 +158,14 @@
                             </option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="inCategorias" class="inputCategoria">Seleccionar categorias</label>
+                        <select v-model="pelicula.categorias" class="form-control" id="inCategorias" multiple>
+                            <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">
+                                {{ categoria.categoria }}
+                            </option>
+                        </select>
+                    </div>
 
                             </form>
                     <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
@@ -174,6 +188,7 @@ export default {
             peliculas: [],
             myModal : {},
             actores: [],
+            categorias: [],
             pelicula: {},
             messageError : "",
             isError : false,
@@ -184,6 +199,7 @@ export default {
     created() {
        this.selectPelicula();
        this.selectActores();
+       this.selectCategorias();
     },
         methods: {
             showForm() {
@@ -197,6 +213,16 @@ export default {
             axios.get('actor')
                 .then(response => {
                     me.actores = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        selectCategorias() {
+            const me = this;
+            axios.get('categoria')
+                .then(response => {
+                    me.categorias = response.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -264,32 +290,52 @@ export default {
     mounted() {}
 
 }
-    </script>
+</script>
 
-<style>
-.tabla-peliculas{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: #EAD2AC 0px 0px 10px;
-    border-radius: 20px;
-    padding: 10px;
-    display: flex;
-    color: #ffffff;
-    width: 100%;
-    margin-left: 10rem;
+<style scoped>
+.tabla-peliculas {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100vw;
 }
-.editarBoton{
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #2EBFA5;
+
+.tables {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  background-color: #f8f9fa;
+  color: #343a40;
 }
-    .anadirBoton{
-        margin-left: 10rem;
-        border: none;
-        background: none;
-        cursor: pointer;
-        color: #2EBFA5;
-    }
+
+.tables th {
+  background-color: #001934;
+  color: white;
+  padding: 10px;
+}
+
+.tables td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+}
+
+.tabla-peliculas {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: #EAD2AC 0px 0px 10px;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  color: #ffffff;
+  width: 100rem;
+  margin-left: 10rem;
+}
+
+.editarBoton, .anadirBoton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #2EBFA5;
+}
+
 </style>

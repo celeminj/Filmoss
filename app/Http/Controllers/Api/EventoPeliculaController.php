@@ -14,7 +14,7 @@ class EventoPeliculaController extends Controller
      */
     public function index()
     {
-        return response()->json(Evento_pelicula::all());
+        return response()->json(Evento_pelicula::with('evento_pelicula_nueva')->get());
     }
 
     /**
@@ -37,12 +37,16 @@ class EventoPeliculaController extends Controller
         $evento_pelicula->fecha_inicio = $request->input("fecha_inicio");
         $evento_pelicula->fecha_final = $request->input("fecha_final");
 
-        try {
-            $evento_pelicula->save();
+        $evento_pelicula->save();
 
+        if ($request->has('evento_pelicula_nueva') && is_array($request->evento_pelicula_nueva)) {
+            $evento_pelicula->evento_pelicula_nueva()->attach($request->evento_pelicula_nueva);
+        }
+
+        try {
             return response()->json([
                 'message' => 'Evento creado correctamente',
-                'evento' => $evento_pelicula
+                'evento_pelicula' => $evento_pelicula
             ], 201);
 
         } catch (QueryException $ex) {
@@ -55,15 +59,17 @@ class EventoPeliculaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Evento_pelicula $evento_pelicula)
+    public function show($id)
     {
         try {
-            $evento_pelicula = Evento_pelicula::findOrFail($id);
+            $evento_pelicula = Evento_pelicula::with('evento_pelicula_nueva')->findOrFail($id);
+
             return response()->json($evento_pelicula);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Evento de pelicula  no encontrada'], 404);
+            return response()->json(['error' => 'Evento de película no encontrado'], 404);
         }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -84,6 +90,10 @@ class EventoPeliculaController extends Controller
             $evento_pelicula->fecha_final = $request->input("fecha_final");
 
             $evento_pelicula->save();
+
+            if ($request->has('evento_pelicula_nueva') && is_array($request->evento_pelicula_nueva)) {
+                $evento_pelicula->evento_pelicula_nueva()->attach($request->evento_pelicula_nueva);
+            }
             return response()->json(['message' => 'Evento actualizado correctamente'], 200);
         } catch (QueryException $ex) {
             return response()->json(['error' => Utilitat::errorMessage($ex)], 500);
@@ -96,6 +106,10 @@ class EventoPeliculaController extends Controller
     public function destroy(Evento_pelicula $evento_pelicula)
     {
         try {
+            // Eliminar los registros en ver_evento relacionados
+            $evento_pelicula->evento_pelicula_nueva()->detach();
+
+            // Ahora eliminar el evento_pelicula
             $evento_pelicula->delete();
 
             return response()->json([
@@ -108,4 +122,5 @@ class EventoPeliculaController extends Controller
             ], 500);
         }
     }
+
 }

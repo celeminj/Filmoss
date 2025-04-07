@@ -21,7 +21,11 @@
                         <td>{{ evento_pelicula.titulo_evento }}</td>
                         <td>{{ evento_pelicula.fecha_inicio }}</td>
                         <td>{{ evento_pelicula.fecha_final }}</td>
-
+                        <span v-if="evento_pelicula.evento_pelicula_nueva">
+                            <span v-for="pelicula_nueva in evento_pelicula.evento_pelicula_nueva" :key="pelicula_nueva.id">
+                                {{ pelicula_nueva.titulo }}
+                            </span>
+                        </span>
                         <th> <button @click="editEvento(evento_pelicula)" class="editarBoton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-pencil-square" >
                                     <path
@@ -92,7 +96,14 @@
                                     aria-describedby="eventoHelp" required placeholder="Introducir fecha final" v-model="evento_pelicula.fecha_final">
 
                             </div>
-
+                            <div class="mb-3">
+                        <label for="pelis" class="form-label">Seleccionar Peliculas</label>
+                        <select v-model="evento_pelicula.evento_pelicula_nueva" class="form-control" id="pelis" multiple>
+                            <option v-for="pelicula_nueva in peliculas_nuevas" :key="pelicula_nueva.id" :value="pelicula_nueva.id">
+                                {{ pelicula_nueva.titulo }}
+                            </option>
+                        </select>
+                    </div>
                             </form>
                     <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
         </div>
@@ -112,6 +123,7 @@ export default {
     data() {
         return{
             evento_peliculas: [],
+            peliculas_nuevas: [],
             myModal : {},
             evento_pelicula: {},
             messageError : "",
@@ -122,7 +134,7 @@ export default {
 
     created() {
        this.selectEvento();
-
+        this.selectPelicula_nueva();
     },
         methods: {
             showForm(){
@@ -131,6 +143,16 @@ export default {
                 this.myModal = new bootstrap.Modal('#eventoModal')
                 this.myModal.show();
                 this.evento_pelicula = {};
+            },
+            selectPelicula_nueva(){
+                const me = this;
+                axios.get('pelicula_nueva')
+                .then(response => {
+                    me.peliculas_nuevas = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
             },
             updateUsuarios(){
                 const me = this;

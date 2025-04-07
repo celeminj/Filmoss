@@ -15,33 +15,31 @@
   <h2 class="dia-grande"><strong>{{ diaSeleccionado }}</strong></h2>
   <p>{{ eventoDelDia }}</p>
 </div>
-  </div>
-
-
-    <div class="cartelera-fluid">
-        <div class="cartelera-film" v-for="pelicula_nueva in peliculas_nuevas " :key="pelicula_nueva.id"  :style="{
+<div class="cartelera-fluid">
+    <div class="cartelera-film" v-for="pelicula_nueva in evento_pelicula.evento_pelicula_nueva" :key="pelicula_nueva.id" :style="{
          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${pelicula_nueva.image})`, backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
-  }">
-
-            <div class="film-title">
-             {{ pelicula_nueva.titulo}}
-            </div>
-            <ul>
-                <li>{{ pelicula_nueva.duracion + " Min" }}</li>
-                <li>{{"+" + pelicula_nueva.restriccion_edad}}</li>
-                <li>{{ pelicula_nueva.calificacion + "/10" }}</li>
-            </ul>
-            <p>{{pelicula_nueva.descripcion}}</p>
-
-            <div id="hora-film" >
-                <a v-for="horario in horarios" :key="horario" :href="esHorarioDisponible(horario) ? `ticket/${pelicula_nueva.id}/${horario}` : '#'"
-                :class="{ 'disabled': !esHorarioDisponible(horario) }">
-                {{ horario }}
-                </a>
-            </div>
+    }">
+        <div class="film-title">
+            {{ pelicula_nueva.titulo }}
         </div>
+        <ul>
+            <li>{{ pelicula_nueva.duracion + " Min" }}</li>
+            <li>{{"+" + pelicula_nueva.restriccion_edad}}</li>
+            <li>{{ pelicula_nueva.calificacion + "/10" }}</li>
+        </ul>
+        <p>{{ pelicula_nueva.descripcion }}</p>
+
+        <div id="hora-film" >
+            <a v-for="horario in horarios" :key="horario" :href="esHorarioDisponible(horario) ? `ticket/${pelicula_nueva.id}/${horario}` : '#'"
+            :class="{ 'disabled': !esHorarioDisponible(horario) }">
+            {{ horario }}
+            </a>
+        </div>
+    </div>
+</div>
+
     </div>
 </div>
 </template>

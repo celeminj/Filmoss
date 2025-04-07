@@ -21,9 +21,8 @@ class Pelicula extends Model
     public function usuario(){
         return $this->belongsToMany(Usuario::class, 'ver_pelicula', 'pelicula_id', 'usuario_id');
     }
-
-    public function categoria_pelicula(){
-        return $this->belongsToMany(Categoria::class, 'categoria_pelicula', 'pelicula_id', 'categoria_pelicula_id');
+    public function categorias(){
+        return $this->belongsToMany(Categoria::class, 'categoria_pelicula', 'pelicula_id', 'categoria_id');
     }
 
     public function actores(){

@@ -1,6 +1,5 @@
 <template>
     <div class="peliculas-destacadas">
-      <h4>Películas destacadas</h4>
       <div class="pelis-destacadas">
         <a class="url-peli"  v-for="(pelicula, index) in ultimasPeliculas"
         :key="index" :href="`/Filmoss/public/pelicula/${pelicula.id}`">
@@ -32,7 +31,7 @@
     },
     computed: {
     ultimasPeliculas() {
-      return this.peliculas.slice(-5);
+      return this.peliculas.slice(-20);
     }
   },
     created() {
@@ -53,17 +52,13 @@
 }
   .peliculas-destacadas h4 {
     text-align: left;
-    margin-bottom: 20px;
-
   }
 
   .pelis-destacadas {
-  display: flex;
-
-  justify-content: flex-start;
-  justify-content: center;
-  gap: 20px;
-
+    display: grid;
+    grid-template-columns: repeat(5, 0.18fr);
+    grid-gap: 10px;
+    margin-left: 160px;
 }
 
 .pelis-destacadas p{

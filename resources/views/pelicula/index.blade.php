@@ -18,8 +18,9 @@
                 <h1>{{ $pelicula->titulo }}</h1>
             </div>
             <div class="categorias">
-                <p>Comedia, acción, animación</p>
-
+                @foreach ($pelicula->categorias as $categoria)
+                    <p>{{ $categoria->categoria }}</p>
+                @endforeach
             </div>
             <div class="edad">
                 <p>+ {{ $pelicula->restriccion_edad }}</p>
@@ -58,7 +59,11 @@
             <h2>{{ $pelicula->titulo }}</h2>
             <p> {{ $pelicula->descripcion }}</p>
             <h4>Género</h4>
-            <p>Comedia, acción, animación</p>
+            @foreach ($pelicula->categorias as $categoria)
+                <p>{{ $categoria->categoria }}</p>
+            @endforeach
+
+
             <h4>Fecha de estreno</h4>
             <p>{{ $pelicula->fecha_estreno }}</p>
             <h4>Calificacion: {{ $pelicula->calificacion }}/10</h4>
@@ -67,21 +72,25 @@
 
     </div>
     <div class="reparto">
-    <div class="titulo-reparto">
-        <h1>REPARTO</h1>
-    </div>
-    <div class="actores">
+        <div class="titulo-reparto">
+            <h1>REPARTO</h1>
+        </div>
+        <div class="actores">
     @foreach ($pelicula->actores as $actor)
-        <div class="actor" style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+        <div class="actor"
+             style="background-image: url('{{ asset($actor->imagen) }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
             <div class="imagen">
-                <div class="nombre-actor" >
+                <div class="nombre-actor">
                     <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
                 </div>
             </div>
         </div>
     @endforeach
+    
 </div>
 
-</div>
 
+
+
+    </div>
 @endsection

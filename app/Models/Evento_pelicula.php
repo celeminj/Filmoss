@@ -16,8 +16,8 @@ class Evento_pelicula extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
-    public function pelicula_nueva(){
-        return $this->belongsToMany(Pelicula_nueva::class, 'evento_pelicula_nueva', 'evento_pelicula_id', 'pelicula_nueva_id');
+    public function evento_pelicula_nueva(){
+        return $this->belongsToMany(Pelicula_nueva::class, 'ver_evento', 'evento_pelicula_id', 'pelicula_nueva_id');
     }
 
     public function usuarioAsiste(){

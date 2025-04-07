@@ -87,10 +87,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="actorImagen" class="form-label">Imagen URL</label>
-                                <input type="text" name="imagen" class="form-control" id="actorImagen"
-                                    required placeholder="Imagen" v-model="actor.imagen">
-
+                                <label for="actorImagen" class="form-label">Imagen</label>
+                                <input type="file" name="imagen" class="form-control" id="actorImagen"
+                                    required @change="subirImagen">
                             </div>
                             </form>
                     <p v-if="isError" class="alert alert-danger">{{ messageError }}</p>
@@ -132,27 +131,53 @@ export default {
             },
             updateActor(){
                 const me = this;
-                axios.put('actor/'+ me.actor.id, me.actor)
-                .then(response => {
-                    me.selectActor();
-                    me.myModal.hide();
-                })
+                            let formData = new FormData();
+                formData.append('nombre', me.actor.nombre);
+                formData.append('apellido', me.actor.apellido);
+
+                                if (me.actor.imagen) {
+                        formData.append('imagen', me.actor.imagen);
+                    }
+
+               
+                    axios.put('actor/' + me.actor.id, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
                 .catch(error => {
                     this.isError = true;
                     me.messageError = error.response.data.message;
                 });
             },
+            subirImagen(event){
+                const me = this;
+                me.actor.imagen = event.target.files[0];
+            },
             insertActor(){
                 const me = this;
-                axios.post('actor', me.actor)
+
+                let formData = new FormData();
+
+                formData.append('nombre', me.actor.nombre);
+                formData.append('apellido', me.actor.apellido);
+                formData.append('imagen', me.actor.imagen);
+                
+                axios.post('actor', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                    })
                 .then(response => {
                     me.selectActor();
                     me.myModal.hide();
                 })
+
                 .catch(error => {
                     this.isError = true;
                     me.messageError = error.response.data.message;
                 });
+
             },selectActor(){
                 const me = this;
                 axios.get('actor/')

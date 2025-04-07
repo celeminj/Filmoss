@@ -14,7 +14,7 @@ class Categoria extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
-    public function pelicula (){
+    public function categoria_pelicula(){
         return $this->belongsToMany(Pelicula::class, 'categoria_pelicula', 'categoria_id', 'pelicula_id');
     }
 }
