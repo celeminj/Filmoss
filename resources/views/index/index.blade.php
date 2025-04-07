@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -60,6 +59,8 @@
                                     <li><a id="len4" class="hoverable"
                                             href="{{ route('gestion.gestion_categoria') }}">Gestionar
                                             Categorias</a></li>
+                                    <li><a id="len4" class="hoverable"
+                                            href="{{ route('estadisticas') }}">Estadisticas</a></li>
 
                                 </ul>
                             </div>
@@ -153,7 +154,7 @@
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

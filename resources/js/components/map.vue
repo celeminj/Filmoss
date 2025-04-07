@@ -1,4 +1,5 @@
 <template>
+    <h1>CINES</h1>
     <div class="text-primary" id="cines">
       <div class="card-cines" v-for="cine in cines" :key="cine.id" :style="{
         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})` }">
@@ -34,8 +35,6 @@
           zoom: 14,
         });
       },
-
-
       getCines() {
         axios.get('cine/')
           .then(response => {
@@ -46,7 +45,6 @@
             console.log(error);
           });
       },
-
       addMarkersToMap() {
         this.cines.forEach(cine => {
           new mapboxgl.Marker()
@@ -55,11 +53,6 @@
         });
       },
     },
-    destroyed() {
-      if (this.map) {
-        this.map.remove();
-      }
-    }
   };
   </script>
 
@@ -83,8 +76,8 @@
   }
 
   .card-cines {
-    width: 20vw;
-    height: 25vh;
+    width: 300px;
+    height: 200px;
     color: #EAD2AC;
     border-radius: 20px;
     position: relative;
@@ -109,10 +102,7 @@
   }
 
   .map-container {
-  display:grid;
     margin-top: 5rem;
-    position: relative;
-    width: 100%;
-    height: 400px;
+    height: 500px;
   }
   </style>

@@ -13,14 +13,14 @@
           backgroundPosition: 'center'
         }"
       >
-        
+
         <div class="titulo-peli-catalogo">
           <h1>{{ peliculas[indiceActual]?.titulo }}</h1>
         </div>
         <div class="descripcion-peli-catalogo">
           <p>{{ peliculas[indiceActual]?.descripcion }}</p>
         </div>
-       
+
       </div>
     </a>
     <button class="flecha-anterior-peli-foto" @click="cambiarImagen(1)">
@@ -59,7 +59,7 @@
       iniciarCarrusel(){
         this.intervalo = setInterval(() => {
           this.cambiarImagen(1);
-        }, 3000);
+        }, 6000);
       }
     },
   };
@@ -99,17 +99,17 @@ text-decoration: none;
 }
 
 .flecha-siguiente-peli-foto{
-    margin: -50px -20px;
+    margin: -115px -20px;
 }
 
 .flecha-anterior-peli-foto{
-    margin: -50px 160px;
+    margin: -110px 160px;
 }
 
 .interior-foto {
   height: 700px;
   width: 100%;
-  padding: 100px 50px; 
+  padding: 100px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -20,7 +20,8 @@ import peliculas from './components/peliculas.vue';
 import categoriaCURD from './components/categoriaCURD.vue';
 import categoria from './components/categoria.vue';
 import animationCatalogo from './components/animationCatalogo.vue';
-import inicio from './components/inicio.vue';
+import peliculasRecientemente from './components/peliculasRecientemente.vue';
+import Estadisticas from './components/estadisticas.vue';
 const app = createApp({});
 
 app.component('pelicula',peliculas)
@@ -40,5 +41,6 @@ app.component('categoria-film', categoriaFilm);
 app.component('categoria-crud', categoriaCURD)
 app.component('categorias', categoria);
 app.component('animation-catalogo', animationCatalogo);
-// app.component('inicio', inicio);
+app.component('peliculas-recientemente', peliculasRecientemente);
+app.component('estadisticas', Estadisticas)
 app.mount('#app');
