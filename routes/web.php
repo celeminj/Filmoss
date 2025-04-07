@@ -123,3 +123,8 @@ Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
 
 Route::get('/pelicula/{id}', [PeliculaController::class, 'show'])->name('peliculas.show');
+
+
+Route::get('/pago', function(){
+    return view('metodo_pago.metodo_pago');
+})->name('metodo_pago.metodo_pago');
