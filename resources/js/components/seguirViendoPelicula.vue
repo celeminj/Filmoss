@@ -16,8 +16,20 @@
       <p>{{ peliculas[0].titulo }}</p>
     </div>
   </a>
+  <a class="seguir-viendo-links" :href="`/Filmoss/public/pelicula/${peliculas[1].id}`">
+                <div
+                class="seguir-viendo-peli2"
+                :style="{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${peliculas[1].image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                }"
+                >
+                <p>{{ peliculas[1].titulo }}</p>
+                </div>
+            </a>
 </div>
-
 
       <div class="pelis-container">
   <a
@@ -77,9 +89,17 @@
     margin-bottom: 50px;
     margin-top: 100px;
     margin-left: 250px;
-  
-}
 
+}
+.seguir-viendo-links{
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all .5s;
+}
+.seguir-viendo-links:hover{
+    transform: scale(1.04);
+}
 .seguir-viendo-peli {
     display: flex;
     flex-direction: column;
@@ -104,13 +124,13 @@
     text-align: start;
     padding-top: 400px;
     margin-left: 20px;
-    
+
 }
 .pelis-container {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    
+
 }
 .seguir-viendo-link {
   text-decoration: none;
@@ -125,7 +145,7 @@
     margin-bottom: 20px;
 }
 .seguir-viendo-peli2:hover{
-  box-shadow: 10px 10px #2ebfa457;
+    transform: scale(1.05);
 }
 .seguir-viendo-peli2 p {
     color: #2EBFA5;
@@ -137,4 +157,12 @@
     padding-top: 180px;
     margin-left: 20px;
 }
+
+.seguir-viendo-peli3{
+    width: 700px;
+    height: 230px;
+    background-color: #2EBFA5;
+    border-radius: 10px;
+}
+
   </style>
