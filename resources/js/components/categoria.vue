@@ -1,14 +1,14 @@
 <template>
-    <div class="text-primary" id="categorias">
-      <div
-        class="card-categorias"
-        v-for="categoria in categorias"
-        :key="categoria.id"
-        :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${categoria.image})` }"
-      >
-        <h2>{{ categoria.categoria }}</h2>
+      <div class="text-primary" id="categorias">
+          <a class="url-peli"   v-for="categoria in categorias"
+          :key="categoria.id" 
+            :href="`/Filmoss/public/categoria/${categoria.id}`">
+                <div class="card-categorias" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${categoria.image})` }"
+              >
+               <h2>{{ categoria.categoria }}</h2>
+            </div>
+          </a>
       </div>
-    </div>
   </template>
 
   <script>

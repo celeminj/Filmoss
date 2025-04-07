@@ -6,6 +6,7 @@ use App\Clases\Utilitat;
 use Illuminate\Http\Request;
 use App\Models\Evento_pelicula;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 
 class EventoPeliculaController extends Controller
 {

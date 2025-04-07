@@ -3,35 +3,37 @@
     <div class="categoria">
         <div class="portada-categoria">
             <div class="imagen-categoria">
-                <img src="{{ asset('images/terror-ej.jpg') }}" alt="">
+                <img src="{{ $categoria->image }}" alt="">
             </div>
             <div class="titulo-categoria">
                 <h2>Tu selección de</h2>
-                <h1>TERROR</h1>
+                <h1>{{$categoria->categoria}}</h1>
             </div>
         </div>
+        @foreach ($categoria->categoria_pelicula as $pelicula)
         <div class="porque-has-visto">
             <h4>Porque has visto...</h4>
             <div class="porque-has-visto-interior">
                 <div class="porque-has-visto-1">
                     <div class="titulo-peli1-porque">
-                        <h3>Pelicula1</h3>
+                        <h3>{{$pelicula->titulo}}</h3>
                     </div>
                     <div class="duracion-peli1-porque">
-                        <h5>Duración min.</h5>
+                        <h5>Duración {{$pelicula->duracion  }} min.</h5>
                     </div>
                     <div class="restriccion-edad">
-                        <p>+16</p>
+                    <p>+{{ $pelicula->restriccion_edad }}</p>
+
                     </div>
                 </div>
                 <div class="porque-has-visto-2">
-                    <h3>Pelicula2</h3>
+                    <h3>{{$pelicula->titulo}}</h3>
                 </div>
                 <div class="porque-has-visto-2">
-                    <h3>Pelicula3</h3>
+                    <h3>{{$pelicula->titulo}}</h3>
                 </div>
             </div>
-
+        @endforeach
         </div>
         <div class="has-visto">
             <h4>Ya has visto...</h4>
@@ -64,9 +66,6 @@
             </ul>
 
             <div class="swipe"></div>
-
-
-
 
         </div>
         <div class="novedades">
@@ -108,7 +107,6 @@
         </div>
     </div>
 
-    {{-- script carrusel  novedades --}}
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {

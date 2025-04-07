@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -7,7 +8,9 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\Api\PeliculaController;
+use App\Http\Controllers\Api\CategoriaController;
 use App\Http\Controllers\Api\PeliculaNuevaController;
+use App\Http\Controllers\Api\EventoPeliculaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,6 +130,13 @@ Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
 
 Route::get('/pelicula/{id}', [PeliculaController::class, 'show'])->name('peliculas.show');
+
+
+Route::get('/categoria/{id}', function ($id) {
+    $categoria = Categoria::with('categoria_pelicula')->findOrFail($id);
+    return view('categoria.categoria', compact('categoria'));
+})->name('web.categoria');
+
 
 Route::get('/pago', function(){
     return view('metodo_pago.metodo_pago');
