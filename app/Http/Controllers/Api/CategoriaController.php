@@ -15,7 +15,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return response()->json(Categoria::all());
+        return response()->json(Categoria::with(['categoria_pelicula'])->get());
     }
 
     /**
@@ -53,9 +53,10 @@ class CategoriaController extends Controller
     public function show(Categoria $categoria,$id)
     {
         try {
+            
             $categoria = Categoria::with('categoria_pelicula')->findOrFail($id);
 
-            return response()->json($categoria);
+            return view('categoria.ver', compact('categoria'));
         } catch (\Exception $e) {
             return response()->json(['error' => 'Categoria no encontrado'], 404);
         }
