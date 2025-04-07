@@ -10,9 +10,7 @@
             <a href="{{ $pelicula->pelicula_src }}">
                 <img src="{{ $pelicula->image }}" alt="" style="width: 120rem; height: 58rem; object-fit: cover;">
             </a>
-
         </div>
-
         <div class="info-peli">
             <div class="titulo-pelicula">
                 <h1>{{ $pelicula->titulo }}</h1>
@@ -40,10 +38,11 @@
             </div>
             <div class="botones-pelicula">
                 <div class="ver-ya">
-                    <button>VER YA</button>
+                    <button>VER YA
                     <a href="{{ $pelicula->pelicula_src }}">
                         <div class="play-button"></div>
                     </a>
+                </button>
                 </div>
                 <div class="otros-botones">
                     <div class="trailer">
