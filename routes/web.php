@@ -138,6 +138,8 @@ Route::get('/categoria/{id}', function ($id) {
 })->name('web.categoria');
 
 
+
+
 Route::get('/pago', function(){
     return view('metodo_pago.metodo_pago');
 })->name('metodo_pago.metodo_pago');

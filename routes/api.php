@@ -36,3 +36,5 @@ Route::apiResource('evento_pelicula', EventoPeliculaController::class);
 Route::apiResource('cine', CineController::class);
 Route::apiResource('actor', ActorController::class);
 Route::apiResource('categoria', CategoriaController::class);
+
+Route::get('categorias/{id}/peliculas', [CategoriaController::class, 'pelisPorCategoria']);

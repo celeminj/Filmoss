@@ -1,8 +1,16 @@
 <template>
     <h1>CINES</h1>
     <div class="text-primary" id="cines">
-      <div class="card-cines" v-for="cine in cines" :key="cine.id" :style="{
-        background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})` }">
+      <div
+        class="card-cines"
+        v-for="cine in cines"
+        :key="cine.id"
+        :style="{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }"
+      >
         <h2>{{ cine.nombre }}</h2>
       </div>
     </div>
@@ -24,9 +32,17 @@
     mounted() {
       mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw';
       this.getCines();
-      this.initMap();
     },
     methods: {
+      async getCines() {
+        try {
+          const response = await axios.get('cine/');
+          this.cines = response.data;
+          this.initMap();
+        } catch (error) {
+          console.log(error);
+        }
+      },
       initMap() {
         this.map = new mapboxgl.Map({
           container: this.$refs.mapContainer,
@@ -34,16 +50,11 @@
           center: [2.055501, 41.357301],
           zoom: 14,
         });
-      },
-      getCines() {
-        axios.get('cine/')
-          .then(response => {
-            this.cines = response.data;
-            this.addMarkersToMap();
-          })
-          .catch(error => {
-            console.log(error);
-          });
+
+        this.map.on('load', () => {
+          this.map.resize();
+          this.addMarkersToMap(); // solo cuando el mapa esté listo
+        });
       },
       addMarkersToMap() {
         this.cines.forEach(cine => {
@@ -60,9 +71,10 @@
   #cines {
     margin-top: 15rem;
     display: flex;
-    justify-content: center;
-    color: #EAD2AC;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+    color: #EAD2AC;
     cursor: pointer;
   }
 
@@ -81,7 +93,6 @@
     color: #EAD2AC;
     border-radius: 20px;
     position: relative;
-    border: none;
     overflow: hidden;
     background-color: #222;
     transition: transform 0.3s;
@@ -96,13 +107,14 @@
 
   .card-cines:hover {
     color: #2EBFA5;
-    background-size: cover;
-    background-position: center;
     transform: scale(1.02);
   }
 
   .map-container {
     margin-top: 5rem;
     height: 500px;
+    width: 100%;
+    position: relative;
+    z-index: 0;
   }
   </style>
