@@ -18,6 +18,18 @@ class CategoriaController extends Controller
         return response()->json(Categoria::with(['categoria_pelicula'])->get());
     }
 
+    public function pelisPorCategoria($id_cat)
+    {
+        $categoria = Categoria::with('categoria_pelicula')->find($id_cat);
+
+        if (!$categoria) {
+            return response()->json(['error' => 'Categoría no encontrada'], 404);
+        }
+
+        return response()->json($categoria->categoria_pelicula);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      */
@@ -53,7 +65,7 @@ class CategoriaController extends Controller
     public function show(Categoria $categoria,$id)
     {
         try {
-            
+
             $categoria = Categoria::with('categoria_pelicula')->findOrFail($id);
 
             return view('categoria.ver', compact('categoria'));
