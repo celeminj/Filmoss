@@ -15,60 +15,53 @@
       </div>
     </div>
     <div ref="mapContainer" class="map-container"></div>
-  </template>
+</template>
 
-  <script>
-  import mapboxgl from 'mapbox-gl';
-  import axios from 'axios';
+<script>
+import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 
-  export default {
+export default {
     name: 'MapboxMap',
     data() {
-      return {
-        cines: [],
-        map: null,
-      };
+        return {
+            cines: [],
+            map: null,
+        };
     },
     mounted() {
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw';
-      this.getCines();
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw';
+        this.map = new mapboxgl.Map({
+            container: this.$refs.mapContainer,
+            style: 'mapbox://styles/mapbox/navigation-night-v1',
+            center: [2.055501, 41.357301],
+            zoom: 14,
+        });
+        this.getCines();
     },
     methods: {
-      async getCines() {
-        try {
-          const response = await axios.get('cine/');
-          this.cines = response.data;
-          this.initMap();
-        } catch (error) {
-          console.log(error);
-        }
-      },
-      initMap() {
-        this.map = new mapboxgl.Map({
-          container: this.$refs.mapContainer,
-          style: 'mapbox://styles/mapbox/navigation-night-v1',
-          center: [2.055501, 41.357301],
-          zoom: 14,
-        });
-
-        this.map.on('load', () => {
-          this.map.resize();
-          this.addMarkersToMap(); // solo cuando el mapa esté listo
-        });
-      },
-      addMarkersToMap() {
-        this.cines.forEach(cine => {
-          new mapboxgl.Marker()
-            .setLngLat([cine.longitud, cine.latitud])
-            .addTo(this.map);
-        });
-      },
+        async getCines() {
+            try {
+                const response = await axios.get('cine/');
+                this.cines = response.data;
+                this.addMarkersToMap();
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        addMarkersToMap() {
+            this.cines.forEach(cine => {
+                new mapboxgl.Marker()
+                    .setLngLat([cine.longitud, cine.latitud])
+                    .addTo(this.map);
+            });
+        },
     },
-  };
-  </script>
+};
+</script>
 
-  <style scoped>
-  #cines {
+<style scoped>
+#cines {
     margin-top: 15rem;
     display: flex;
     justify-content: space-evenly;
@@ -76,18 +69,18 @@
     gap: 2rem;
     color: #EAD2AC;
     cursor: pointer;
-  }
+}
 
-  .card-cines h2 {
+.card-cines h2 {
     font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     margin: 0;
     padding: 0;
-  }
+}
 
-  .card-cines {
+.card-cines {
     width: 300px;
     height: 200px;
     color: #EAD2AC;
@@ -103,18 +96,18 @@
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-  }
+}
 
-  .card-cines:hover {
+.card-cines:hover {
     color: #2EBFA5;
     transform: scale(1.02);
-  }
+}
 
-  .map-container {
+.map-container {
     margin-top: 5rem;
     height: 500px;
     width: 100%;
     position: relative;
     z-index: 0;
-  }
-  </style>
+}
+</style>
