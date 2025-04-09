@@ -125,8 +125,6 @@ Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
 Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');
 
 
-// Route::get('/pelicula/{pelicula}', [PeliculaController::class, 'show'])->name('peliculas.show');
-
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
 
 Route::get('/pelicula/{id}', [PeliculaController::class, 'show'])->name('peliculas.show');
@@ -147,9 +145,3 @@ Route::get('/pago', function(){
 Route::get('/estadisticas', function () {
     return view('gestion.estadisticas');
 })->name('estadisticas');
-
-
-Route::get('/pepe', function () {
-    return view('pepe');
-})->name('pepe');
-

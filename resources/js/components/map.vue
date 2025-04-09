@@ -1,6 +1,6 @@
 <template>
     <h1>CINES</h1>
-    <!-- <div class="text-primary" id="cines">
+    <div class="text-primary" id="cines">
       <div
         class="card-cines"
         v-for="cine in cines"
@@ -13,7 +13,7 @@
       >
         <h2>{{ cine.nombre }}</h2>
       </div>
-    </div> -->
+    </div>
     <div ref="mapContainer" class="map-container"></div>
 </template>
 
@@ -44,20 +44,10 @@ export default {
             try {
                 const response = await axios.get('cine/');
                 this.cines = response.data;
-                //   this.initMap();
                 this.addMarkersToMap();
             } catch (error) {
                 console.log(error);
             }
-        },
-        initMap() {
-
-
-            // this.map.on('load', () => {
-
-            //     //   this.map.resize();
-            //     this.addMarkersToMap();
-            // });
         },
         addMarkersToMap() {
             this.cines.forEach(cine => {
