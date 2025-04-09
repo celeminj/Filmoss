@@ -148,3 +148,8 @@ Route::get('/estadisticas', function () {
     return view('gestion.estadisticas');
 })->name('estadisticas');
 
+
+Route::get('/pepe', function () {
+    return view('pepe');
+})->name('pepe');
+

@@ -10,12 +10,14 @@
                 <h1>{{ $categoria->categoria }}</h1>
             </div>
         </div>
-        <div class="porque-has-visto">
-            <h4>Porque has visto...</h4>
-            <div id="app">
+
+        <div id="app">
+            <div class="porque-has-visto">
+                <h4>Porque has visto...</h4>
                 <portada-categoria :id-categoria="{{ $categoria->id }}"></portada-categoria>
             </div>
         </div>
+
         <div class="has-visto">
             <h4>Ya has visto...</h4>
             <div class="has-visto-interior">
