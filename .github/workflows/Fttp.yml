@@ -40,7 +40,7 @@ jobs:
           path: dist
 
       - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Action@main
+        uses: SamKirkland/FTP-Deploy-Action@master
         with:
           server: ftpupload.net
           username: b12_37391677
