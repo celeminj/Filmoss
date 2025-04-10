@@ -1,20 +1,19 @@
 <template>
     <h1>CINES</h1>
-    <div class="text-primary" id="cines">
-      <div
-        class="card-cines"
-        v-for="cine in cines"
-        :key="cine.id"
-        :style="{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }"
-      >
-        <h2>{{ cine.nombre }}</h2>
-      </div>
+
+    <div class="contenedor">
+        <div class="text-primary" id="cines">
+            <div class="card-cines" v-for="cine in cines" :key="cine.id" @click="posicionarCine(cine)" :style="{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }">
+                <h2>{{ cine.nombre }}</h2>
+            </div>
+        </div>
+        <div ref="mapContainer" class="map-container"></div>
+
     </div>
-    <div ref="mapContainer" class="map-container"></div>
 </template>
 
 <script>
@@ -35,7 +34,7 @@ export default {
             container: this.$refs.mapContainer,
             style: 'mapbox://styles/mapbox/navigation-night-v1',
             center: [2.055501, 41.357301],
-            zoom: 14,
+            zoom: 16,
         });
         this.getCines();
     },
@@ -56,23 +55,33 @@ export default {
                     .addTo(this.map);
             });
         },
+        posicionarCine(cine) {
+            this.map.flyTo({
+                center: [cine.longitud, cine.latitud],
+                zoom: 16,
+                speed: 0.8,
+                curve: 1,
+                easing(t) {
+                    return t;
+                },
+            });
+        },
     },
 };
 </script>
 
 <style scoped>
 #cines {
-    margin-top: 15rem;
+    margin-top: 5rem;
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem;
     color: #EAD2AC;
     cursor: pointer;
 }
 
 .card-cines h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -81,7 +90,7 @@ export default {
 }
 
 .card-cines {
-    width: 300px;
+    width: 200px;
     height: 200px;
     color: #EAD2AC;
     border-radius: 20px;
@@ -103,11 +112,19 @@ export default {
     transform: scale(1.02);
 }
 
+.contenedor {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .map-container {
     margin-top: 5rem;
-    height: 500px;
-    width: 100%;
+    height: 600px;
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     position: relative;
     z-index: 0;
+    margin-right: 30px;
 }
 </style>
