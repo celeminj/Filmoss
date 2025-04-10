@@ -31,9 +31,13 @@ jobs:
           name: dist
           path: dist
 
-      - uses: php-actions/composer@v6
+      - name: Set up Composer
+        uses: php-actions/composer@v6
         with:
-          command: composer install
+          php-version: '8.0'
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest
 
       - name: Archive production artifact
         uses: actions/upload-artifact@main
