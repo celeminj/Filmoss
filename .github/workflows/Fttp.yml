@@ -28,6 +28,10 @@ jobs:
           name: dist
           path: dist
 
+      - uses: php-actions/composer@v6
+        with:
+          command: composer install
+
   deploy:
     name: Deploy
     needs: build
@@ -48,5 +52,5 @@ jobs:
           server: ftpupload.net
           username: b12_37391677
           password: ${{ secrets.ftp_password }}
-          local-dir: ./
+          local-dir: /
           server-dir: /filmo.celemin.me/htdocs/
