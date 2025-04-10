@@ -20,7 +20,7 @@ jobs:
         run: npm run build
 
       - name: List build output
-        run: ls -la public/build/assets/
+        run: ls -la dist
 
       - name: Archive production artifact
         uses: actions/upload-artifact@main
