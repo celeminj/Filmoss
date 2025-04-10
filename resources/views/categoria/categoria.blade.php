@@ -7,39 +7,22 @@
             </div>
             <div class="titulo-categoria">
                 <h2>Tu selección de</h2>
-                <h1>{{$categoria->categoria}}</h1>
+                <h1>{{ $categoria->categoria }}</h1>
             </div>
         </div>
-        @foreach ($categoria->categoria_pelicula as $pelicula)
-        <div class="porque-has-visto">
-            <h4>Porque has visto...</h4>
-            <div class="porque-has-visto-interior">
-                <div class="porque-has-visto-1">
-                    <div class="titulo-peli1-porque">
-                        <h3>{{$pelicula->titulo}}</h3>
-                    </div>
-                    <div class="duracion-peli1-porque">
-                        <h5>Duración {{$pelicula->duracion  }} min.</h5>
-                    </div>
-                    <div class="restriccion-edad">
-                    <p>+{{ $pelicula->restriccion_edad }}</p>
 
-                    </div>
-                </div>
-                <div class="porque-has-visto-2">
-                    <h3>{{$pelicula->titulo}}</h3>
-                </div>
-                <div class="porque-has-visto-2">
-                    <h3>{{$pelicula->titulo}}</h3>
-                </div>
+        <div id="app">
+            <div class="porque-has-visto">
+                <h4>Porque has visto...</h4>
+                <portada-categoria :id-categoria="{{ $categoria->id }}"></portada-categoria>
             </div>
-        @endforeach
         </div>
+
         <div class="has-visto">
             <h4>Ya has visto...</h4>
             <div class="has-visto-interior">
                 <div class="has-visto-1">
-                    <h3>Pelicula 1</h3>
+                    <h3></h3>
                 </div>
                 <div class="has-visto-1">
                     <h3>Pelicula 2</h3>
@@ -58,11 +41,21 @@
         <div class="carrusel-categoria">
             <h1>Te sorprenderán</h1>
             <ul class="list">
-                <li class="hide"><h3>Peli1</h3></li>
-                <li class="prev"><h3>Peli2</h3></li>
-                <li class="act"><h3>Peli3</h3></li>
-                <li class="next"><h3>Peli4</h3></li>
-                <li class="next new-next"><h3>Peli5</h3></li>
+                <li class="hide">
+                    <h3>Peli1</h3>
+                </li>
+                <li class="prev">
+                    <h3>Peli2</h3>
+                </li>
+                <li class="act">
+                    <h3>Peli3</h3>
+                </li>
+                <li class="next">
+                    <h3>Peli4</h3>
+                </li>
+                <li class="next new-next">
+                    <h3>Peli5</h3>
+                </li>
             </ul>
 
             <div class="swipe"></div>
@@ -72,6 +65,7 @@
             <h4>Novedades</h4>
             <div class="novedades-interior">
                 <div class="novedades-interior-contenido">
+
                     <div class="novedades-1">
                         <h3>Novedades 1</h3>
                     </div>
@@ -214,7 +208,7 @@
         });
     </script>
 
-    {{-- script carrusel Te sorprenderán--}}
+    {{-- script carrusel Te sorprenderán --}}
 
 
     <script>

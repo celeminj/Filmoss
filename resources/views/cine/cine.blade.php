@@ -3,3 +3,4 @@
     <div id="app">
         <mapa></mapa>
     </div>
+@endsection

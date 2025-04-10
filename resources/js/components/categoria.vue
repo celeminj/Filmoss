@@ -1,10 +1,9 @@
 <template>
       <div class="text-primary" id="categorias">
           <a class="url-peli"   v-for="categoria in categorias"
-          :key="categoria.id" 
+          :key="categoria.id"
             :href="`/Filmoss/public/categoria/${categoria.id}`">
-                <div class="card-categorias" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${categoria.image})` }"
-              >
+                <div class="card-categorias" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${categoria.image})` }">
                <h2>{{ categoria.categoria }}</h2>
             </div>
           </a>
@@ -33,6 +32,9 @@
   </script>
 
   <style>
+  .url-peli {
+    text-decoration: none;
+  }
   .card-categorias {
       width: 20vw;
       height: 25vh;

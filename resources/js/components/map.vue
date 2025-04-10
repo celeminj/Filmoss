@@ -1,87 +1,100 @@
 <template>
     <h1>CINES</h1>
-    <div class="text-primary" id="cines">
-      <div class="card-cines" v-for="cine in cines" :key="cine.id" :style="{
-        background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})` }">
-        <h2>{{ cine.nombre }}</h2>
-      </div>
+
+    <div class="contenedor">
+        <div class="text-primary" id="cines">
+            <div class="card-cines" v-for="cine in cines" :key="cine.id" @click="posicionarCine(cine)" :style="{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${cine.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }">
+                <h2>{{ cine.nombre }}</h2>
+            </div>
+        </div>
+        <div ref="mapContainer" class="map-container"></div>
+
     </div>
-    <div ref="mapContainer" class="map-container"></div>
-  </template>
+</template>
 
-  <script>
-  import mapboxgl from 'mapbox-gl';
-  import axios from 'axios';
+<script>
+import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 
-  export default {
+export default {
     name: 'MapboxMap',
     data() {
-      return {
-        cines: [],
-        map: null,
-      };
+        return {
+            cines: [],
+            map: null,
+        };
     },
     mounted() {
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw';
-      this.getCines();
-      this.initMap();
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZWxjZWxlIiwiYSI6ImNtOHJqaGIzNzA2a2kya3B2azlubmZpd2YifQ.SoaN9qTdXQZvsNybR3DQIw';
+        this.map = new mapboxgl.Map({
+            container: this.$refs.mapContainer,
+            style: 'mapbox://styles/mapbox/navigation-night-v1',
+            center: [2.055501, 41.357301],
+            zoom: 16,
+        });
+        this.getCines();
     },
     methods: {
-      initMap() {
-        this.map = new mapboxgl.Map({
-          container: this.$refs.mapContainer,
-          style: 'mapbox://styles/mapbox/navigation-night-v1',
-          center: [2.055501, 41.357301],
-          zoom: 14,
-        });
-      },
-      getCines() {
-        axios.get('cine/')
-          .then(response => {
-            this.cines = response.data;
-            this.addMarkersToMap();
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      },
-      addMarkersToMap() {
-        this.cines.forEach(cine => {
-          new mapboxgl.Marker()
-            .setLngLat([cine.longitud, cine.latitud])
-            .addTo(this.map);
-        });
-      },
+        async getCines() {
+            try {
+                const response = await axios.get('cine/');
+                this.cines = response.data;
+                this.addMarkersToMap();
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        addMarkersToMap() {
+            this.cines.forEach(cine => {
+                new mapboxgl.Marker()
+                    .setLngLat([cine.longitud, cine.latitud])
+                    .addTo(this.map);
+            });
+        },
+        posicionarCine(cine) {
+            this.map.flyTo({
+                center: [cine.longitud, cine.latitud],
+                zoom: 16,
+                speed: 0.8,
+                curve: 1,
+                easing(t) {
+                    return t;
+                },
+            });
+        },
     },
-  };
-  </script>
+};
+</script>
 
-  <style scoped>
-  #cines {
-    margin-top: 15rem;
+<style scoped>
+#cines {
+    margin-top: 5rem;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     color: #EAD2AC;
-    justify-content: space-evenly;
     cursor: pointer;
-  }
+}
 
-  .card-cines h2 {
-    font-size: 3rem;
+.card-cines h2 {
+    font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     margin: 0;
     padding: 0;
-  }
+}
 
-  .card-cines {
-    width: 300px;
+.card-cines {
+    width: 200px;
     height: 200px;
     color: #EAD2AC;
     border-radius: 20px;
     position: relative;
-    border: none;
     overflow: hidden;
     background-color: #222;
     transition: transform 0.3s;
@@ -92,17 +105,26 @@
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-  }
+}
 
-  .card-cines:hover {
+.card-cines:hover {
     color: #2EBFA5;
-    background-size: cover;
-    background-position: center;
     transform: scale(1.02);
-  }
+}
 
-  .map-container {
+.contenedor {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.map-container {
     margin-top: 5rem;
-    height: 500px;
-  }
-  </style>
+    height: 600px;
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 0;
+    margin-right: 30px;
+}
+</style>

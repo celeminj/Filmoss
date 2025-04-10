@@ -22,8 +22,10 @@ import categoria from './components/categoria.vue';
 import animationCatalogo from './components/animationCatalogo.vue';
 import peliculasRecientemente from './components/peliculasRecientemente.vue';
 import Estadisticas from './components/estadisticas.vue';
+import portadaCategoria from './components/portada-categoria.vue';
 const app = createApp({});
 
+app.component('portada-categoria',portadaCategoria);
 app.component('pelicula',peliculas)
 app.component('seguir-viendo',seguirViendoPelicula);
 app.component('pelicula-destacada', PeliculaDestacada);

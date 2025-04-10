@@ -12,6 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
+
     @vite(['resources/css/app.css', 'resources/css/app.scss', 'resources/js/app.js'])
     <title>Filmo</title>
 </head>
@@ -21,7 +23,8 @@
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <a href="home" class="navbar"><img id="icono-filmo" src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
+                <a href="{{ route('home') }}" class="navbar"><img id="icono-filmo"
+                        src='https://i.postimg.cc/WpyD0S0N/Filmo.png'
                         alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
 
                 <ul class="paginas-nav">
@@ -101,7 +104,7 @@
         <div class="container text-primary">
             <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">
                 <div class="col mb-3  text-primary">
-                    <a href="home"><img
+                    <a href="{{ route('home') }}"><img
                             src='https://i.postimg.cc/xXT44s4v/Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n.png'
                             alt='Screenshot-2025-03-11-at-19-02-06-Landing-Page-Landing-Celem-n' /></a>
                     <p class="text-primary">Donde estés, donde quieras.</p>
@@ -113,11 +116,15 @@
 
                 <div class="col mb-3">
                     <ul class="nav flex-column ">
-                        <li class="nav-item mb-2 "><a href="home" class="nav-link p-0 text-primary">Inicio</a></li>
-                        <li class="nav-item mb-2"><a href="cartelera" class="nav-link p-0 text-primary">Cartelera</a>
+                        <li class="nav-item mb-2 "><a href="{{ route('home') }}"
+                                class="nav-link p-0 text-primary">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('cartelera') }}"
+                                class="nav-link p-0 text-primary">Cartelera</a>
                         </li>
-                        <li class="nav-item mb-2"><a href="catalogo" class="nav-link p-0 text-primary">Catalogo</a></li>
-                        <li class="nav-item mb-2"><a href="cine" class="nav-link p-0 text-primary">Cines</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('catalogo') }}"
+                                class="nav-link p-0 text-primary">Catalogo</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('cine') }}"
+                                class="nav-link p-0 text-primary">Cines</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Sobre Nosotros</a>
                         </li>
                     </ul>
@@ -137,7 +144,8 @@
 
                 <div class="col mb-3">
                     <ul class="nav flex-column ">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Términos y
+                        <li class="nav-item mb-2"><a href="https://terminosycondiciones.es/"
+                                class="nav-link p-0 text-primary">Términos y
                                 condiciones.</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-primary">Política de
                                 privacidad.</a></li>
