@@ -20,13 +20,13 @@ jobs:
         run: npm run build
 
       - name: List build output
-        run: ls -la dist
+        run: ls -la dist  # Verifica que los archivos estén en dist
 
       - name: Archive production artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v2
         with:
-          name: public/build/assets/
-          path: public/build/assets/
+          name: dist  # Asegúrate de que el nombre coincida con lo que usas para descargarlo
+          path: dist  # Ruta donde se encuentra la salida de los archivos generados
 
   deploy:
     name: Deploy
@@ -34,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
 
       - name: Download artifact
-        uses: actions/download-artifact@main
+        uses: actions/download-artifact@v2
         with:
           name: dist
           path: dist
