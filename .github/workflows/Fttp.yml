@@ -10,9 +10,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-
-      - name: Set Git safe directory
-        run: git config --global --add safe.directory /app
       - name: Checkout repository
         uses: actions/checkout@main
 
@@ -31,20 +28,6 @@ jobs:
           name: dist
           path: dist
 
-      - name: Set up Composer
-        uses: php-actions/composer@v6
-        with:
-          php-version: '8.0'
-
-      - name: Install dependencies
-        run: composer install --no-progress --no-suggest
-
-      - name: Archive production artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: vendor
-          path: vendor
-
   deploy:
     name: Deploy
     needs: build
@@ -59,17 +42,11 @@ jobs:
           name: dist
           path: dist
 
-      - name: Download artifact
-        uses: actions/download-artifact@main
-        with:
-          name: vendor
-          path: vendor
-
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@master
         with:
           server: ftpupload.net
           username: b12_37391677
           password: ${{ secrets.ftp_password }}
-          local-dir: /
+          local-dir: ./
           server-dir: /filmo.celemin.me/htdocs/
