@@ -3,7 +3,7 @@
     <div class="seguir-viendo">
 
       <div  v-if="peliculas.length > 0">
-  <a class="seguir-viendo-peli" :href="`/public/pelicula/${peliculas[0].id}`">
+  <a class="seguir-viendo-peli" :href="`/Filmoss/public/pelicula/${peliculas[0].id}`">
     <div
       class="seguir-viendo-peli1"
       :style="{
@@ -16,7 +16,7 @@
       <p>{{ peliculas[0].titulo }}</p>
     </div>
   </a>
-  <a class="seguir-viendo-links" :href="`/public/pelicula/${peliculas[1].id}`">
+  <a class="seguir-viendo-links" :href="`/Filmoss/public/pelicula/${peliculas[1].id}`">
                 <div
                 class="seguir-viendo-peli2"
                 :style="{
@@ -35,7 +35,7 @@
   <a
     v-for="(pelicula, index) in ultimasPeliculas"
     :key="index"
-    :href="`/public/pelicula/${pelicula.id}`"
+    :href="`/Filmoss/public/pelicula/${pelicula.id}`"
     class="seguir-viendo-link"
   >
     <div
@@ -56,6 +56,7 @@
   </template>
 
   <script>
+  import * as bootstrap from 'bootstrap';
   import axios from "axios";
 
   export default {
