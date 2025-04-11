@@ -3,7 +3,7 @@
       <h4>Películas destacadas</h4>
       <div class="pelis-destacadas">
         <a class="url-peli"  v-for="(pelicula, index) in ultimasPeliculas"
-        :key="index" :href="`/Filmoss/public/pelicula/${pelicula.id}`">
+        :key="index" :href="`/public/pelicula/${pelicula.id}`">
 
           <div
             class="destacada1"
