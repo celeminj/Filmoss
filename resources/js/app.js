@@ -11,7 +11,6 @@ import eventosCRUD from './components/eventosCRUD.vue';
 import peliculasCRUD from './components/peliculasCRUD.vue';
 import mapa from './components/map.vue';
 import cinesCRUD from './components/cinesCRUD.vue';
-import categoriaFilm from './components/categoriaFilm.vue';
 import navDesplegable from './components/navDesplegable.vue';
 import actorCRUD from './components/actorCRUD.vue';
 import PeliculaDestacada from './components/peliculaDestacada.vue';
@@ -39,7 +38,6 @@ app.component('pelicula-crud', peliculasCRUD);
 app.component('eventos-crud', eventosCRUD);
 app.component('mapa', mapa);
 app.component('cines-crud', cinesCRUD);
-app.component('categoria-film', categoriaFilm);
 app.component('categoria-crud', categoriaCURD)
 app.component('categorias', categoria);
 app.component('animation-catalogo', animationCatalogo);
