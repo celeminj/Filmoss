@@ -502,7 +502,7 @@ body {
     position: absolute;
     transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
     width: 85vw; /* Ajusta el ancho relativo a la pantalla */
-    height: 96.5vw;
+    height: 100vw;
     background: linear-gradient(to right, #00ffdd, rgba(39, 82, 76, 0));
     right: -15%; /* Lo pega al borde derecho */
 

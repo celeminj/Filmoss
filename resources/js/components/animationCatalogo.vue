@@ -3,7 +3,7 @@
     <button class="flecha-siguiente-peli-foto" @click="cambiarImagen(-1)">
           <p>&#10094;</p>
         </button>
-    <a class="pelicula-url" :href="`/public/pelicula/${peliculas[indiceActual]?.id}`">
+    <a class="pelicula-url" :href="`/Filmoss/public/pelicula/${peliculas[indiceActual]?.id}`">
       <div
         class="interior-foto"
         :style="{
