@@ -39,6 +39,15 @@ body {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+#logout{
+    
+    background-color: #222;
+    color: #000000;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .paginas-nav {
     display: flex;
     justify-content: center;
@@ -57,7 +66,11 @@ body {
     color: #EAD2AC;
     transition: color 0.3s;
 }
-
+.paginas-nav a:hover {
+    text-decoration: none;
+    color: #2EBFA5;
+    transition: color 0.3s;
+}
 .hoverable:hover {
     color: #2EBFA5;
 }
@@ -571,7 +584,7 @@ body {
     background: transparent;
     position: absolute;
     left: 22%;
-    top: 89.2%;
+    top: 90%;
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
     width: 40px; /* Ajusta el tamaño */
     height: 40px;
@@ -782,14 +795,7 @@ body {
         font-size: 15px;
     }
 
-    .play-button {
-        position: absolute;
-        top: 100%;
-        left: 38%;
-        width: 30px;
-        height: 30px;
-
-    }
+   
 
     .heart {
 
@@ -982,15 +988,7 @@ body {
     }
 
 
-    .play-button {
-        position: absolute;
-        top: 101%;
-        left: 27%;
-        width: 20px;
-        height: 20px;
-        background-color: #1F1E24;
-
-    }
+   
 
     .detalles{
         margin-top: -200;
@@ -1144,60 +1142,9 @@ body {
         margin-bottom: 20px;
     }
 
-    .titulo-peli1-porque h3{
-        margin-top: 270px;
-        margin-left: -80px;
-        font-size: 50px;
-        font-weight: 800;
-    }
-
-    .duracion-peli1-porque h5{
-        margin-top: 270px;
-        margin-left: 50px;
-    }
-
-    .restriccion-edad{
-        background-color: #1f1e24;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        margin-top: 265px;
-        margin-left: 10px;
-    }
-
-    .restriccion-edad p{
-        color: #ead2ac;
-        text-align: center;
-        margin-top: 10px;
-        font-weight: 700;
-    }
-
+   
     .porque-has-visto-interior {
         display: flex;
-    }
-
-
-    .porque-has-visto-1 {
-        background-color: #2ebfa5;
-        width: 790px;
-        height: 350px;
-        border-radius: 10px;
-        display: flex;
-        text-transform: uppercase;
-        justify-content: center;
-        align-items: center;
-        font-family: "Poppins";
-        font-weight: 800;
-        font-size: 20px;
-        margin-left: 250px;
-        margin-top: 10px;
-        transition: transform 0.4s ease-in-out;
-    }
-
-
-
-    .porque-has-visto-1:hover {
-        transform: scale(1.05);
     }
 
     .porque-has-visto-2 {
@@ -1233,216 +1180,6 @@ body {
         margin-bottom: 20px;
     }
 
-    .has-visto-interior {
-        display: flex;
-        margin-left: 230px;
-    }
-
-    .has-visto-1 {
-        background-color: #2ebfa5;
-        width: 260px;
-        height: 350px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Poppins";
-        font-weight: 800;
-        font-size: 20px;
-        margin-left: 20px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        transition: transform 0.4s ease-in-out;
-    }
-
-    .has-visto-1:hover {
-        transform: scale(1.05);
-    }
-
-    /* Inicio Carrusel categoria */
-    .carrusel-categoria {
-        width: 100%; /* Hace que la imagen sea responsiva */
-        max-width: 120rem; /* Máximo tamaño en pantallas grandes */
-        height: 500px; /* Mantiene la proporción de la imagen */
-        display: block;
-        margin-bottom: 200px;
-
-    }
-
-    .carrusel-categoria h1{
-        color: #ead2ac;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 80px;
-        margin-top: -30px;
-        margin-bottom: 50px;
-    }
-
-    .list {
-      height: 0px;
-      transform: translate(-50%,-50%)
-
-    }
-
-
-    .list h3{
-        position: absolute;
-        top: 25%;
-        left: 40%;
-        font-weight: 800;
-        font-size: 50px;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
-    .list li {
-      list-style-type: none;
-      width: 800px;
-      height: 500px;
-      opacity: .25;
-      position: absolute;
-      left: 90%;
-      top: 100%;
-      margin-left: -200px;
-      border-radius: 10px;
-      background: #2ebfa5;
-      transition: transform 1s, opacity 1s;
-    }
-
-
-    .list .act {
-      opacity: 1;
-    }
-
-    .list .prev,
-    .list .next {
-      cursor: pointer;
-    }
-
-    .list .prev {
-      transform: translateX(-520px) scale(.85);
-    }
-
-    .list .next {
-      transform: translateX(520px) scale(.85);
-    }
-
-    .list .hide {
-      transform: translateX(-320px) scale(.85);
-    }
-
-    .list .new-next {
-      transform: translateX(320px) scale(.85);
-    }
-
-    .list .hide,
-    .list .new-next {
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    /* .swipe {
-      width: 270px;
-      height: 200px;
-      position: absolute;
-      background-color: green;
-      border-radius: 2px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      opacity: 0;
-    } */
-
-    /* Fin Carrusel categoria */
-
-    .novedades {
-        position: relative;
-        width: 1750px;
-        overflow: hidden;
-        margin-bottom: 80px;
-        margin-top: 50px;
-    }
-
-    .novedades h4 {
-        margin-left: 250px;
-        color: #ead2ac;
-        margin-top: 50px;
-        margin-bottom: 20px;
-    }
-
-    .novedades-interior {
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        overflow: hidden;
-        position: relative;
-        margin-left: 250px;
-        cursor: grab;
-    }
-
-    .novedades-interior-contenido {
-        display: flex;
-        gap: 20px;
-        transition: transform 0.1s linear;
-        will-change: transform;
-    }
-
-
-
-
-    .novedades-interior-contenido {
-        display: flex;
-        gap: 20px;
-        transition: transform 0.1s linear;
-        will-change: transform;
-    }
-
-
-    .novedades-1 {
-        min-width: 280px;
-        height: 340px;
-        background-color: #2ebfa5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        font-family: "Poppins";
-        font-weight: 800;
-        font-size: 20px;
-        transition: transform 0.4s ease-in-out;
-        margin: 5px 0px;
-    }
-
-
-    .novedades-1 h3{
-        margin-top: 230px;
-        font-weight: 700;
-    }
-    /*
-    .novedades-1 {
-        background-color: #2ebfa5;
-        width: 260px;
-        height: 350px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Poppins";
-        font-weight: 800;
-        font-size: 20px;
-        margin-left: 20px;
-        margin-top: 10px;
-        transition: transform 0.4s ease-in-out;
-    } */
-
-
-    .novedades-1:hover {
-        transform: scale(1.03);
-    }
-
-
-    /* Fin Categoria */
 
 
     /* Peli catalogo */
@@ -1573,21 +1310,6 @@ body {
     .ver-ya button:hover {
         transform: scale(1.05);
     }
-
-
-    .play-button {
-        width: 0;
-        height: 0;
-        background: transparent;
-        position: absolute;
-        left: 23%;
-        top: 89.8%;
-        clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-        width: 40px; /* Ajusta el tamaño */
-        height: 40px;
-        background-color: #2ebfa5; /* Color del triángulo */
-    }
-
 
     .trailer {
         position: relative;
