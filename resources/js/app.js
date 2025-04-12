@@ -1,7 +1,7 @@
 import './bootstrap';
 import 'gsap';
 import {createApp} from 'vue';
-
+import PrimeVue from 'primevue/config';
 
 import film from './components/Film.vue';
 import scroll from './components/Scroll.vue';
@@ -22,6 +22,12 @@ import animationCatalogo from './components/animationCatalogo.vue';
 import peliculasRecientemente from './components/peliculasRecientemente.vue';
 import Estadisticas from './components/estadisticas.vue';
 import portadaCategoria from './components/portada-categoria.vue';
+import EscanearQR from './components/QR/escanearQR.vue';
+import GenerarQR from   './components/QR/generarQR.vue';
+import categoriaYahasvisto from './components/categoria-yahasvisto.vue';
+import categoriaTesorpendera from './components/categoria-tesorpendera.vue';
+import categoriaNovedades from './components/categoria-novedades.vue';
+import catalogoDestacanseguntusgustos from './components/catalogo-destacanseguntusgustos.vue';
 const app = createApp({});
 
 app.component('portada-categoria',portadaCategoria);
@@ -43,4 +49,10 @@ app.component('categorias', categoria);
 app.component('animation-catalogo', animationCatalogo);
 app.component('peliculas-recientemente', peliculasRecientemente);
 app.component('estadisticas', Estadisticas)
+app.component('escanearqr', EscanearQR);
+app.component('generarqr', GenerarQR);
+app.component('categoria-yahasvisto', categoriaYahasvisto);
+app.component('categoria-tesorpendera', categoriaTesorpendera);
+app.component('categoria-novedades', categoriaNovedades);
+app.component('catalogo-destacanseguntusgustos', catalogoDestacanseguntusgustos);
 app.mount('#app');

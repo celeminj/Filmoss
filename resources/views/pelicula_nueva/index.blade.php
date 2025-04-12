@@ -60,17 +60,20 @@
 
             <div class="botones-pelicula">
                 <div class="ver-ya">
-                    <button id="btn-ver-ya" type="button">
-                        VER YA
+                    <button>VER YA</button>
+                    <a href="{{ $pelicula->pelicula_src }}">
                         <div class="play-button"></div>
-                    </button>
+                    </a>
                 </div>
-
                 <div class="otros-botones">
                     <div class="trailer">
                         <button>Trailer</button>
                     </div>
+                    <div class="heart">
+                        {{-- <button>Favoritos</button> --}}
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

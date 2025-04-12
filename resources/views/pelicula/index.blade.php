@@ -43,7 +43,6 @@
                         <button>Trailer</button>
                     </div>
                     <div class="heart">
-                        {{-- <button>Favoritos</button> --}}
                     </div>
                 </div>
 
@@ -86,11 +85,6 @@
             </div>
         </div>
     @endforeach
-    
 </div>
-
-
-
-
     </div>
 @endsection

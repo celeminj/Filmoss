@@ -73,18 +73,21 @@
                 <form class="d-flex" role="search">
                     <ul class="paginas-nav">
                         @if (Auth::check())
-                            <li class="usuario-movil">{{ Auth::user()->nombre }}</li>
                             <li class="nav-item dropdown">
                                 <div class="dropdown">
                                     <a id="len1" class="hoverable dropdown-toggle" type="button"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ Auth::user()->nombre }}
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <a id="len1" class="hoverable dropdown-item"
-                                            href="{{ route('logout') }}"><i id="len1"
-                                                class=" hoverable fa fa-sign-out" aria-hidden=true></i>Logout</a>
+                                    <ul class="dropdown-menu" id="logout"> 
+                                        <a 
+                                            href="{{ route('logout') }}"><i 
+                                             aria-hidden=true></i>Ver Perfil</a>
+                                             <a 
+                                            href="{{ route('logout') }}"><i 
+                                             aria-hidden=true></i>Logout</a>
                                     </ul>
+                                   
                                 </div>
                             </li>
                         @else
@@ -97,9 +100,7 @@
             </div>
         </nav>
     </div>
-    <div id="app">
         @yield('contenido')
-    </div>
     @section('footer')
         <div class="container text-primary">
             <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">
@@ -111,7 +112,6 @@
                 </div>
 
                 <div class="col mb-3">
-
                 </div>
 
                 <div class="col mb-3">

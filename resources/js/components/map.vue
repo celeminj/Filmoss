@@ -1,6 +1,7 @@
 <template>
-    <h1>CINES</h1>
-
+    <div class="titulo-cines">
+        <h1>CINES</h1>
+    </div>
     <div class="contenedor">
         <div class="text-primary" id="cines">
             <div class="card-cines" v-for="cine in cines" :key="cine.id" @click="posicionarCine(cine)" :style="{
@@ -71,17 +72,28 @@ export default {
 </script>
 
 <style scoped>
+.titulo-cines{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    color: #EAD2AC;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 9rem;
+}
 #cines {
     margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
     color: #EAD2AC;
-    cursor: pointer;
 }
 
 .card-cines h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -90,6 +102,7 @@ export default {
 }
 
 .card-cines {
+    cursor: pointer;
     width: 200px;
     height: 200px;
     color: #EAD2AC;
@@ -105,6 +118,7 @@ export default {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+    margin-left: 20px;
 }
 
 .card-cines:hover {
@@ -120,11 +134,11 @@ export default {
 .map-container {
     margin-top: 5rem;
     height: 600px;
-    width: 50%;
+    width: 60%;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     position: relative;
     z-index: 0;
     margin-right: 30px;
-}
+    }
 </style>
