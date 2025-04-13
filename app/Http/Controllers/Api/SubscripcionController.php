@@ -1,9 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+
+use App\Http\Resources\SubscripcionResource;
+use App\Models\Usuario;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Subscripcion;
-use Illuminate\Http\Request;
 
 class SubscripcionController extends Controller
 {
@@ -12,7 +19,7 @@ class SubscripcionController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Subscripcion::all());
     }
 
     /**
@@ -28,7 +35,7 @@ class SubscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return new SubscripcionResource($request);
     }
 
     /**
@@ -36,7 +43,7 @@ class SubscripcionController extends Controller
      */
     public function show(Subscripcion $subscripcion)
     {
-        //
+      
     }
 
     /**
