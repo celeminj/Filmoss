@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Subscripcion extends Model
 {
-    use HasFactory, HasApiTokens, Notifiable;
+    use HasFactory;
 
     protected $table = 'subscripcion';
     protected $primaryKey = 'id';

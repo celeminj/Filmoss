@@ -28,6 +28,7 @@ import categoriaYahasvisto from './components/categoria-yahasvisto.vue';
 import categoriaTesorpendera from './components/categoria-tesorpendera.vue';
 import categoriaNovedades from './components/categoria-novedades.vue';
 import catalogoDestacanseguntusgustos from './components/catalogo-destacanseguntusgustos.vue';
+import metodoPago from './components/metodoPago.vue';
 const app = createApp({});
 
 app.component('portada-categoria',portadaCategoria);
@@ -55,4 +56,5 @@ app.component('categoria-yahasvisto', categoriaYahasvisto);
 app.component('categoria-tesorpendera', categoriaTesorpendera);
 app.component('categoria-novedades', categoriaNovedades);
 app.component('catalogo-destacanseguntusgustos', catalogoDestacanseguntusgustos);
+app.component('metodo-pago', metodoPago);
 app.mount('#app');

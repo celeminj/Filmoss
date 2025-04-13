@@ -1,8 +1,6 @@
 @extends('index.index')
 
 @section('contenido')
-    <br><br><br>
-    <br>
      <div id="app">
     <div class="card mb-3" id="ticket">
         <div class="row g-0">
@@ -46,8 +44,6 @@
                         </div>
 
                         <button type="submit" class="btn btn-secondary">PAGAR</button>
-                       
-                       
                        
                         <a href="{{ route('pelicula.show', ['pelicula_nueva' => $pelicula->id, 'hora' => $hora]) }}"
                             class="ver-pelicula-btn">VER PELICULA</a>

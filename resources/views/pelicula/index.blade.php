@@ -32,6 +32,9 @@
                 </p>
             </div>
             <div class="botones-pelicula">
+                <div id="app">
+                <metodo-pago></metodo-pago>
+                </div>
                 <div class="ver-ya">
                     <button>VER YA</button>
                     <a href="{{ $pelicula->pelicula_src }}">
