@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\RolController;
+use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\ActorController;
 use App\Http\Controllers\Api\UsuarioController;
@@ -38,5 +39,6 @@ Route::apiResource('cine', CineController::class);
 Route::apiResource('actor', ActorController::class);
 Route::apiResource('categoria', CategoriaController::class);
 Route::apiResource('subscripcion', SubscripcionController::class);
+Route::apiResource('chat', ChatController::class);
 
 Route::get('categorias/{id}/peliculas', [CategoriaController::class, 'pelisPorCategoria']);

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Chat;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class ChatController extends Controller
 {
     /**
@@ -12,7 +12,7 @@ class ChatController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Chat::all());
     }
 
     /**

@@ -1,0 +1,35 @@
+name: Send email on commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get commit message
+        id: get_commit
+        run: echo "message=$(git log -1 --pretty=format:'%s')" >> $GITHUB_OUTPUT
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Nuevo commit en el repositorio"
+          body: |
+            Nuevo commit en el repositorio:
+            - Autor: ${{ github.actor }}
+            - Mensaje: ${{ steps.get_commit.outputs.message }}
+            - Repositorio: ${{ github.repository }}
+            - URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+          to: tu@email.com
+          from: GitHub Actions
