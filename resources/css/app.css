@@ -349,122 +349,7 @@ body {
 
 /* Peli catalogo */
 
-#chat-lateral{
-    color: white;
-    position: fixed;
-    top: 0;
-    right: -400px; /* escondido fuera de pantalla */
-    width: 400px;
-    height: 100%;
-    background: #1F1E24;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-    transition: right 0.4s ease-in-out;
-    z-index: 9999;
-    padding: 1rem;
 
-}
-
-#chat-lateral input{
-    background-color: #EAD2AC;
-    border: none;
-}
-
-#chat-lateral {
-    background-color: none;
-    color: #2EBFA5;
-    font-family: "Lexend";
-    font-weight: 700;
-    position: absolute;
-
-}
-
-.chat-en-curso{
-    height: 770px;
-    width: 350px;
-    background-color: #2f2e36be;
-    border-radius: 10px;
-    overflow-y: auto;
-}
-.enviar-chat{
-    margin-top: 20px;
-    width: 350px;
-    position: absolute;
-    top: 90%;
-}
-
-#cerrar-chat{
-    position: absolute;
-    right: 9%;
-    top: 1.5%;
-    border: none;
-    font-size: 1.5rem;
-    padding: 0;
-    padding: 0px 15px;
-    border-radius: 10px;
-    background-color: #2EBFA5;
-    font-weight: 700;
-    font-size: 25px;
-}
-
-#chat-lateral{
-    color: white;
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 400px;
-    height: 100%;
-    background: #1F1E24;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-    transition: right 0.4s ease-in-out;
-    z-index: 9999;
-    padding: 1rem;
-    overflow-y: auto;
-}
-
-#chat-lateral input{
-    background-color: #EAD2AC;
-    border: none;
-}
-
-#chat-lateral {
-    background-color: none;
-    color: #2EBFA5;
-    font-family: "Lexend";
-    font-weight: 700;
-    position: absolute;
-
-}
-
-.chat-en-curso{
-
-    height: 770px;
-    width: 350px;
-    background-color: #2f2e36be;
-    border-radius: 10px;
-}
-
-.enviar-chat{
-    margin-top: 20px;
-    width: 350px;
-    position: absolute;
-    top: 90%;
-}
-
-.interior-chat-en-curso{
-
-    height: 770px;
-    padding: 10px ;
-}
-
-.nombre-usuario-chat{
-    margin-left: 5px;
-}
-
-.mensaje-usuario{
-    margin-left: 5px;
-    margin-top: 1px;
-
-}
 
 
 
@@ -635,23 +520,6 @@ body {
     transform: scale(1.5);
     transform: rotate(315deg);
 }
-
-
-
-
-.boton-mostrar-chat button {
-    background-color: #2EBFA5;
-    border: none;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 10%;
-    right: 2%;
-}
-
 
 
 

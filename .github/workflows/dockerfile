@@ -1,17 +1,25 @@
-FROM php:8.2-apache
+FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
-    zip unzip git curl libzip-dev libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip mbstring exif pcntl
+    nginx \
+    git \
+    curl \
+    zip \
+    unzip \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql mbstring zip
 
-RUN a2enmod rewrite
+COPY . /var/www
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+WORKDIR /var/www
 
-COPY . /var/www/html
-WORKDIR /var/www/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-RUN composer install --no-dev --optimize-autoloader
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www
 
 EXPOSE 80
+
+CMD service nginx start && php-fpm
