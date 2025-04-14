@@ -122,7 +122,7 @@ onMounted(() => {
 <style scoped>
 #cerrar-chat {
   border: none;
-  background: none; /* Opcional, para quitar también el fondo */
+  background: none; 
 }
 .boton-mostrar-chat {
   position: absolute;
