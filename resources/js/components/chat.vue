@@ -44,7 +44,7 @@ style="fill:#40C057;">
           class="form-control"
           placeholder="Escribe tu mensaje"
         />
-        <button class="btn btn-secondary" type="button" @click="enviarMensaje">></button>
+        <button class="btn btn-secondary"  type="button" @click="enviarMensaje">></button>
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@ onMounted(() => {
 
 
 <style scoped>
-button {
+#cerrar-chat {
   border: none;
   background: none; /* Opcional, para quitar también el fondo */
 }
