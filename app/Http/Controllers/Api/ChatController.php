@@ -48,7 +48,6 @@ class ChatController extends Controller
     /**
      * Almacenar un nuevo mensaje.
      */
-   // En tu controlador ChatController.php
    public function almacenarMensaje(Request $request, $peliculaId, $hora, $eventoId)
    {
        $request->validate([
@@ -74,6 +73,8 @@ class ChatController extends Controller
            ], 500);
        }
    }
+  
+
     /**
      * Store a newly created resource in storage.
      */
@@ -110,7 +111,7 @@ class ChatController extends Controller
     
         return response()->json($mensajes);  // Esto enviará los mensajes con los datos de usuario
     }
-    
+
 
     /**
      * Display the specified resource.
