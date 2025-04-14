@@ -65,15 +65,16 @@ class PeliculaNuevaController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pelicula_nueva $pelicula_nueva, $hora)
+    public function show($peliculaId, $hora, $eventoId)
     {
-        $pelicula_nueva->load('actores');
-        return view('pelicula_nueva.index', ['pelicula' => $pelicula_nueva, 'hora' => $hora]);
+        $pelicula = Pelicula_nueva::findOrFail($peliculaId);
+        
+        return view('pelicula_nueva.index', [
+            'pelicula' => $pelicula,
+            'hora' => $hora,
+            'eventoId' => $eventoId // Asegúrate de pasar este valor
+        ]);
     }
-
 
     /**
      * Show the form for editing the specified resource.

@@ -4,19 +4,22 @@
         <div class="pelicula">
             <div class="degradado-info"></div>
 
-            <div class="contenedor-imagen" onclick="mostrarIframe()" style="cursor: pointer;">
-    <img id="imagenPelicula" src="{{ $pelicula->image }}" alt="" style="width: 120rem; height: 58rem; object-fit: cover;">
-</div>
+            <div class="contenedor-imagen"  style="cursor: pointer;">
+                <img id="imagenPelicula" src="{{ $pelicula->image }}" alt="" style="width: 120rem; height: 58rem; object-fit: cover;">
+            </div>
 
-<iframe id="iframePelicula" class="iframe-pelicula" src="{{ $pelicula->pelicula_src }}" frameborder="0"
-    scrolling="no" width="1905" height="940" allowfullscreen
-    style="display: none; margin-top: 0rem;"></iframe>
-
-           <div id="app">
-            <chat></chat>
-           </div>
-           
-        </div>
+        <iframe id="iframePelicula" class="iframe-pelicula" src="{{ $pelicula->pelicula_src }}" frameborder="0"
+            scrolling="no" width="1905" height="940" allowfullscreen
+            style="display: none; margin-top: 0rem;"></iframe>
+  
+                <div id="app">
+                <chat 
+                    :pelicula-id="{{ $pelicula->id }}"
+                    :hora="'{{ $hora }}'"
+                    :evento-id="{{ $eventoId }}"
+                    :usuario-id="{{ auth()->id() }}"
+                ></chat>
+            </div>  
 
         <div class="info-peli">
             <div class="titulo-pelicula">

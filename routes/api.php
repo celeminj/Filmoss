@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+
 Route::apiResource('rol', RolController::class);
 Route::apiResource('usuario', UsuarioController::class);
 Route::apiResource('pelicula_nueva', PeliculaNuevaController::class);
@@ -42,3 +43,12 @@ Route::apiResource('subscripcion', SubscripcionController::class);
 Route::apiResource('chat', ChatController::class);
 
 Route::get('categorias/{id}/peliculas', [CategoriaController::class, 'pelisPorCategoria']);
+
+Route::get('/chat/evento/{eventoId}', [ChatController::class, 'porEvento']);
+
+Route::get('/pelicula_nueva/{peliculaId}/{hora}/{eventoId}/chat', [ChatController::class, 'obtenerMensajes']);
+
+Route::post('/pelicula_nueva/{peliculaId}/{hora}/{eventoId}/chat', [ChatController::class, 'almacenarMensaje']);
+
+
+Route::get('/chat/{peliculaId}/{hora}', [ChatController::class, 'obtenerChatPorPeliculaYHora']);
