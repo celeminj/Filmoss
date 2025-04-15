@@ -1,146 +1,279 @@
 <template>
-    <div class="contenedor-home">
-    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
-    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
-    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
-    <div class="animated-cont" animate>FILMOFILMOFILMO</div>
-  <div class="presenta-text">
-    <h1 class="cartelera-inicio">PRESENTA</h1>
-  </div>
-  <hr class="barra-blanca">
-  <div class="scroll-container">
-    <!-- <img ref="scrollImage" src="/public/images/personas.png" alt="Imagen que sigue" class="scroll-image" />
-    <img ref="staticImage" src="/public/images/fondo.jpg" alt="" class="static-imagen"> -->
-    <div class="descripcionFilmo">
-      <div class="text-line" v-for="(item, index) in items" :key="index" :style="{ opacity: opacityValue(index) }">
-        <span v-html="item"></span>
+  <div class="contenedor-home">
+    <!-- Video de fondo -->
+    <div class="video-filmo-container">
+      <video autoplay muted loop class="video-filmo-bg">
+        <source src="/public/mp4/alpacino.mp4" type="video/mp4">
+      </video>
+      <div class="video-filmo-overlay"></div>
+    </div>
+
+    <!-- Texto FILMO con animación -->
+    <div class="filmo-marquee-container">
+      <div class="filmo-marquee">
+        <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
+        <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
+      </div>
+      <div class="filmo-marquee filmo-marquee-reverse">
+        <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
+        <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
       </div>
     </div>
-  </div>
-  <div class="presenta-text">
-    <h1 class="cartelera-inicio"><strong>CARTELERA</strong></h1>
-    <hr class="barra-blanca">
-    <div >
-      <a  class="btnInicio" href="cartelera"><strong>VER MÁS</strong></a>
+
+    <!-- Sección PRESENTA -->
+    <div class="presenta-text" style="margin-top: 30rem;">
+      <h1 class="cartelera-inicio">PRESENTA</h1>
+    </div>
+    <hr class="barra-blanca" />
+
+    <!-- Descripción -->
+    <div class="descripcion-container">
+      <div class="descripcionFilmo">
+        <div class="text-line">
+          <span class="filmo">Filmo</span> es una plataforma diseñada para los amantes del cine, donde podrás disfrutar de una extensa variedad de películas, series y dibujos de todos los géneros.
+        </div>
+        <div class="text-line">
+          Filmo te ofrece una experiencia única para explorar y descubrir nuevos contenidos.
+        </div>
+        <div class="text-line">
+          Facilita tu acceso a todo lo que el mundo del cine tiene para ofrecer.
+        </div>
+      </div>
     </div>
 
+    <!-- Galería de imágenes -->
+    <div class="image-scroll-gallery">
+      <div class="scroll-image" v-for="(image, index) in galleryImages" :key="index">
+        <img :src="image.src" :alt="image.alt" class="gallery-img" />
+      </div>
+    </div>
+
+    <!-- Imágenes con reveal scroll -->
+   
+    <!-- Sección CARTELERA -->
+    <div class="presenta-text">
+      <h1 class="cartelera-inicio"><strong>CARTELERA</strong></h1>
+      <hr class="barra-blanca" />
+      <div>
+        <a class="btnInicio" href="cartelera"><strong>VER MÁS</strong></a>
+      </div>
+    </div>
+
+    <!-- Imagen final -->
+    <img src="https://i.postimg.cc/1RgXJd7G/abeibqt571p91-1.png" alt="" class="imagen-inicio" />
   </div>
-  <img src="https://i.postimg.cc/1RgXJd7G/abeibqt571p91-1.png" alt="" class="imagen-inicio">
-</div>
 </template>
 
-<script>
-import Lenis from 'lenis';
-import gsap from 'gsap';
-import SplitType from 'split-type';
-export default {
-  data() {
-    return {
-      items: [
-        "<span class='filmo'>Filmo</span> es una plataforma diseñada para los amantes del cine, donde podrás ",
-        "disfrutar de una extensa variedad de películas, series y dibujos de todos los géneros.",
-        "Filmo te ofrece una experiencia única para explorar y descubrir nuevos contenidos,",
-        "facilitando tu acceso a todo lo que el mundo del cine tiene para ofrecer."
-      ],
-      stopScrollAt: 1000,
-    };
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const galleryImages = [
+  {
+    src: "https://www.ecartelera.com/carteles/fondos/5900/5964-n2.jpg",
+    alt: "Película de acción"
   },
-  methods: {
-    opacityValue(index) {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const itemPosition = index * 100;
-      const distance = Math.max(0, itemPosition - scrollPosition + windowHeight);
-      return Math.min(1, distance / windowHeight);
-    },
-    handleScroll() {
-      const scrollY = window.scrollY;
-      const img = this.$refs.scrollImage;
-      const staticImg = this.$refs.staticImage;
-      const staticPosition = staticImg.offsetTop;
-
-      if (scrollY < staticPosition) {
-        img.style.transform = `translateY(${scrollY}px)`;
-      } else {
-        img.style.position = 'absolute';
-        img.style.top = `${staticPosition}px`;
-      }
-    },
-    textAnimation(){
-        gsap.fromTo(
-            ".text-line",
-            { opacity: 0, y: 50, transform: "translate3d(0, 50px, 0)" },
-            {
-            duration: 1,
-            opacity: 1,
-            y: 0,
-            transform: "translate3d(0, 0, 0)",
-            ease: "power4.out",
-            stagger: 0.6, // Retraso de 0.05s entre cada frase
-            delay: 0.01,
-            }
-        );
-    }
+  {
+    src: "https://ep01.epimg.net/verne/imagenes/2019/01/13/articulo/1547386341_975143_1547458878_noticia_normal.jpg",
+    alt: "Película de acción"
   },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-
-    new SplitType('[animate]', {
-    types: 'lines, words, chars',
-    tagName: 'span'
-  });
-
-
-gsap.to(this.$refs.animatedBox, {
-  x: 3,  // Mueve a la derecha 300px
-  y: 1,  // Mueve hacia abajo 100px
-  duration: 2,
-  ease: 'power2.out'
-});
-
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
-
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
-
-    this.textAnimation();
-
+  {
+    src: "  https://pics.filmaffinity.com/Apocalypse_Now-297470015-large.jpg",
+    alt: "Película de acción"
   },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-};
+]
+
+
+
+onMounted(() => {
+  // Marquee animación FILMO
+  gsap.to(".filmo-marquee span", {
+    x: "-50%",
+    duration: 30,
+    repeat: -1,
+    ease: "none"
+  })
+  gsap.to(".filmo-marquee-reverse span", {
+    x: "50%",
+    duration: 30,
+    repeat: -1,
+    ease: "none"
+  })
+
+  // Reveal animaciones
+  nextTick(() => {
+    revealElements.value.forEach((container) => {
+      const image = container.querySelector('img')
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          toggleActions: 'restart none none reset'
+        }
+      })
+
+      tl.set(container, { autoAlpha: 1 })
+      tl.from(container, {
+        xPercent: -100,
+        duration: 1.5,
+        ease: 'power2.out'
+      })
+      tl.from(
+        image,
+        {
+          xPercent: 100,
+          scale: 1.3,
+          duration: 1.5,
+          delay: -1.5,
+          ease: 'power2.out'
+        },
+        0
+      )
+    })
+  })
+
+  // Scroll animación galería
+  gsap.utils.toArray(".scroll-image").forEach((image, i) => {
+    gsap.from(image, {
+      scrollTrigger: {
+        trigger: image,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      delay: i * 0.2,
+      ease: "power2.out"
+    })
+  })
+})
+
+onBeforeUnmount(() => {
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+  gsap.killTweensOf(".filmo-marquee span")
+  gsap.killTweensOf(".filmo-marquee-reverse span")
+})
 </script>
 
+
 <style scoped>
-.contenedor-home{
-    margin-top: 8rem;
+.contenedor-home {
+  margin-top: 8rem;
+  position: relative;
 }
-.animated-cont{
-  color: #ead2ac4c;
-  font-size: 7rem;
-  text-align: center;
-  font-weight: 800;
-  transition-duration: 1s;
-  }
-  .animated-cont:hover{
-  color: #2EBFA5;;
-  }
 
-.text-filmo-container{
+.video-filmo-container {
+  margin-top: -8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58rem;
+  z-index: 0;
+  overflow: hidden;
+}
 
+.video-filmo-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-filmo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+}
+
+.filmo-marquee-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.filmo-marquee, .filmo-marquee-reverse {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+  width: 200%;
+  color: #ead2ac4c;
+  font-size: 13rem;
+  font-weight: 800;
+  mix-blend-mode: lighten;
+  white-space: nowrap;
+}
+
+.filmo-marquee:hover, .filmo-marquee-reverse:hover {
+  color: #2EBFA5;
+}
+
+.filmo-marquee span, .filmo-marquee-reverse span {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+/* Estilos para el texto descriptivo */
+.descripcion-container {
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 800px;
+}
+
+.descripcionFilmo {
+  color: #EAD2AC;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.text-line {
+  margin-bottom: 1.5rem;
+}
+
+.filmo {
+  font-weight: bold;
+  color: #2EBFA5;
+}
+
+/* Galería de imágenes */
+.image-scroll-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 1000px;
+}
+
+.scroll-image {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.03);
+}
+
+/* Resto de tus estilos originales */
+.presenta-text {
+  position: relative;
+  z-index: 2;
 }
 
 .barra-blanca {
@@ -151,75 +284,71 @@ gsap.to(this.$refs.animatedBox, {
   border: none;
   margin-bottom: 80px;
 }
-.cartelera-inicio{
-    margin-top: 9rem;
+
+.cartelera-inicio {
   text-align: center;
-    color: #EAD2AC;
-    font-size: 100px;
-    margin-bottom: 80px;
-}
-.btnInicio {
-  padding: 8px;
-    color: #000;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 7px;
-    width: 9rem;
-    height: 2.7rem;
-    text-align: center;
-    background-color: #EAD2AC;
-    font-family: "Lexend", sans-serif;
-    display: block;
-    margin: 0 auto;
-    text-decoration: none;
-    cursor: pointer;
+  color: #EAD2AC;
+  font-size: 100px;
+  margin-bottom: 80px;
 }
 
-.imagen-inicio{
+.btnInicio {
+  padding: 8px;
+  color: #000;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 7px;
+  width: 9rem;
+  height: 2.7rem;
+  text-align: center;
+  background-color: #EAD2AC;
+  font-family: "Lexend", sans-serif;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.imagen-inicio {
   margin-top: 80px;
   width: 100%;
 }
-.text-filmo-container {
-  height: 100vh;
-}
-.scroll-container {
-  height: 250vh; /* Ajustado para más espacio de scroll */
-  position: relative;
+
+
+
+.container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  color: white;
-}
-.scroll-image {
-  position: absolute;
-  top: 100px;
-  left: 25%;
-  transform: translateX(-50%);
-  width: 51rem;
-  transition: transform 0.2s ease;
-}
-.static-imagen {
-  position: absolute;
-  top: 1000px; /* Ajustado para coincidir con la parada del scroll */
-  left: 25%;
-  z-index: -1;
-  transform: translateX(-50%);
-  width: 51rem;
-}
-.descripcionFilmo {
-  margin-top: 100px;
+  height: 100vh;
   width: 100%;
-  text-align: right;
+  position: relative;
 }
-.descripcionFilmo div {
-  font-family: "Poppins", sans-serif;
-  color: #EAD2AC;
-  font-size: 2rem;
-  padding: 10px;
-  margin: 0 70 auto;
-  transition: opacity 0.5s ease;
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform-origin: left;
 }
-.filmo {
-  font-weight: bold;
+
+.reveal {
+  visibility: hidden;
+  position: relative;
+  width: 80%;
+  height: 80%;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.credit {
+  font-family: 'Termina', sans-serif;
+  position: absolute;
+  bottom: 10px;
+}
+.credit a {
+  color: white;
+  text-decoration: none;
 }
 </style>
