@@ -6,4 +6,5 @@
     </div>
     <div id="app">
         <estadisticas></estadisticas>
+        <estadisticas-pelis></estadisticas-pelis>
     </div>

@@ -1,6 +1,5 @@
 <template>
   <div class="contenedor-home">
-    <!-- Video de fondo -->
     <div class="video-filmo-container">
       <video autoplay muted loop class="video-filmo-bg">
         <source src="/public/mp4/alpacino.mp4" type="video/mp4">
@@ -8,7 +7,6 @@
       <div class="video-filmo-overlay"></div>
     </div>
 
-    <!-- Texto FILMO con animación -->
     <div class="filmo-marquee-container">
       <div class="filmo-marquee">
         <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
@@ -20,13 +18,11 @@
       </div>
     </div>
 
-    <!-- Sección PRESENTA -->
     <div class="presenta-text" style="margin-top: 30rem;">
       <h1 class="cartelera-inicio">PRESENTA</h1>
     </div>
     <hr class="barra-blanca" />
 
-    <!-- Descripción -->
     <div class="descripcion-container">
       <div class="descripcionFilmo">
         <div class="text-line">
@@ -40,17 +36,16 @@
         </div>
       </div>
     </div>
-
-    <!-- Galería de imágenes -->
+    <div id="app">
+      <EstadisticasHome></EstadisticasHome>
+    </div>
     <div class="image-scroll-gallery">
       <div class="scroll-image" v-for="(image, index) in galleryImages" :key="index">
         <img :src="image.src" :alt="image.alt" class="gallery-img" />
       </div>
     </div>
 
-    <!-- Imágenes con reveal scroll -->
-   
-    <!-- Sección CARTELERA -->
+    
     <div class="presenta-text">
       <h1 class="cartelera-inicio"><strong>CARTELERA</strong></h1>
       <hr class="barra-blanca" />
@@ -59,7 +54,6 @@
       </div>
     </div>
 
-    <!-- Imagen final -->
     <img src="https://i.postimg.cc/1RgXJd7G/abeibqt571p91-1.png" alt="" class="imagen-inicio" />
   </div>
 </template>
@@ -68,6 +62,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import EstadisticasHome from './estadisticasHome.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -89,7 +84,6 @@ const galleryImages = [
 
 
 onMounted(() => {
-  // Marquee animación FILMO
   gsap.to(".filmo-marquee span", {
     x: "-50%",
     duration: 30,
@@ -103,7 +97,6 @@ onMounted(() => {
     ease: "none"
   })
 
-  // Reveal animaciones
   nextTick(() => {
     revealElements.value.forEach((container) => {
       const image = container.querySelector('img')
@@ -135,7 +128,6 @@ onMounted(() => {
     })
   })
 
-  // Scroll animación galería
   gsap.utils.toArray(".scroll-image").forEach((image, i) => {
     gsap.from(image, {
       scrollTrigger: {
@@ -220,7 +212,6 @@ onBeforeUnmount(() => {
   text-align: center;
 }
 
-/* Estilos para el texto descriptivo */
 .descripcion-container {
   padding: 2rem;
   margin: 3rem auto;
@@ -243,7 +234,6 @@ onBeforeUnmount(() => {
   color: #2EBFA5;
 }
 
-/* Galería de imágenes */
 .image-scroll-gallery {
   display: flex;
   flex-direction: column;
@@ -270,7 +260,6 @@ onBeforeUnmount(() => {
   transform: scale(1.03);
 }
 
-/* Resto de tus estilos originales */
 .presenta-text {
   position: relative;
   z-index: 2;

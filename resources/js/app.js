@@ -30,6 +30,7 @@ import categoriaNovedades from './components/categoria-novedades.vue';
 import catalogoDestacanseguntusgustos from './components/catalogo-destacanseguntusgustos.vue';
 import metodoPago from './components/metodoPago.vue';
 import chat from './components/chat.vue';
+import estadisticasPelis from './components/estadisticasPelis.vue';
 const app = createApp({});
 
 app.component('portada-categoria',portadaCategoria);
@@ -50,7 +51,8 @@ app.component('categoria-crud', categoriaCURD)
 app.component('categorias', categoria);
 app.component('animation-catalogo', animationCatalogo);
 app.component('peliculas-recientemente', peliculasRecientemente);
-app.component('estadisticas', Estadisticas)
+app.component('estadisticas', Estadisticas);
+app.component('estadisticas-pelis', estadisticasPelis);
 app.component('escanearqr', EscanearQR);
 app.component('generarqr', GenerarQR);
 app.component('categoria-yahasvisto', categoriaYahasvisto);
