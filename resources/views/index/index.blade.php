@@ -79,15 +79,12 @@
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ Auth::user()->nombre }}
                                     </a>
-                                    <ul class="dropdown-menu" id="logout"> 
-                                        <a 
-                                            href="{{ route('logout') }}"><i 
-                                             aria-hidden=true></i>Ver Perfil</a>
-                                             <a 
-                                            href="{{ route('logout') }}"><i 
-                                             aria-hidden=true></i>Logout</a>
+                                    <ul class="dropdown-menu " id="logout">
+                                        <li><a href="{{ route('perfil', ['id' => Auth::id()]) }}"><i
+                                                    aria-hidden=true></i>Ver Perfil</a></li>
+                                        <li><a href="{{ route('logout') }}"><i aria-hidden=true></i>Logout</a></li>
                                     </ul>
-                                   
+
                                 </div>
                             </li>
                         @else
@@ -100,7 +97,7 @@
             </div>
         </nav>
     </div>
-        @yield('contenido')
+    @yield('contenido')
     @section('footer')
         <div class="container text-primary">
             <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 ">

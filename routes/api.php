@@ -28,7 +28,9 @@ use App\Http\Controllers\Api\EventoPeliculaController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::middleware('auth:sanctum')->get('/perfil', function () {
+    return auth()->user();
+});
 
 
 Route::apiResource('rol', RolController::class);

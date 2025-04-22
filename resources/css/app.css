@@ -40,7 +40,6 @@ body {
 }
 
 #logout{
-    
     background-color: #222;
     color: #000000;
     border-radius: 10px;
@@ -241,17 +240,12 @@ body {
 
 @media (max-width: 400px){
 
-
     .navbar .container-fluid {
        width: 100%;
     }
-
     .navbar img{
-        height: 45px;
         width: 100px;
-
     }
-
     .paginas-nav{
         display: none;
         flex-direction: column;
@@ -664,7 +658,7 @@ body {
         font-size: 15px;
     }
 
-   
+
 
     .heart {
 
@@ -857,7 +851,7 @@ body {
     }
 
 
-   
+
 
     .detalles{
         margin-top: -200;
@@ -1011,7 +1005,7 @@ body {
         margin-bottom: 20px;
     }
 
-   
+
     .porque-has-visto-interior {
         display: flex;
     }
