@@ -1,6 +1,13 @@
 <template>
     <div class="perfil" v-if="usuario">
-        <h1>Perfil: {{ usuario.nombre }}</h1>
+        <img src="https://i.postimg.cc/ZKjxw3XV/al-pacino-dans-une-scene-du-film-scarface-1.png" alt=""
+            class="imagen-perfil">
+        <div class="linea-vertical"></div>
+        <div class="contenido-texto">
+            <h1>Perfil: {{ usuario.nombre }}</h1>
+            <p>Perfil de filmo para ver las películas vistas y tremendas películas que hay para ver, madre mía no tienes
+                tiempo para tanta película.</p>
+        </div>
     </div>
     <div class="peliculas-vistas">
         <h1>Peliculas vistas</h1>
@@ -79,15 +86,47 @@ export default {
 
 
 <style scoped>
+.linea-vertical {
+    width: 2px;
+    height: 200px;
+    margin-left: 20px;
+    margin-right: 40px;
+    background-color: white;
+}
+
 .perfil {
     margin-top: 200px;
-    margin-left: 300px;
+    margin-left: 200px;
     padding: 20px;
     border-radius: 5px;
     color: #EAD2AC;
     font-family: "Poppins";
-
+    display: flex;
+    align-items: flex-start;
 }
+
+.imagen-perfil {
+    width: 200px;
+    height: 200px;
+    margin-left: 50px;
+    margin-right: 60px;
+}
+
+.contenido-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-texto h1 {
+    margin-top: 50px;
+    font-size: 28px;
+}
+
+.contenido-texto p {
+    margin-top: 10px;
+    color: #ffffff;
+}
+
 
 .peliculas-vistas {
     margin-top: 150px;
