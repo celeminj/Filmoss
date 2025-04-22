@@ -7,6 +7,7 @@ use App\Clases\Utilitat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CineResource;
+use Illuminate\Database\QueryException;
 
 class CineController extends Controller
 {

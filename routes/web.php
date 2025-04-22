@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Pelicula;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\UsuarioController;
@@ -119,10 +120,20 @@ Route::get('/cines', function () {
 
 Route::get('/ticket/{id}/{hora}', function ($id, $hora) {
     $pelicula = App\Models\Pelicula_nueva::findOrFail($id);
-    return view('ticket.ticket', ['pelicula' => $pelicula, 'hora' => $hora]);
+
+    $evento = App\Models\Evento_pelicula::whereHas('evento_pelicula_nueva', function ($q) use ($id) {
+        $q->where('pelicula_nueva_id', $id);
+    })->first();
+
+    return view('ticket.ticket', [
+        'pelicula' => $pelicula,
+        'hora' => $hora,
+        'evento' => $evento
+    ]);
 })->name('ticket');
 
-Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');
+
+Route::get('/pelicula_nueva/{pelicula_nueva}/{hora}/{evento_id}', [PeliculaNuevaController::class, 'show'])->name('pelicula.show');
 
 
 Route::put('/evento_pelicula/{evento_pelicula}', [EventoPeliculaController::class, 'update'])->name('evento_pelicula.update');
@@ -134,8 +145,6 @@ Route::get('/categoria/{id}', function ($id) {
     $categoria = Categoria::with('categoria_pelicula')->findOrFail($id);
     return view('categoria.categoria', compact('categoria'));
 })->name('web.categoria');
-
-
 
 
 Route::get('/pago', function(){

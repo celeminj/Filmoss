@@ -78,6 +78,7 @@ text-decoration: none;
 
 .flecha-siguiente-peli-foto{
     width: 25px;
+    
     height: 25px;
     background: linear-gradient(to right, #00ffdd, rgba(255, 255, 255, 0.2));
     border-radius: 50px;
@@ -90,6 +91,7 @@ text-decoration: none;
 .flecha-anterior-peli-foto{
     width: 25px;
     height: 25px;
+    
     background: linear-gradient(to left, #00ffdd, rgba(255, 255, 255, 0.2));
     border-radius: 50px;
     position: absolute;
@@ -109,6 +111,7 @@ text-decoration: none;
 .interior-foto {
   height: 700px;
   width: 100%;
+  border-radius: 15px;
   padding: 100px 50px;
   display: flex;
   flex-direction: column;
@@ -119,10 +122,21 @@ text-decoration: none;
   background-position: center;
   box-sizing: border-box;
 }
-
+.interior-foto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.455);
+  border-radius: 15px;
+}
 .titulo-peli-catalogo{
     margin-top: 200px;
     margin-bottom: 50px;
+    z-index: 1;
 }
 
 .titulo-peli-catalogo h1{
@@ -130,12 +144,14 @@ text-decoration: none;
     font-weight: 800;
     color:#2EBFA5;
     margin-left: 77px;
+    z-index: 1;
 }
 
 .descripcion-peli-catalogo{
     width: 500px;
     color:#2EBFA5;
     margin-left: 80px;
+    z-index: 1;
 }
 
 .peliculas-foto-catalogo{
@@ -143,7 +159,7 @@ text-decoration: none;
     width: 550px;
     margin-left: auto;
     display: flex;
-
+    z-index: 1;
 }
 
 .peli-foto-catalogo{

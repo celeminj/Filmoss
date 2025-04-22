@@ -12,8 +12,7 @@
             <seguir-viendo></seguir-viendo>
             <div class="peliculas-destacadas">
                 <h4>Destacan según tus gustos...</h4>
-                <div class="peli-destacada-prin">
-                </div>
+                <catalogo-destacanseguntusgustos></catalogo-destacanseguntusgustos>
             </div>
             <div class="anadidas-recientemente">
                 <h4>Añadidas para tí</h4>
