@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Usuario;
 use App\Models\Pelicula;
+
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\Api\CineController;
@@ -154,3 +155,10 @@ Route::get('/pago', function(){
 Route::get('/estadisticas', function () {
     return view('gestion.estadisticas');
 })->name('estadisticas');
+
+
+Route::get('/perfil/{id}', function ($id) {
+    $usuario = Usuario::find($id);
+    return view('perfil.index', compact('usuario'));
+
+})->name('perfil');

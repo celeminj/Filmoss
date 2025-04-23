@@ -31,6 +31,8 @@ import catalogoDestacanseguntusgustos from './components/catalogo-destacansegunt
 import metodoPago from './components/metodoPago.vue';
 import chat from './components/chat.vue';
 import estadisticasPelis from './components/estadisticasPelis.vue';
+import perfil from './components/perfil.vue';
+
 const app = createApp({});
 
 app.component('portada-categoria',portadaCategoria);
@@ -61,6 +63,7 @@ app.component('categoria-novedades', categoriaNovedades);
 app.component('catalogo-destacanseguntusgustos', catalogoDestacanseguntusgustos);
 app.component('metodo-pago', metodoPago);
 app.component('chat', chat);
+app.component('perfil', perfil);
 app.mount('#app');
 
 

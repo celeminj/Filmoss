@@ -135,9 +135,19 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    // public function show(Usuario $usuario)
+    // {
+    //     $usuario = Usuario::with('usuarios')->find($usuario->id);
+    //     return new UsuarioResource($usuario);
+    // }
+    public function show($id)
     {
-        $usuario = Usuario::with('usuarios')->find($usuario->id);
+        $usuario = Usuario::find($id);
+
+        if (!$usuario) {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
+
         return new UsuarioResource($usuario);
     }
 
