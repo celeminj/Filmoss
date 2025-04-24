@@ -9,7 +9,7 @@
 
         <div class="filmo-marquee-container">
             <div class="filmo-marquee">
-                <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
+                <span>FILMOFILMOFILMOFILMOFILMO</span>
                 <span>FILMOFILMOFILMOFILMOFILMOFILMO</span>
             </div>
             <div class="filmo-marquee filmo-marquee-reverse">
