@@ -1,75 +1,73 @@
 <template>
     <div class="peliculas-destacadas">
-      <h4>Películas destacadas</h4>
-      <div class="pelis-destacadas">
-        <a class="url-peli"  v-for="(pelicula, index) in ultimasPeliculas"
-        :key="index" :href="`/Filmoss/public/pelicula/${pelicula.id}`">
+        <h4>Películas destacadas</h4>
+        <div class="pelis-destacadas">
+            <a class="url-peli" v-for="(pelicula, index) in ultimasPeliculas" :key="index"
+                :href="`/public/pelicula/${pelicula.id}`">
 
-          <div
-            class="destacada1"
-            :style="{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${pelicula.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }"
-          >
-            <p>{{ pelicula.titulo }}</p>
-          </div>
-        </a>
-      </div>
+                <div class="destacada1" :style="{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${pelicula.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                }">
+                    <p>{{ pelicula.titulo }}</p>
+                </div>
+            </a>
+        </div>
     </div>
-  </template>
-  <script>
-  import * as bootstrap from 'bootstrap';
-  import axios from 'axios';
-  export default {
+</template>
+<script>
+import * as bootstrap from 'bootstrap';
+import axios from 'axios';
+export default {
     data() {
-      return {
-        peliculas: [],
-      };
+        return {
+            peliculas: [],
+        };
     },
     computed: {
-    ultimasPeliculas() {
-      return this.peliculas.slice(-5);
-    }
-  },
-    created() {
-      axios.get('pelicula')
-        .then(response => {
-          this.peliculas = response.data;
-        })
-        .catch(error => {
-          console.log(error);
-        });
+        ultimasPeliculas() {
+            return this.peliculas.slice(-5);
+        }
     },
-  };
-  </script>
+    created() {
+        axios.get('pelicula')
+            .then(response => {
+                this.peliculas = response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
+};
+</script>
 
-  <style scoped>
-.url-peli{
-    text-decoration : none;
+<style scoped>
+.url-peli {
+    text-decoration: none;
 }
-  .peliculas-destacadas h4 {
+
+.peliculas-destacadas h4 {
     text-align: left;
     margin-bottom: 20px;
 
-  }
+}
 
-  .pelis-destacadas {
-  display: flex;
+.pelis-destacadas {
+    display: flex;
 
-  justify-content: flex-start;
-  justify-content: center;
-  gap: 20px;
+    justify-content: flex-start;
+    justify-content: center;
+    gap: 20px;
 
 }
 
-.pelis-destacadas p{
+.pelis-destacadas p {
     text-align: center;
 }
 
-  .destacada1 {
+.destacada1 {
     width: 300px;
     height: 200px;
     border-radius: 10px;
@@ -79,16 +77,18 @@
     display: flex;
     cursor: pointer;
     transition: all .5s;
-  }
-  .destacada1:hover{
+}
+
+.destacada1:hover {
     transform: scale(1.1);
 
-  }
-  .destacada1 p{
+}
+
+.destacada1 p {
     font-family: "Poppins";
     font-weight: 700;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 150px;
 }
-  </style>
+</style>
