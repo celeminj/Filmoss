@@ -20,13 +20,13 @@ jobs:
         run: npm run build
 
       - name: List build output
-        run: ls -la dist
+        run: ls -la public/build
 
       - name: Archive production artifact
         uses: actions/upload-artifact@main
         with:
-          name: dist
-          path: dist
+          name: public-build
+          path: public/build
 
   deploy:
     name: Deploy
@@ -39,8 +39,8 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@main
         with:
-          name: dist
-          path: dist
+          name: public-build
+          path: public/build
 
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@master
@@ -48,5 +48,5 @@ jobs:
           server: ftpupload.net
           username: b12_37391677
           password: ${{ secrets.ftp_password }}
-          local-dir: ./
+          local-dir: public/build
           server-dir: /filmo.celemin.me/htdocs/public/build/
