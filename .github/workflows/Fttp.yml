@@ -11,22 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build dependencies
+      - name: Build project
         run: npm run build
 
       - name: List build output
-        run: ls -la dist
+        run: ls -la public/build
 
-      - name: Archive production artifact
-        uses: actions/upload-artifact@main
+      - name: Archive build directory
+        uses: actions/upload-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: build
+          path: public/build
 
   deploy:
     name: Deploy
@@ -34,19 +34,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
 
-      - name: Download artifact
-        uses: actions/download-artifact@main
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
 
-      - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Action@master
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftpupload.net
           username: b12_37391677
           password: ${{ secrets.ftp_password }}
-          local-dir: ./
-          server-dir: /filmo.celemin.me/htdocs/
+          local-dir: build/
+          server-dir: /filmo.celemin.me/htdocs/public/build/
+          dangerous-clean-slate: true
