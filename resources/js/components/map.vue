@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style scoped>
-.titulo-cines{
+.titulo-cines {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,6 +85,7 @@ export default {
     margin-bottom: 2rem;
     margin-top: 9rem;
 }
+
 #cines {
     margin-top: 5rem;
     display: flex;
@@ -118,7 +119,7 @@ export default {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .card-cines:hover {
@@ -140,5 +141,5 @@ export default {
     position: relative;
     z-index: 0;
     margin-right: 30px;
-    }
+}
 </style>
