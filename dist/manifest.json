@@ -50,7 +50,7 @@
     "src": "resources/css/app.scss"
   },
   "resources/js/app.css": {
-    "file": "assets/app-a9ea2587.css",
+    "file": "assets/app-441d0041.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -67,9 +67,9 @@
       "assets/terror-ej-b26f450a.jpg"
     ],
     "css": [
-      "assets/app-a9ea2587.css"
+      "assets/app-441d0041.css"
     ],
-    "file": "assets/app-63c5e1c2.js",
+    "file": "assets/app-4a1371bb.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
