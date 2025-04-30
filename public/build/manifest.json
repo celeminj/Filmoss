@@ -40,7 +40,7 @@
     "src": "public/mp4/pulp.mp4"
   },
   "resources/css/app.css": {
-    "file": "assets/app-66275072.css",
+    "file": "assets/app-f844a095.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -50,7 +50,7 @@
     "src": "resources/css/app.scss"
   },
   "resources/js/app.css": {
-    "file": "assets/app-d6bee109.css",
+    "file": "assets/app-8ddeb07e.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -67,9 +67,9 @@
       "assets/terror-ej-b26f450a.jpg"
     ],
     "css": [
-      "assets/app-d6bee109.css"
+      "assets/app-8ddeb07e.css"
     ],
-    "file": "assets/app-2ee66333.js",
+    "file": "assets/app-ee30d091.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
