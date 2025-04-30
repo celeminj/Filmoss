@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./dockerfile/dockerfile
           push: true
           tags: yourdockerhubusername/your-laravel-app:latest
