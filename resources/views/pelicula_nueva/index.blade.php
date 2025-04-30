@@ -48,9 +48,6 @@
                         <a href="{{ $pelicula->pelicula_src }}">
                         </a>
                     </div>
-                    <div class="otros-botones">
-                    </div>
-
                 </div>
             </div>
         </div>
