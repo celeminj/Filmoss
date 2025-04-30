@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./dockerfile/dockerfile
           push: true
-          tags: jordicelemin/Filmoss:latest
+          tags: jordicelemin/filmoss:latest
