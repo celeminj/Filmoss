@@ -42,11 +42,15 @@
 
                 <div class="botones-pelicula">
                     <div class="ver-ya">
-                        <button id="verBtn">VER YA
-                            <div class="play-button"></div>
-                        </button>
+                        <button>VER YA</button>
                         <a href="{{ $pelicula->pelicula_src }}">
+                            <div class="play-button"></div>
                         </a>
+                    </div>
+                    <div class="otros-botones">
+                        <div class="trailer">
+                            <button>Trailer</button>
+                        </div>
                     </div>
                 </div>
             </div>
