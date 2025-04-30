@@ -463,12 +463,12 @@ body {
     height: 0;
     background: transparent;
     position: absolute;
-    left: 22%;
-    top: 90%;
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-    width: 40px; /* Ajusta el tamaño */
-    height: 40px;
-    background-color: #2EBFA5; /* Color del triángulo */
+    width: 35px;
+    right: 15px;
+    bottom: 11px;
+    height: 35px;
+    background-color: #2EBFA5;
 }
 
 .trailer{
