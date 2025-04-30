@@ -457,19 +457,20 @@ body {
 .ver-ya button:hover{
     transform: scale(1.05);
 }
+.contenedor {
+    position: relative;
+}
 
 .play-button {
-    width: 0;
-    height: 0;
-    background: transparent;
     position: absolute;
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-    width: 35px;
     right: 15px;
     bottom: 11px;
+    width: 35px;
     height: 35px;
     background-color: #2EBFA5;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
 }
+
 
 .trailer{
     position: relative;
