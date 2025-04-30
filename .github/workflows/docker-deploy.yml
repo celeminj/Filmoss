@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./dockerfile/dockerfile
           push: true
-          tags: yourdockerhubusername/your-laravel-app:latest
+          tags: jordicelemin/Filmoss:latest
