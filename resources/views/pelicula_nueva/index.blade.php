@@ -20,7 +20,6 @@
                 <chat :pelicula-id="{{ $pelicula->id }}" :hora="'{{ $hora }}'" :evento-id="{{ $eventoId }}"
                     :usuario-id="{{ auth()->id() }}"></chat>
 
-
                 <div class="info-peli">
                     <div class="titulo-pelicula">
                         <h1>{{ $pelicula->titulo }}</h1>
@@ -40,56 +39,45 @@
                         <p>{{ $pelicula->descripcion }}</p>
                     </div>
 
-                    <div class="botones-pelicula">
-                        <div class="ver-ya">
-                            <button>VER YA</button>
-                            <a href="{{ $pelicula->pelicula_src }}">
-                                <div class="play-button"></div>
-                            </a>
-                        </div>
-                        <div class="otros-botones">
-                            <div class="trailer">
-                                <button>Trailer</button>
-                            </div>
-                        </div>
-                    </div>
                     <boton-wait :pelicula-id="{{ $pelicula->id }}" :hora="'{{ $hora }}'"
                         :pelicula-src="'{{ $pelicula->pelicula_src }}'"></boton-wait>
                 </div>
+
             </div>
         </div>
+    </div>
 
-        <div class="detalles">
-            <div class="titulo-detalles">
-                <h1>DETALLES</h1>
-            </div>
-            <div class="texto-detalles">
-                <h2>{{ $pelicula->titulo }}</h2>
-                <p>{{ $pelicula->descripcion }}</p>
-                <h4>Género</h4>
-                <p>Comedia, acción, animación</p>
-                <h4>Fecha de estreno</h4>
-                <p>{{ $pelicula->fecha_estreno }}</p>
-                <h4>{{ $pelicula->calificacion }}/10</h4>
-                <p>Edad: + {{ $pelicula->restriccion_edad }}</p>
-            </div>
+    <div class="detalles">
+        <div class="titulo-detalles">
+            <h1>DETALLES</h1>
         </div>
+        <div class="texto-detalles">
+            <h2>{{ $pelicula->titulo }}</h2>
+            <p>{{ $pelicula->descripcion }}</p>
+            <h4>Género</h4>
+            <p>Comedia, acción, animación</p>
+            <h4>Fecha de estreno</h4>
+            <p>{{ $pelicula->fecha_estreno }}</p>
+            <h4>{{ $pelicula->calificacion }}/10</h4>
+            <p>Edad: + {{ $pelicula->restriccion_edad }}</p>
+        </div>
+    </div>
 
-        <div class="reparto">
-            <div class="titulo-reparto">
-                <h1>REPARTO</h1>
-            </div>
-            <div class="actores">
-                @foreach ($pelicula->actores as $actor)
-                    <div class="actor"
-                        style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
-                        <div class="imagen">
-                            <div class="nombre-actor">
-                                <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
-                            </div>
+    <div class="reparto">
+        <div class="titulo-reparto">
+            <h1>REPARTO</h1>
+        </div>
+        <div class="actores">
+            @foreach ($pelicula->actores as $actor)
+                <div class="actor"
+                    style="background-image: url('{{ $actor->imagen }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+                    <div class="imagen">
+                        <div class="nombre-actor">
+                            <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
-    @endsection
+    </div>
+@endsection
