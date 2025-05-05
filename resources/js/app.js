@@ -32,6 +32,7 @@ import metodoPago from './components/metodoPago.vue';
 import chat from './components/chat.vue';
 import estadisticasPelis from './components/estadisticasPelis.vue';
 import perfil from './components/perfil.vue';
+import horapeli from './components/horapeli.vue';
 
 const app = createApp({});
 
@@ -64,6 +65,7 @@ app.component('catalogo-destacanseguntusgustos', catalogoDestacanseguntusgustos)
 app.component('metodo-pago', metodoPago);
 app.component('chat', chat);
 app.component('perfil', perfil);
+app.component('boton-wait', horapeli);
 app.mount('#app');
 
 
