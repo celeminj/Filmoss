@@ -1,0 +1,76 @@
+{
+  "public/images/Google_Pay_Logo.png": {
+    "file": "assets/Google_Pay_Logo-ef36f158.png",
+    "src": "public/images/Google_Pay_Logo.png"
+  },
+  "public/images/Mastercard-logo.png": {
+    "file": "assets/Mastercard-logo-017bde04.png",
+    "src": "public/images/Mastercard-logo.png"
+  },
+  "public/images/Paypal_logo.png": {
+    "file": "assets/Paypal_logo-256d711a.png",
+    "src": "public/images/Paypal_logo.png"
+  },
+  "public/images/Visa_Logo.png": {
+    "file": "assets/Visa_Logo-f031699e.png",
+    "src": "public/images/Visa_Logo.png"
+  },
+  "public/images/filmo-logo.png": {
+    "file": "assets/filmo-logo-759b2c08.png",
+    "src": "public/images/filmo-logo.png"
+  },
+  "public/images/fondo.jpg": {
+    "file": "assets/fondo-e508c089.jpg",
+    "src": "public/images/fondo.jpg"
+  },
+  "public/images/log.png": {
+    "file": "assets/log-4c4ed2a2.png",
+    "src": "public/images/log.png"
+  },
+  "public/images/personas.png": {
+    "file": "assets/personas-5a76067c.png",
+    "src": "public/images/personas.png"
+  },
+  "public/images/terror-ej.jpg": {
+    "file": "assets/terror-ej-b26f450a.jpg",
+    "src": "public/images/terror-ej.jpg"
+  },
+  "public/mp4/pulp.mp4": {
+    "file": "assets/pulp-e46ef312.mp4",
+    "src": "public/mp4/pulp.mp4"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-cdeac1bc.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/app.scss": {
+    "file": "assets/app-1658884f.css",
+    "isEntry": true,
+    "src": "resources/css/app.scss"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-c1042cc4.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "assets/pulp-e46ef312.mp4",
+      "assets/Google_Pay_Logo-ef36f158.png",
+      "assets/Mastercard-logo-017bde04.png",
+      "assets/Paypal_logo-256d711a.png",
+      "assets/Visa_Logo-f031699e.png",
+      "assets/filmo-logo-759b2c08.png",
+      "assets/fondo-e508c089.jpg",
+      "assets/log-4c4ed2a2.png",
+      "assets/personas-5a76067c.png",
+      "assets/terror-ej-b26f450a.jpg"
+    ],
+    "css": [
+      "assets/app-c1042cc4.css"
+    ],
+    "file": "assets/app-9fafe96c.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

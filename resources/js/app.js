@@ -65,6 +65,7 @@ app.component('metodo-pago', metodoPago);
 app.component('chat', chat);
 app.component('perfil', perfil);
 app.component('boton-wait',botonWait);
+
 app.mount('#app');
 
 

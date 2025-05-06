@@ -482,21 +482,19 @@ body {
 .ver-ya button:hover{
     transform: scale(1.05);
 }
-
-.play-button {
-    width: 0;
-    height: 0;
-    background: transparent;
-    position: absolute;
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-    width: 35px;
-    right: 15px;
-    bottom: 11px;
-    height: 35px;
-    background-color: #2EBFA5;
+.contenedor {
+    position: relative;
 }
 
-
+.play-button {
+    position: absolute;
+    right: 480px;
+    bottom: 11px;
+    width: 35px;
+    height: 35px;
+    background-color: #2EBFA5;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
 
 .heart {
     position: absolute;
@@ -1295,4 +1293,75 @@ body {
     /* Login*/
 
 
+
+    .container-2-reg {
+        background-color: #1f1e24;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 20%;
+        left: 62%;
+        border-radius: 10px;
+        padding: 20px 20px;
+        z-index: 1000;
+        padding: 20px 50px;
+    }
+
+
+    .titulo-registro h1 {
+        font-weight: 700;
+        color: #2ebfa5;
+        font-size: 60px;
+        margin-left: 15px;
+        margin-left: 40px;
+    }
+
+
+    .titulo-inicio h1 {
+        font-weight: 700;
+        color: #2ebfa5;
+        font-size: 40px;
+        margin-left: 15px;
+    }
+
+
+    #formulario {
+        color: #2ebfa5;
+        font-weight: 500;
+        font-family: "Poppins", sans-serif;
+    }
+
+
+    .form-check-label {
+        font-weight: 200;
+    }
+
+
+    #boton-registrarme {
+        margin-top: 15px;
+        padding-left: 155px;
+        padding-right: 155px;
+        font-family: "Lexend", sans-serif;
+        font-weight: 700;
+    }
+
+
+    #boton-log {
+        margin-top: 15px;
+        padding-left: 125px;
+        padding-right: 125px;
+        font-family: "Lexend", sans-serif;
+        font-weight: 700;
+    }
+
+    .botones-ticket {
+        display: flex;
+        font-family: "Lexend", sans-serif;
+        font-weight: 700;
+        padding: 10px 20px;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 20px;
+        text-decoration: none;
+    }
 
