@@ -1757,3 +1757,14 @@ body {
         font-family: "Lexend", sans-serif;
         font-weight: 700;
     }
+
+    .botones-ticket {
+        display: flex;
+        font-family: "Lexend", sans-serif;
+        font-weight: 700;
+        padding: 10px 20px;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 20px;
+        text-decoration: none;
+    }
