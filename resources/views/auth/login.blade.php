@@ -1,6 +1,6 @@
 @extends('index.index')
 @section('contenido')
-<button id="toggleMenuBtn">☰ </button>
+    {{-- <button id="toggleMenuBtn">☰ </button> --}}
     <div class="text-light">
         <div class="containers">
             <div class="container-1">
@@ -14,12 +14,11 @@
                         <div class="titulo-inicio">
                             <h1>INICIAR SESIÓN</h1>
                         </div>
-                         @if (session('error'))
-                         <div class="alert alert-danger">
-                            {{ session('error') }}
-                         </div>
-
-                         @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form class="container" id="formulario"
                             action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'login']) }}"
                             method="POST">
@@ -53,15 +52,5 @@
 
 
 @endsection
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('toggleMenuBtn');
-    const nav = document.querySelector('.paginas-nav');
 
-    toggleBtn.addEventListener('click', function () {
-        nav.classList.toggle('show');
-    });
-});
-
-</script>
 @section('footer', '')
