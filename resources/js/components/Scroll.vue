@@ -2,7 +2,7 @@
   <div class="contenedor-home">
     <div class="video-filmo-container">
       <video autoplay muted loop class="video-filmo-bg">
-        <source src="/public/mp4/alpacino.mp4" type="video/mp4">
+        <source src="/public/mp4/pulp.mp4" type="video/mp4">
       </video>
       <div class="video-filmo-overlay"></div>
     </div>
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    
+
     <div class="presenta-text">
       <h1 class="cartelera-inicio"><strong>CARTELERA</strong></h1>
       <hr class="barra-blanca" />
