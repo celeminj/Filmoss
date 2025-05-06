@@ -1,6 +1,5 @@
 @extends('index.index')
 @section('contenido')
-<button id="toggleMenuBtn">☰ </button>
     <div class="text-light">
         <div class="containers">
             <div class="container-1">
@@ -53,15 +52,5 @@
 
 
 @endsection
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('toggleMenuBtn');
-    const nav = document.querySelector('.paginas-nav');
 
-    toggleBtn.addEventListener('click', function () {
-        nav.classList.toggle('show');
-    });
-});
-
-</script>
 @section('footer', '')
