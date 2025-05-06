@@ -162,14 +162,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('toggleMenuBtn');
-    const nav = document.querySelector('.paginas-nav');
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('toggleMenuBtn');
+        const nav = document.querySelector('.paginas-nav');
 
-    toggleBtn.addEventListener('click', function () {
-        nav.classList.toggle('show');
+        toggleBtn.addEventListener('click', function() {
+            nav.classList.toggle('show');
+        });
     });
-});
-
 </script>
+
 </html>

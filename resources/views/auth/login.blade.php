@@ -13,12 +13,11 @@
                         <div class="titulo-inicio">
                             <h1>INICIAR SESIÓN</h1>
                         </div>
-                         @if (session('error'))
-                         <div class="alert alert-danger">
-                            {{ session('error') }}
-                         </div>
-
-                         @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form class="container" id="formulario"
                             action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'login']) }}"
                             method="POST">
