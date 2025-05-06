@@ -15,6 +15,10 @@
     "file": "assets/Visa_Logo-f031699e.png",
     "src": "public/images/Visa_Logo.png"
   },
+  "public/images/corazon.png": {
+    "file": "assets/corazon-eedf700c.png",
+    "src": "public/images/corazon.png"
+  },
   "public/images/filmo-logo.png": {
     "file": "assets/filmo-logo-759b2c08.png",
     "src": "public/images/filmo-logo.png"
@@ -40,7 +44,7 @@
     "src": "public/mp4/pulp.mp4"
   },
   "resources/css/app.css": {
-    "file": "assets/app-cdeac1bc.css",
+    "file": "assets/app-899902d9.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -50,7 +54,7 @@
     "src": "resources/css/app.scss"
   },
   "resources/js/app.css": {
-    "file": "assets/app-c1042cc4.css",
+    "file": "assets/app-922d90b5.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -60,6 +64,7 @@
       "assets/Mastercard-logo-017bde04.png",
       "assets/Paypal_logo-256d711a.png",
       "assets/Visa_Logo-f031699e.png",
+      "assets/corazon-eedf700c.png",
       "assets/filmo-logo-759b2c08.png",
       "assets/fondo-e508c089.jpg",
       "assets/log-4c4ed2a2.png",
@@ -67,9 +72,9 @@
       "assets/terror-ej-b26f450a.jpg"
     ],
     "css": [
-      "assets/app-c1042cc4.css"
+      "assets/app-922d90b5.css"
     ],
-    "file": "assets/app-9fafe96c.js",
+    "file": "assets/app-33c317fb.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
