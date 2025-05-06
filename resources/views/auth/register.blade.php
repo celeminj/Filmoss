@@ -1,5 +1,6 @@
 @extends('index.index')
 @section('contenido')
+
     <div class="text-light">
         <div class="containers">
             <div class="container-1">
@@ -40,7 +41,7 @@
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                <label class="form-check-label" for="exampleCheck1">Accepto las politicas sobre informacion
+                                <label class="form-check-label" for="exampleCheck1">Acepto las politicas sobre información
                                     y cookies</label>
                             </div>
                             <div class="seccion-boton">

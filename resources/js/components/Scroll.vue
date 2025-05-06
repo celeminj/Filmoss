@@ -1,12 +1,11 @@
 <template>
-    <div class="contenedor-home">
-        <div class="video-filmo-container">
-            <video autoplay muted loop class="video-filmo-bg">
-                <source src="/public/mp4/pulp.mp4" type="video/mp4">
-            </video>
-            <div class="video-filmo-overlay"></div>
-        </div>
-
+  <div class="contenedor-home">
+    <div class="video-filmo-container">
+      <video autoplay muted loop class="video-filmo-bg">
+        <source src="/public/mp4/pulp.mp4" type="video/mp4">
+      </video>
+      <div class="video-filmo-overlay"></div>
+    </div>
         <div class="filmo-marquee-container">
             <div class="filmo-marquee">
                 <span>FILMOFILMOFILMOFILMOFILMO</span>
@@ -45,7 +44,6 @@
                 <img :src="image.src" :alt="image.alt" class="gallery-img" />
             </div>
         </div>
-
 
         <div class="presenta-text">
             <h1 class="cartelera-inicio"><strong>CARTELERA</strong></h1>
