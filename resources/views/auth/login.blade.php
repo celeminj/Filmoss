@@ -1,6 +1,5 @@
 @extends('index.index')
 @section('contenido')
-    {{-- <button id="toggleMenuBtn">☰ </button> --}}
     <div class="text-light">
         <div class="containers">
             <div class="container-1">
