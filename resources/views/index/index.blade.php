@@ -19,7 +19,7 @@
 </head>
 
 <body>
-
+    <button id="toggleMenuBtn">☰ </button>
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -161,5 +161,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('toggleMenuBtn');
+        const nav = document.querySelector('.paginas-nav');
+
+        toggleBtn.addEventListener('click', function() {
+            nav.classList.toggle('show');
+        });
+    });
+</script>
 
 </html>

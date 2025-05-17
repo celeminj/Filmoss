@@ -20,14 +20,19 @@ class UsuarioController extends Controller
         $contrasenya = $request->input('contrasenya');
         $user = Usuario::where('correo',$correo)->first();
 
-        if($user != null && Hash::check($contrasenya, $user->contrasenya)){
-            Auth::login($user);
-            return redirect()->route('catalogo');
+        if($user){
+            if( Hash::check($contrasenya, $user->contrasenya)){
+                Auth::login($user);
+                return redirect()->route('catalogo');
+            }else{
+                $response = redirect('/login')->withInput()->with('error', 'Contraseña incorrecta');
+            }
         }
         else{
-            $request->session()->flash('error','No existe este correo');
-            $response = redirect('/login')->withInput();
+            $response = redirect('/login')->withInput()->with('error', 'No existe este correo');
+
         }
+
 
         return $response;
     }
@@ -78,7 +83,7 @@ class UsuarioController extends Controller
         if ($user->save()) {
             Auth::login($user);
             session()->flash('success', 'Usuario registrado');
-            return redirect('/home');
+            return redirect('/catalogo');
         } else {
             session()->flash('error', "No se ha podido registrar");
             return back();

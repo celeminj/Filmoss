@@ -7,13 +7,15 @@
             </div>
             {{-- <iframe src="{{ $pelicula->pelicula_src }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
                 width="1900" height="1000" allowfullscreen></iframe> --}}
-            <a href="{{ $pelicula->pelicula_src }}">
-                <img src="{{ $pelicula->image }}" alt="" style="width: 120rem; height: 58rem; object-fit: cover;">
-            </a>
+                <div class="portada-pelicula">
+                    <a href="{{ $pelicula->pelicula_src }}">
+                        <img src="{{ $pelicula->image }}" alt="">
+                    </a>
+                </div>
 
         </div>
 
-        <div class="info-peli">
+        <div class="info-peli-cat">
             <div class="titulo-pelicula">
                 <h1>{{ $pelicula->titulo }}</h1>
             </div>
@@ -33,20 +35,19 @@
             </div>
             <div class="botones-pelicula">
                 <div id="app">
-                <metodo-pago></metodo-pago>
+                    <metodo-pago></metodo-pago>
                 </div>
                 <div class="ver-ya">
-                    <button>VER YA</button>
+                    <button>VER YA
                     <a href="{{ $pelicula->pelicula_src }}">
                         <div class="play-button"></div>
                     </a>
+                    </button>
                 </div>
                 <div class="otros-botones">
-                    <div class="trailer">
-                        <button>Trailer</button>
-                    </div>
-                    <div class="heart">
-                    </div>
+                    <div class="heart-cat">
+                        <img src="{{ asset('images/corazon.png')}}" alt="">
+
                 </div>
 
             </div>
@@ -78,16 +79,16 @@
             <h1>REPARTO</h1>
         </div>
         <div class="actores">
-    @foreach ($pelicula->actores as $actor)
-        <div class="actor"
-             style="background-image: url('{{ asset($actor->imagen) }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
-            <div class="imagen">
-                <div class="nombre-actor">
-                    <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
+            @foreach ($pelicula->actores as $actor)
+                <div class="actor"
+                    style="background-image: url('{{ asset($actor->imagen) }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+                    <div class="imagen">
+                        <div class="nombre-actor">
+                            <h4>{{ $actor->nombre }} {{ $actor->apellido }}</h4>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-    @endforeach
-</div>
     </div>
 @endsection

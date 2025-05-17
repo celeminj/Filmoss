@@ -39,6 +39,20 @@ body {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+#toggleMenuBtn {
+    display: none;
+    background-color: #1F1E24;
+    color: #2EBFA5;
+    border: none;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 1001;
+}
+
 #logout{
     background-color: #222;
     color: #000000;
@@ -75,7 +89,7 @@ body {
 }
 
 .footer{
-    background: linear-gradient(to top, rgb(24, 24, 24), rgba(31, 30, 36, 0.1));
+    background: linear-gradient(to top, rgb(173, 154, 154), rgba(31, 30, 36, 0.1));
     margin-bottom: -50px;
 }
 
@@ -343,18 +357,15 @@ body {
 
 /* Peli catalogo */
 
-
-
-
-
-
 .reproductor{
     color: #1F1E24;
 
 }
 
 .titulo-pelicula h1{
+    text-transform: uppercase;
     font-size: 4.5rem;
+    top: 100px;
     font-weight: 700;
 }
 
@@ -364,6 +375,31 @@ body {
     font-weight: bold;
 
 }
+
+.info-peli {
+    width: 100vw;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    transform: translateY(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+    width: 40%;
+}
+
+.info-peli-cat {
+    width: 100vw;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    transform: translateY(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+    width: 40%;
+}
+
 
 .edad p{
     font-family: "Lexend", sans-serif;
@@ -385,42 +421,31 @@ body {
 }
 
 .pelicula img {
-    width: 100%; /* Hace que la imagen sea responsiva */
-    max-width: 120rem; /* Máximo tamaño en pantallas grandes */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Evita espacios no deseados */
+    width: 1920px;
+    max-width: 120rem;
+    height: 960px;
+    object-fit: cover;
+        display: block;
+        max-width: none;
+        transform-origin: center center;
 }
 
 .degradado-info {
     position: absolute;
-    transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
-    width: 85vw; /* Ajusta el ancho relativo a la pantalla */
+    transform: translate(-50%, -50%);
+    width: 85vw;
     height: 100vw;
     background: linear-gradient(to right, #00ffdd, rgba(39, 82, 76, 0));
-    right: -15%; /* Lo pega al borde derecho */
+    right: -15%;
 
 }
 
-.info-peli {
-    width: 100vw; /* Ajusta el ancho relativo a la pantalla */
-    position: absolute;
-    top: 60%;
-    left: 5%;
-    transform: translateY(-50%);
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 10; /* Asegura que esté por encima */
-    width: 35%; /* Ajusta el ancho según lo necesites */
-}
-
-.descripcion-peli{
-    width: 100%;
-
-}
 
 .descripcion-peli p{
     font-family: "Poppins";
     font-weight: 400;
+    width: 80%;
+    margin-bottom: -80px;
 }
 
 .otros-botones{
@@ -457,74 +482,71 @@ body {
 .ver-ya button:hover{
     transform: scale(1.05);
 }
-
-.play-button {
-    width: 0;
-    height: 0;
-    background: transparent;
-    position: absolute;
-    left: 22%;
-    top: 90%;
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-    width: 40px; /* Ajusta el tamaño */
-    height: 40px;
-    background-color: #2EBFA5; /* Color del triángulo */
+.contenedor {
+    position: relative;
 }
 
-.trailer{
-    position: relative;
-    margin-left: 220px;
-
+.play-button {
+    position: absolute;
+    right: 480px;
+    bottom: 11px;
+    width: 35px;
+    height: 35px;
+    background-color: #2EBFA5;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
 }
 
 .heart {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    background-color: #1F1E24;
-    transform: rotate(-45deg);
-    margin: 10px 20px;
-    transition: box-shadow , transform 0.4s;
-
-}
-
-.heart::before,
-.heart::after {
-    content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #1F1E24;
-    border-radius: 50%;
-
+    top: 87.5%;
+    left: 30%;
+    margin: 10px 20px;
+    transition: transform 0.3s;
 }
 
-.heart::before {
-    top: -10px;
-    left: 0;
-
+.heart-cat {
+    position: absolute;
+    top: 87.5%;
+    left: 30%;
+    margin: 10px 20px;
+    transition: transform 0.3s;
 }
 
-.heart::after {
-    left: 10px;
-    top: 0;
+.heart img{
+    height: 35px;
 }
+
 
 .heart:hover{
-    transform: scale(1.5);
-    transform: rotate(315deg);
+    transform: scale(1.2);
+
+}
+
+.heart:hover img {
+    filter: sepia(1) saturate(80) hue-rotate(-10deg);
+}
+
+.heart-cat img{
+    height: 35px;
 }
 
 
+.heart-cat:hover{
+    transform: scale(1.2);
 
+}
+
+.heart-cat:hover img {
+    filter: sepia(1) saturate(80) hue-rotate(-10deg);
+}
 .detalles {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: auto; /* Ajusta la altura según el contenido */
-    margin-bottom: 50px; /* Agrega espacio debajo */
+    height: auto;
+    margin-bottom: 50px;
 
 }
 
@@ -540,11 +562,14 @@ body {
     color: white;
     width: 1050px;
     padding: 40px;
-    background: linear-gradient(to left, rgb(31, 189, 168, 0.6), rgba(39, 82, 76, 0.3));
+    background: linear-gradient(
+        to left,
+        rgb(31, 189, 168, 0.6),
+        rgba(39, 82, 76, 0.4)
+    );
     border-radius: 10px;
-
-
 }
+
 
 .reparto {
     width: 100%;
@@ -576,22 +601,23 @@ body {
 
 }
 
-.actor{
+.actor {
     width: 310px;
     height: 410px;
     margin: auto;
-    background: linear-gradient(to top, rgb(31, 189, 168, 0.6), rgba(45, 105, 97, 0.3));
+    background: linear-gradient(
+        to top,
+        rgb(31, 189, 168, 0.6),
+        rgba(45, 105, 97, 0.3)
+    );
     border-radius: 10px;
-    transition: box-shadow , transform 0.3s;
-
+    transition: box-shadow, transform 0.3s;
 }
 
 .actor:hover{
     transform: scale(1.05);
 
 }
-
-
 .nombre-actor{
     color: white;
     margin-top: 340px;
@@ -608,14 +634,25 @@ body {
 
 @media (max-width: 960px) {
 
-
-
     .pelicula img {
-        max-width: 100%; /* La imagen ocupará el 90% del ancho de la pantalla */
-        max-height: 49%; /* Mantiene proporciones */
+        max-width: 80rem;
+        height: 540px;
+        margin-bottom: 300px;
+    }
+
+
+
+    .degradado-info{
+        height: 1080px;
     }
 
     .info-peli {
+        height: 30%;
+        top: 27%;
+        left: 3%;
+    }
+
+    .info-peli-cat {
         height: 30%;
         top: 27%;
         left: 3%;
@@ -636,6 +673,24 @@ body {
         font-size: 0.8rem;
     }
 
+    .ver-ya button {
+        padding: 10px 15px;
+        padding-right: 80px;
+        position: absolute;
+        top: 98%;
+        font-size: 15px;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 15%;
+        left: 65%;
+        width: 30px;
+        height: 30px;
+    }
+
+
+
     .otros-botones{
         display: flex;
         position: absolute;
@@ -644,56 +699,20 @@ body {
     }
 
     .otros-botones button{
-
         border-radius: 5px;
         font-size: 0.6rem;
 
     }
 
-    .ver-ya button{
-        padding: 10px 15px;
-        padding-right: 80px;
-        position: absolute;
-        top: 98%;
-        font-size: 15px;
-    }
-
-
-
     .heart {
-
-        width: 13px;
-        height: 13px;
-        background-color: #1F1E24;
-        transform: rotate(-45deg);
-        margin: 10px 10px;
-        transition: box-shadow , transform 0.4s;
-
+        margin-left: 220px;
+        margin-top: -3px;
     }
 
-    .heart::before,
-    .heart::after {
-        content: "";
-        position: absolute;
-        width: 13px;
-        height: 13px;
-        background-color: #1F1E24;
-        border-radius: 50%;
-
+    .heart-cat {
+        margin-left: 220px;
+        margin-top: -3px;
     }
-
-    .heart::before {
-        top: -7px;
-        left: 0;
-
-    }
-
-    .heart::after {
-        left: 7px;
-        top: 0;
-    }
-
-
     .detalles{
         margin-top: -200;
         width: 100%;
@@ -731,168 +750,207 @@ body {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 390px) {
 
-    .degradado-info a{
-        position: absolute;
-        transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
-        width: 100vw; /* Ajusta el ancho relativo a la pantalla */
-        height: 30vw;
-        background: linear-gradient(to top, #00ffdd, rgba(39, 82, 76, 0));
-        right: -50%; /* Lo pega al borde derecho */
-        top: 15.3%;
+    .reproductor{
+        width: 100%;
+        height: 80%;
     }
 
     .pelicula{
-        height: 1300px;
-        margin-bottom: -620px;
+        height: 575px;
+        margin-bottom: 150px;
+        width: 100%;
+        max-width: 390px;
+
     }
-    .pelicula img {
-        max-width: 100%; /* La imagen ocupará el 90% del ancho de la pantalla */
-        max-height: 20%; /* Mantiene proporciones */
-        height: 200px;
+
+    /* Inicio img Peli-nueva */
+
+    .contenedor-imagen {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .imagen-pelicula {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Fin img Peli-nueva */
+
+    /* Inicio img peli */
+    .portada-pelicula {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+
+    .portada-pelicula img {
+        max-width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+    /*  Fin img peli */
+
+
+    .titulo-pelicula h1{
+        font-size: 3rem;
+    }
+
+    .degradado-info  {
+        position: absolute;
+        transform: translate(-0%, -0%);
+        width: 858px;
+        height: 575px;
+        background: linear-gradient(to top, #00ffdd, rgba(39, 82, 76, 0));
+
+
     }
 
     .info-peli{
-        width: 350px;
-    }
-    .titulo-pelicula h1{
-        position: absolute;
-        top: 45%;
-    }
+        width: 90%;
+        height: 45%;
+        top: 48%;
 
-    .categorias, .edad, .descripcion-peli{
-        position: absolute;
-        top: 80%;
-        width: 300px;
-        color: #2EBFA5;
 
     }
 
-    .descripcion-peli{
-        display: none;
+    .info-peli-cat{
+        width: 90%;
+        height: 45%;
+        top: 35%;
+
+
     }
 
     .titulo-pelicula{
-        width: 120px;
+        width: 80%;
+
     }
 
     .titulo-pelicula h1{
+        position: absolute;
+        top: 75%;
+        width: 95%;
         font-size: 1.8rem;
-        width: 350px;
     }
 
-    .categorias{
-        position: absolute;
-        top: 74.3%;
+    .categorias, .edad, .descripcion-peli{
+        display: none;
     }
 
-    .categorias p{
-        font-size: 1rem;
+    .heart img{
+        height: 40px;
+        width: 47px;
+        margin-top: -10px;
     }
 
-    .edad{
-        position: absolute;
-        top: 50.5%;
-        left: 93%;
-        color: #1F1E24;
-
-    }
-    .edad p{
-       font-size: 1.5rem;
-    }
-    .descripcion-peli p{
-        font-size: 0.8rem;
+    .heart-cat img{
+        height: 40px;
+        width: 47px;
+        margin-top: -75px;
     }
 
     .hora{
         position: absolute;
-        top: 85%;
-        color: #2EBFA5;
+        top: 105%;
+        color: #1F1E24;
     }
 
-    .otros-botones{
+    .otros-botones {
         display: flex;
         position: absolute;
-        top: 29.5%;
-        left: -5%;
+        top: 60%;
+        left: 25%;
     }
 
-    .botones-pelicula button{
-        background-color: #2EBFA5;
-        border-radius: 5px;
-        color: #1F1E24;
+
+    .ver-ya-cartelera button {
         padding: 10px 15px;
-        margin-right: 0px;
-        font-family: "Lexend", sans-serif;
-        font-weight: 700;
-        border-style: none;
-        transition: box-shadow , transform 0.3s;
-        font-size: 0.8rem;
-
-    }
-
-    .trailer {
+        padding-right: 80px;
         position: absolute;
-        top: -65%;
-        left: -200%;
-
+        font-size: 15px;
+        width: 200px;
+        font-size: 1.5rem;
     }
 
-    .otros-botones button{
+    .ver-ya button {
+        padding: 10px 15px;
+        padding-right: 80px;
         position: absolute;
-        border-radius: 5px;
-        font-size: 0.8rem;
-
+        font-size: 15px;
+        width: 200px;
+        font-size: 1.5rem;
     }
 
-    .ver-ya button{
-        padding-right: 40px;
+    .ver-ya-cartelera{
+        position: absolute;
+        top: 130%;
+    }
+    .play-button {
+        position: absolute;
+        top: 22%;
+        left: 71%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .detalles {
+        width: 350px;
+        margin-top: 280px;
+        margin-left: 20px;
     }
 
 
-
-
-    .detalles{
-        margin-top: -200;
-        width: 100%;
-        height: 0vh;
-        margin-bottom: 400px;
-    }
-
-    .texto-detalles{
+    .texto-detalles {
         width: 350px;
     }
 
+
     .titulo-detalles h1{
         font-size: 2.5rem;
-        margin-bottom: 50px;
+
     }
 
     .reparto{
         width: 100%;
+        text-align: center;
+        justify-content: center;
     }
 
     .reparto h1{
         font-size: 2.5rem;
+
     }
     .actores {
         gap: 10px;
     }
 
-    .actor{
-        width: 120px;
-        height: 180px;
-    }
-
-    .nombre-actor{
-        margin-top: 140px;
-        margin-left: 30px;
+    .actor {
+        width: 100px;
+        height: 150px;
+        background-color: #2EBFA5;
 
     }
 
-    .nombre-actor h4{
-        font-size: 1rem;
+    .nombre-actor {
+        margin-top: 80px;
+        text-align: center;
+        margin-left: 0px ;
+
+    }
+
+
+    .nombre-actor h4 {
+        font-size: 1.2rem;
         font-weight: 500;
     }
 
@@ -901,12 +959,13 @@ body {
 
 /* Login*/
 
-.container-1{
-    position: absolute;
-    top: 25%;
-    left: 10%;
-    height: 500px;
-    width: 600px;
+
+    .container-1{
+        position: absolute;
+        top: 25%;
+        left: 10%;
+        height: 500px;
+        width: 600px;
     }
 
     .container-1 img{
@@ -930,30 +989,27 @@ body {
         background-repeat: no-repeat;
     }
 
-    .container-2{
-        background-color: #1F1E24;
+    .container-2 {
+        background-color: #1f1e24;
         display: flex;
         justify-content: space-between;
         position: absolute;
         top: 30%;
         left: 62%;
         border-radius: 10px;
-        padding: 20px 20px;
-        z-index: 1000;
-        padding:  20px 50px;
+        padding: 20px 50px;
     }
 
-    .container-2-reg{
-        background-color: #1F1E24;
+
+    .container-2-reg {
+        background-color: #1f1e24;
         display: flex;
         justify-content: space-between;
         position: absolute;
         top: 20%;
         left: 62%;
         border-radius: 10px;
-        padding: 20px 20px;
-        z-index: 1000;
-        padding:  20px 50px;
+        padding: 20px 50px;
     }
 
 
@@ -961,8 +1017,7 @@ body {
         font-weight: 700;
         color: #2EBFA5;
         font-size: 60px;
-        margin-left: 15px;
-        margin-left: 40px;
+        text-align: center;
     }
 
     .titulo-inicio h1{
@@ -998,7 +1053,7 @@ body {
         font-weight: 700;
     }
 
-    porque-has-visto h4 {
+    .porque-has-visto h4 {
         margin-left: 250px;
         color: #ead2ac;
         margin-top: 50px;
@@ -1044,716 +1099,267 @@ body {
     }
 
 
-
-    /* Peli catalogo */
-
-
-    .reproductor {
-        color: #1f1e24;
-    }
-
-    .iframe-pelicula{
-        margin-top: -20px;
-    }
-
-    .titulo-pelicula h1 {
-        text-transform: uppercase;
-        font-size: 4.5rem;
-        font-weight: 700;
-    }
-
-
-    .categorias p {
-        font-family: "Lexend", sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-
-    .edad p {
-        font-family: "Lexend", sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
-        display: flex;
-        margin-top: -15px;
-    }
-
-
-    .categorias {
-        display: flex;
-    }
-
-
-    .pelicula {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-
-    .pelicula img {
-        width: 100%;
-        max-width: 120rem;
-        object-fit: cover;
-        display: block;
-        max-width: none;
-        transform-origin: center center;
-    }
-
-
-    .degradado-info a {
-        position: absolute;
-        transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
-        width: 85vw; /* Ajusta el ancho relativo a la pantalla */
-        height: 107vw;
-        background: linear-gradient(to right, #00ffdd, rgba(39, 82, 76, 0));
-        right: -15%; /* Lo pega al borde derecho */
-    }
-
-
-    .info-peli {
-        width: 100vw; /* Ajusta el ancho relativo a la pantalla */
-        position: absolute;
-        top: 60%;
-        left: 5%;
-        transform: translateY(-50%);
-        padding: 20px;
-        border-radius: 10px;
-        z-index: 10; /* Asegura que esté por encima */
-        width: 35%; /* Ajusta el ancho según lo necesites */
-    }
-
-
-    .descripcion-peli {
-        width: 100%;
-    }
-
-
-    .descripcion-peli p {
-        font-family: "Poppins";
-        font-weight: 400;
-    }
-
-
-    .otros-botones {
-        display: flex;
-        margin-top: 200px;
-    }
-
-
-    .botones-pelicula button {
-        background-color: #1f1e24;
-        border-radius: 10px;
-        color: #2ebfa5;
-        padding: 7px 20px;
-        margin-right: 15px;
-        font-family: "Lexend", sans-serif;
-        font-weight: 700;
-        border-style: none;
-        transition: box-shadow, transform 0.3s;
-    }
-
-
-    .botones-pelicula button:hover {
-        transform: scale(1.05);
-    }
-
-
-    .ver-ya button {
-        padding: 15px 30px;
-        padding-right: 80px;
-        position: absolute;
-        top: 87.5%;
-        font-size: 20px;
-        transition: box-shadow, transform 0.3s;
-    }
-
-
-    .ver-ya button:hover {
-        transform: scale(1.05);
-    }
-
-    .trailer {
-        position: relative;
-        margin-left: 220px;
-    }
-
-
-    .heart {
-        position: relative;
-        width: 20px;
-        height: 20px;
-        background-color: #1f1e24;
-        transform: rotate(-45deg);
-        margin: 10px 20px;
-        transition: box-shadow, transform 0.4s;
-    }
-
-
-    .heart::before,
-    .heart::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: #1f1e24;
-        border-radius: 50%;
-    }
-
-
-    .heart::before {
-        top: -10px;
-        left: 0;
-    }
-
-
-    .heart::after {
-        left: 10px;
-        top: 0;
-    }
-
-
-    .heart:hover {
-        transform: scale(1.5);
-        transform: rotate(315deg);
-    }
-
-
-    .detalles {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: auto; /* Ajusta la altura según el contenido */
-        margin-bottom: 50px; /* Agrega espacio debajo */
-    }
-
-
-    .detalles h1 {
-        margin-top: 90px;
-        margin-bottom: 20px;
-        color: #2ebfa5;
-        font-size: 4.5rem;
-        font-weight: 750;
-    }
-
-
-    .texto-detalles {
-        color: white;
-        width: 1050px;
-        padding: 40px;
-        background: linear-gradient(
-            to left,
-            rgb(31, 189, 168, 0.6),
-            rgba(39, 82, 76, 0.3)
-        );
-        border-radius: 10px;
-    }
-
-
-    .reparto {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: auto;
-        margin-top: 50px;
-        transition: box-shadow, transform 0.3s;
-    }
-
-
-    .reparto h1 {
-        color: #2ebfa5;
-        font-weight: 700;
-        font-size: 70px;
-    }
-
-
-    .actores {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 55px;
-        row-gap: 20px;
-        width: 50%;
-        justify-content: center;
-        align-items: center;
-        margin: 20px auto;
-    }
-
-
-    .actor {
-        width: 310px;
-        height: 410px;
-        margin: auto;
-        background: linear-gradient(
-            to top,
-            rgb(31, 189, 168, 0.6),
-            rgba(45, 105, 97, 0.3)
-        );
-        border-radius: 10px;
-        transition: box-shadow, transform 0.3s;
-    }
-
-
-    .actor:hover {
-        transform: scale(1.05);
-    }
-
-
-    .nombre-actor {
-        color: white;
-        margin-top: 340px;
-        padding: 15px;
-        justify-content: center;
-        align-items: center;
-    }
-
-
-    .nombre-actor h4 {
-        font-size: 2.3rem;
-        font-family: "Poppins";
-        font-weight: 600;
-    }
-
-
-    @media (max-width: 960px) {
-        .pelicula img {
-            max-width: 100%; /* La imagen ocupará el 90% del ancho de la pantalla */
-            max-height: 49%; /* Mantiene proporciones */
-        }
-
-
-        .info-peli {
-            height: 30%;
-            top: 27%;
-            left: 3%;
-        }
-
-
-        .titulo-pelicula h1 {
-            font-size: 2rem;
-        }
-
-
-        .categorias p {
-            font-size: 0.8rem;
-        }
-
-
-        .edad p {
-            font-size: 0.8rem;
-        }
-        .descripcion-peli p {
-            font-size: 0.8rem;
-        }
-
-
-        .otros-botones {
-            display: flex;
-            position: absolute;
-            top: 29.5%;
-            left: -5%;
-        }
-
-
-        .otros-botones button {
-            border-radius: 5px;
-            font-size: 0.6rem;
-        }
-
-
-        .ver-ya button {
-            padding: 10px 15px;
-            padding-right: 80px;
-            position: absolute;
-            top: 98%;
-            font-size: 15px;
-        }
-
-
-        .play-button {
-            position: absolute;
-            top: 100%;
-            left: 38%;
-            width: 30px;
-            height: 30px;
-        }
-
-
-        .heart {
-            width: 13px;
-            height: 13px;
-            background-color: #1f1e24;
-            transform: rotate(-45deg);
-            margin: 10px 10px;
-            transition: box-shadow, transform 0.4s;
-        }
-
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 13px;
-            height: 13px;
-            background-color: #1f1e24;
-            border-radius: 50%;
-        }
-
-
-        .heart::before {
-            top: -7px;
-            left: 0;
-        }
-
-
-        .heart::after {
-            left: 7px;
-            top: 0;
-        }
-
-
-        .detalles {
-            margin-top: -200;
-            width: 100%;
-            height: 0vh;
-            margin-bottom: 400px;
-        }
-
-
-        .texto-detalles {
-            width: 700px;
-        }
-
-
-        .titulo-detalles h1 {
-            font-size: 3.5rem;
-            margin-bottom: 50px;
-        }
-
-
-        .reparto {
-            margin-bottom: 10px;
-        }
-        .actor {
-            width: 220px;
-            height: 300px;
-        }
-
-
-        .nombre-actor {
-            margin-top: 220px;
-            margin-left: 55px;
-        }
-
-
-        .nombre-actor h4 {
-            font-size: 2rem;
-            font-weight: 500;
-        }
-    }
-
-
-    @media (max-width: 400px) {
-        .degradado-info a {
-            position: absolute;
-            transform: translate(-50%, -50%); /* Asegura un centrado perfecto */
-            width: 100vw; /* Ajusta el ancho relativo a la pantalla */
-            height: 30vw;
-            background: linear-gradient(to top, #00ffdd, rgba(39, 82, 76, 0));
-            right: -50%; /* Lo pega al borde derecho */
-            top: 15.3%;
-        }
-
-
-        .pelicula {
-            height: 1300px;
-            margin-bottom: -620px;
-        }
-        .pelicula img {
-            max-width: 100%; /* La imagen ocupará el 90% del ancho de la pantalla */
-            max-height: 20%; /* Mantiene proporciones */
-            height: 200px;
-        }
-
-
-        .info-peli {
-            width: 350px;
-        }
-        .titulo-pelicula h1 {
-            position: absolute;
-            top: 45%;
-        }
-
-
-        .categorias,
-        .edad,
-        .descripcion-peli {
-            position: absolute;
-            top: 80%;
-            width: 300px;
-            color: #2ebfa5;
-        }
-
-
-        .descripcion-peli {
-            display: none;
-        }
-
-
-        .titulo-pelicula {
-            width: 120px;
-        }
-
-
-        .titulo-pelicula h1 {
-            font-size: 1.8rem;
+    @media (max-width: 960px){
+
+        .container-1{
+            top: 25%;
+            left: 2%;
+            }
+
+        .container-1 img{
+            height: 250px;
             width: 350px;
         }
 
-
-        .categorias {
-            position: absolute;
-            top: 74.3%;
+        .imagen-fondo{
+            width: 55%; /* Ocupa la mitad derecha */
+            height: 100vh; /* Toda la altura de la pantalla */
+            background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+            url('public/images/log.png');
+            background-repeat: no-repeat;
         }
 
-
-        .categorias p {
-            font-size: 1rem;
+        .container-2 {
+            top: 25%;
+            left: 60%;
+            padding: 10px 10px;
+            width: 350px;
         }
 
-
-        .edad {
-            position: absolute;
-            top: 50.5%;
-            left: 93%;
-            color: #1f1e24;
-        }
-        .edad p {
-            font-size: 1.5rem;
-        }
-        .descripcion-peli p {
-            font-size: 0.8rem;
+        .titulo-registro h1{
+            font-weight: 700;
+            color: #2EBFA5;
+            font-size: 30px;
+            text-align: center;
         }
 
-
-        .hora {
-            position: absolute;
-            top: 85%;
-            color: #2ebfa5;
+        .titulo-inicio h1{
+            margin-bottom: 20px;
+            font-size: 30px;
+            text-align: center;
         }
 
-
-        .otros-botones {
-            display: flex;
-            position: absolute;
-            top: 29.5%;
-            left: -5%;
-        }
-
-
-        .botones-pelicula button {
-            background-color: #2ebfa5;
-            border-radius: 5px;
-            color: #1f1e24;
-            padding: 10px 15px;
-            margin-right: 0px;
+        #boton-log{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-left: 0px;
+            padding-right: 0px;
+            width: 305px;
             font-family: "Lexend", sans-serif;
             font-weight: 700;
-            border-style: none;
-            transition: box-shadow, transform 0.3s;
-            font-size: 0.8rem;
+
+        }
+
+        .container-2-reg {
+            top: 15%;
+            border-radius: 10px;
+            left: 60%;
+            padding: 10px 15px;
+            width: 360px;
+
+        }
+
+        .form-check-label{
+            font-weight: 200;
+            font-size: 12px;
+            margin-bottom: -15px;
         }
 
 
-        .trailer {
-            position: absolute;
-            top: -65%;
-            left: -200%;
+        #boton-registrarme{
+            margin-top: 15px;
+            padding-left: 0px;
+            padding-right: 0px;
+            width: 330px;
         }
 
 
-        .otros-botones button {
-            position: absolute;
-            border-radius: 5px;
-            font-size: 0.8rem;
-        }
 
 
-        .ver-ya button {
-            padding-right: 40px;
-        }
-
-
-        .play-button {
-            position: absolute;
-            top: 101%;
-            left: 27%;
-            width: 20px;
-            height: 20px;
-            background-color: #1f1e24;
-        }
-
-
-        .detalles {
-            margin-top: -200;
-            width: 100%;
-            height: 0vh;
-            margin-bottom: 400px;
-        }
-
-
-        .texto-detalles {
-            width: 350px;
-        }
-
-
-        .titulo-detalles h1 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-
-
-        .reparto {
-            width: 100%;
-        }
-
-
-        .reparto h1 {
-            font-size: 2.5rem;
-        }
-        .actores {
-            gap: 10px;
-        }
-
-
-        .actor {
-            width: 120px;
-            height: 180px;
-        }
-
-
-        .nombre-actor {
-            margin-top: 140px;
-            margin-left: 30px;
-        }
-
-
-        .nombre-actor h4 {
-            font-size: 1rem;
-            font-weight: 500;
-        }
     }
 
+    @media (max-width: 390px){
+
+        .paginas-nav {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background-color: #2d2c35;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            padding: 0 10px;
+
+        }
+
+        .paginas-nav.show {
+            display: block;
+            position: absolute;
+            right: 0%;
+            top: 0%;
+            padding-top: 65px ;
+            max-height: 700px;
+
+        }
+
+
+
+        .paginas-nav li{
+            font-size: 18px;
+            margin-top: 10px;
+
+        }
+
+        #toggleMenuBtn {
+            display: block;
+        }
+
+        .container-1{
+            position: absolute;
+            top: 8%;
+            left: 0%;
+            height: 400px;
+            width: 300px;
+        }
+
+        .container-1 img{
+            position: absolute;
+            top: 0%;
+            left: 15%;
+            height: 210px;
+            width: 300px;
+        }
+
+        .imagen-fondo {
+            position: absolute;
+            top: 40%;
+            right: 0%;
+            width: 100%;
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .imagen-fondo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #1f1e24, rgba(0, 0, 0, 0.01));
+
+
+        }
+
+        .container-2 {
+            background-color: #1f1e24;
+            width: 370px;
+            top: 45%;
+            left: 2.5%;
+            border-radius: 10px;
+            padding: 20px 20px;
+            z-index: 1000;
+
+        }
+
+        .container-2-reg {
+            top: 37%;
+            border-radius: 10px;
+            left: 4%;
+            padding: 10px 15px;
+            width: 360px;
+            height: 500px;
+
+
+        }
+
+        .titulo-registro h1{
+            font-weight: 700;
+            color: #2EBFA5;
+            font-size: 30px;
+            margin-bottom: 10px;
+
+        }
+
+        #formulario, #formulario input{
+            font-size: 13px;
+            margin-bottom: -5px;
+
+        }
+
+        .container-2-reg {
+            background-color: #1f1e24;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 40%;
+            left: 6%;
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 0px 0px;
+        }
+
+
+        .titulo-registro h1 {
+            font-weight: 700;
+            color: #2ebfa5;
+            font-size: 30px;
+            margin-left: 15px;
+            margin-left: 40px;
+        }
+
+
+        .titulo-inicio h1 {
+            font-weight: 700;
+            color: #2ebfa5;
+            font-size: 30px;
+            margin-left: 15px;
+        }
+
+
+        #formulario {
+            color: #2ebfa5;
+            font-weight: 500;
+            font-family: "Poppins", sans-serif;
+        }
+
+
+        .form-check-label {
+            font-weight: 200;
+        }
+
+
+        #boton-registrarme {
+            margin-top: 15px;
+            font-family: "Lexend", sans-serif;
+            font-weight: 700;
+        }
+
+
+        #boton-log {
+            margin-top: 15px;
+            padding-left: 125px;
+            padding-right: 125px;
+            font-family: "Lexend", sans-serif;
+            font-weight: 700;
+        }
+
+        .botones-ticket {
+            display: flex;
+            font-family: "Lexend", sans-serif;
+            font-weight: 700;
+            padding: 10px 20px;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 20px;
+            text-decoration: none;
+        }
+    }
 
     /* Login*/
 
 
-    .container-1 {
-        position: absolute;
-        top: 25%;
-        left: 10%;
-        height: 500px;
-        width: 600px;
-    }
 
 
-    .container-1 img {
-        position: absolute;
-        top: 10%;
-        left: 10%;
-        height: 370px;
-        width: 500px;
-    }
 
-
-    .imagen-fondo {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 55%; /* Ocupa la mitad derecha */
-        height: 100vh; /* Toda la altura de la pantalla */
-        background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
-            url("public/images/log.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-
-    .container-2 {
-        background-color: #1f1e24;
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        top: 30%;
-        left: 62%;
-        border-radius: 10px;
-        padding: 20px 20px;
-        z-index: 1000;
-        padding: 20px 50px;
-    }
-
-
-    .container-2-reg {
-        background-color: #1f1e24;
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        top: 20%;
-        left: 62%;
-        border-radius: 10px;
-        padding: 20px 20px;
-        z-index: 1000;
-        padding: 20px 50px;
-    }
-
-
-    .titulo-registro h1 {
-        font-weight: 700;
-        color: #2ebfa5;
-        font-size: 60px;
-        margin-left: 15px;
-        margin-left: 40px;
-    }
-
-
-    .titulo-inicio h1 {
-        font-weight: 700;
-        color: #2ebfa5;
-        font-size: 40px;
-        margin-left: 15px;
-    }
-
-
-    #formulario {
-        color: #2ebfa5;
-        font-weight: 500;
-        font-family: "Poppins", sans-serif;
-    }
-
-
-    .form-check-label {
-        font-weight: 200;
-    }
-
-
-    #boton-registrarme {
-        margin-top: 15px;
-        padding-left: 155px;
-        padding-right: 155px;
-        font-family: "Lexend", sans-serif;
-        font-weight: 700;
-    }
-
-
-    #boton-log {
-        margin-top: 15px;
-        padding-left: 125px;
-        padding-right: 125px;
-        font-family: "Lexend", sans-serif;
-        font-weight: 700;
-    }

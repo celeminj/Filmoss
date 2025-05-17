@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\Api\CineController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\Api\PeliculaController;
@@ -162,3 +163,5 @@ Route::get('/perfil/{id}', function ($id) {
     return view('perfil.index', compact('usuario'));
 
 })->name('perfil');
+
+Route::post('/enviar-ticket', [TicketController::class, 'enviar'])->name('ticket.enviar');

@@ -1,12 +1,8 @@
 <template>
-  <!-- Botón flotante (icono SVG de flecha) -->
   <div class="boton-mostrar-chat" v-if="mostrarBotonChat" @click="abrirChat">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#2EBFA5" viewBox="0 0 24 24">
-      <path d="M9 18l6-6-6-6" />
-    </svg>
+    <img src="https://i.postimg.cc/1RdD2k5W/Group-2.png" alt="" style="width: 30px; height: 30px;" />
   </div>
 
-  <!-- Chat lateral -->
   <div id="chat-lateral" :style="{ right: chatAbierto ? '0' : '-400px' }">
     <div style="display: flex; justify-content: space-between; align-items: center;">
       <img src="https://i.postimg.cc/x1c4B87p/Ellipse-49.png" alt="Logo" style="width: 20px; height: 20px;" />
@@ -67,7 +63,7 @@ const mensajes = ref([])
 const contenedorChat = ref(null)
 const abrirChat = () => {
   chatAbierto.value = true;
-  cargarMensajes(); 
+  cargarMensajes();
 };
 const cerrarChat = () => {
   chatAbierto.value = false;
@@ -88,8 +84,8 @@ const enviarMensaje = async () => {
   try {
     const response = await axios.post(`/pelicula_nueva/${props.peliculaId}/${props.hora}/${props.eventoId}/chat`, {
       mensaje: nuevoMensaje.value,
-      evento_pelicula_id: props.eventoId, 
-      usuario_id: props.usuarioId         
+      evento_pelicula_id: props.eventoId,
+      usuario_id: props.usuarioId
     });
 
     mensajes.value.push({
@@ -122,17 +118,15 @@ onMounted(() => {
 <style scoped>
 #cerrar-chat {
   border: none;
-  background: none; 
+  background: none;
 }
 .boton-mostrar-chat {
   position: absolute;
   top: 10%;
   right: 2%;
   cursor: pointer;
-  background: rgb(255, 255, 255);
   padding: 8px;
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 .nombre-usuario-chat{
   font-size: 1rem;
@@ -154,7 +148,7 @@ onMounted(() => {
   overflow-y: auto;
   font-family: "Lexend";
   font-weight: 700;
-  
+
 }
 
 .chat-en-curso {

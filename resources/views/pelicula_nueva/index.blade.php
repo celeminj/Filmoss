@@ -2,64 +2,63 @@
 @section('contenido')
     <div class="reproductor">
         <div class="pelicula">
-            <div class="degradado-info"></div>
-
-            <div class="contenedor-imagen"  style="cursor: pointer;">
-                <img id="imagenPelicula" src="{{ $pelicula->image }}" alt="" style="width: 120rem; height: 58rem; object-fit: cover;">
+            <div id="contenedorDesaparecer">
+                <div class="degradado-info"></div>
+                <div class="contenedor-imagen"  style="cursor: pointer;">
+                    <img id="imagenPelicula" src="{{ $pelicula->image }}" alt="" style="width: 120rem; height: 58rem; object-fit: cover;">
+                </div>
             </div>
+
 
         <iframe id="iframePelicula" class="iframe-pelicula" src="{{ $pelicula->pelicula_src }}" frameborder="0"
             scrolling="no" width="1905" height="940" allowfullscreen
             style="display: none; margin-top: 0rem;"></iframe>
-  
+
                 <div id="app">
-                <chat 
+                <chat
                     :pelicula-id="{{ $pelicula->id }}"
                     :hora="'{{ $hora }}'"
                     :evento-id="{{ $eventoId }}"
                     :usuario-id="{{ auth()->id() }}"
                 ></chat>
-            </div>  
 
-        <div class="info-peli">
-            <div class="titulo-pelicula">
-                <h1>{{ $pelicula->titulo }}</h1>
-                <div class="hora">
-                    <p>Hora seleccionada: <strong>{{ $hora }}</strong></p>
-                </div>
-            </div>
 
-            <div class="categorias">
-            </div>
+            <iframe id="iframePelicula" class="iframe-pelicula" src="{{ $pelicula->pelicula_src }}" frameborder="0"
+                scrolling="no" width="1905" height="940" allowfullscreen
+                style="display: none; margin-top: 0rem;"></iframe>
 
-            <div class="edad">
-                <p>+ {{ $pelicula->restriccion_edad }}</p>
-            </div>
+            <div id="app">
+                <chat :pelicula-id="{{ $pelicula->id }}" :hora="'{{ $hora }}'" :evento-id="{{ $eventoId }}"
+                    :usuario-id="{{ auth()->id() }}"></chat>
 
-            <div class="descripcion-peli">
-                <p>{{ $pelicula->descripcion }}</p>
-            </div>
-
-            <div class="botones-pelicula">
-                <div class="ver-ya">
-                    <button>VER YA</button>
-                    <a href="{{ $pelicula->pelicula_src }}">
-                        <div class="play-button"></div>
-                    </a>
-                </div>
-                <div class="otros-botones">
-                    <div class="trailer">
-                        <button>Trailer</button>
+                <div class="info-peli">
+                    <div class="titulo-pelicula">
+                        <h1>{{ $pelicula->titulo }}</h1>
+                        <div class="hora">
+                            <p>Hora seleccionada: <strong>{{ $hora }}</strong></p>
+                        </div>
                     </div>
-                    <div class="heart">
-                        {{-- <button>Favoritos</button> --}}
-                    </div>
-                </div>
 
+                    <div class="categorias">
+                    </div>
+
+            <boton-wait
+            :pelicula-id="{{ $pelicula->id }}"
+            :hora="'{{ $hora }}'"
+            :pelicula-src="'{{ $pelicula->pelicula_src }}'"
+            ></boton-wait>
+
+                    <div class="edad">
+                        <p>+ {{ $pelicula->restriccion_edad }}</p>
+                    </div>
+
+                    <div class="descripcion-peli">
+                        <p>{{ $pelicula->descripcion }}</p>
+                    </div>
             </div>
+
         </div>
     </div>
-
     <div class="detalles">
         <div class="titulo-detalles">
             <h1>DETALLES</h1>
@@ -94,3 +93,4 @@
         </div>
     </div>
 @endsection
+

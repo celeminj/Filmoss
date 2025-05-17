@@ -13,7 +13,7 @@
         <h1>Peliculas vistas</h1>
         <div class="pelis-destacadas">
             <a class="url-peli" v-for="(pelicula, index) in ultimasPeliculas" :key="index"
-                :href="`/Filmoss/public/pelicula/${pelicula.id}`">
+                :href="`/public/pelicula/${pelicula.id}`">
 
                 <div class="destacada1" :style="{
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(${pelicula.image})`,
