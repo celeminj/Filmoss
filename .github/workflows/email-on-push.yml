@@ -16,11 +16,11 @@ jobs:
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
           server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
           subject: "Nuevo push en ${{ github.repository }}"
           to: ${{ secrets.EMAIL_TO }}
-          from: "GitHub Action <${{ secrets.EMAIL_USERNAME }}>"
+          from: "GitHub Action <${{ secrets.EMAIL_USER }}>"
           body: |
             Se ha hecho push al repositorio **${{ github.repository }}**.
 
