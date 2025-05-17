@@ -1,0 +1,32 @@
+name: Email on Push
+
+on:
+  push:
+    branches: [ "jordiceleminbranch" ]   # cualquier rama; cambia si solo quieres main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo (opcional, pero útil para info del commit)
+        uses: actions/checkout@v4
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Nuevo push en ${{ github.repository }}"
+          to: ${{ secrets.EMAIL_TO }}
+          from: "GitHub Action <${{ secrets.EMAIL_USERNAME }}>"
+          body: |
+            Se ha hecho push al repositorio **${{ github.repository }}**.
+
+            Autor:  ${{ github.actor }}
+            Rama:   ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Mensaje: ${{ github.event.head_commit.message }}
+
+            Revisa aquí: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
