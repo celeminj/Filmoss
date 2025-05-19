@@ -15,7 +15,6 @@
                 <catalogo-destacanseguntusgustos></catalogo-destacanseguntusgustos>
             </div>
             <div class="anadidas-recientemente">
-
                 <peliculas-recientemente></peliculas-recientemente>
             </div>
         </div>

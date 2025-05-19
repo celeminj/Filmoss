@@ -19,37 +19,52 @@
     </div>
 </template>
 
-<script setup>
-import { ref, onMounted, watch } from 'vue'
-import axios from 'axios'
+<script>
+import axios from 'axios';
 
-const props = defineProps({
-    idCategoria: Number
-})
-
-const peliculas = ref([])
-
-async function cargarPeliculas() {
-    try {
-        const res = await axios.get(`/categorias/${props.idCategoria}/peliculas`)
-        peliculas.value = res.data.slice(-10)
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-onMounted(cargarPeliculas)
-watch(() => props.idCategoria, cargarPeliculas)
-
-const carouselRef = ref(null)
-onMounted(() => {
-    setInterval(() => {
-        if (carouselRef.value) {
-            carouselRef.value.scrollBy({ left: 300, behavior: 'smooth' })
+export default {
+    props: {
+        idCategoria: Number
+    },
+    data() {
+        return {
+            peliculas: [],
+            carouselInterval: null
+        };
+    },
+    methods: {
+        async cargarPeliculas() {
+            try {
+                const res = await axios.get(`/categorias/${this.idCategoria}/peliculas`);
+                this.peliculas = res.data.slice(-10);
+            } catch (err) {
+                console.error(err);
+            }
+        },
+        iniciarCarrusel() {
+            this.carouselInterval = setInterval(() => {
+                const carousel = this.$refs.carouselRef;
+                if (carousel) {
+                    carousel.scrollBy({ left: 300, behavior: 'smooth' });
+                }
+            }, 3000);
         }
-    }, 3000)
-})
+    },
+    watch: {
+        idCategoria() {
+            this.cargarPeliculas();
+        }
+    },
+    mounted() {
+        this.cargarPeliculas();
+        this.iniciarCarrusel();
+    },
+    beforeUnmount() {
+        clearInterval(this.carouselInterval);
+    }
+};
 </script>
+
 
 <style scoped>
 * {

@@ -107,10 +107,8 @@ class EventoPeliculaController extends Controller
     public function destroy(Evento_pelicula $evento_pelicula)
     {
         try {
-            // Eliminar los registros en ver_evento relacionados
             $evento_pelicula->evento_pelicula_nueva()->detach();
 
-            // Ahora eliminar el evento_pelicula
             $evento_pelicula->delete();
 
             return response()->json([

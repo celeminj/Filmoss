@@ -8,50 +8,59 @@
                 prev: index === currentIndex - 1,
                 next: index === currentIndex + 1
             }" :style="{
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${pelicula.image})`
-}" @click="irAPelicula(index)">
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${pelicula.image})`
+        }" @click="irAPelicula(index)">
                 <a :href="`/public/pelicula/${pelicula.id}`" @click.stop style="text-decoration: none; color: inherit;">
                     <h3>{{ pelicula.titulo }}</h3>
                 </a>
             </div>
-
         </div>
     </div>
 </template>
 
-<script setup>
-import { ref, onMounted, watch } from 'vue'
-import axios from 'axios'
+<script>
+import axios from 'axios';
 
-const props = defineProps({
-    idCategoria: {
-        type: Number,
-        required: true
+export default {
+    props: {
+        idCategoria: {
+            type: Number,
+            required: true
+        }
+    },
+    data() {
+        return {
+            peliculas: [],
+            currentIndex: 0
+        };
+    },
+    methods: {
+        async cargarPeliculas() {
+            try {
+                const response = await axios.get(`/categorias/${this.idCategoria}/peliculas`);
+                this.peliculas = response.data.slice(-5);
+                this.currentIndex = 0;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        irAPelicula(index) {
+            if (index >= 0 && index < this.peliculas.length) {
+                this.currentIndex = index;
+            }
+        }
+    },
+    watch: {
+        idCategoria() {
+            this.cargarPeliculas();
+        }
+    },
+    mounted() {
+        this.cargarPeliculas();
     }
-})
-
-const peliculas = ref([])
-const currentIndex = ref(0)
-
-const cargarPeliculas = async () => {
-    try {
-        const response = await axios.get(`/categorias/${props.idCategoria}/peliculas`)
-        peliculas.value = response.data.slice(-5)
-        currentIndex.value = 0
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-onMounted(cargarPeliculas)
-watch(() => props.idCategoria, cargarPeliculas)
-
-const irAPelicula = (index) => {
-    if (index >= 0 && index < peliculas.value.length) {
-        currentIndex.value = index
-    }
-}
+};
 </script>
+
 
 <style scoped>
 .carrusel-categoria {
