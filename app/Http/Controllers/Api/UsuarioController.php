@@ -16,6 +16,11 @@ class UsuarioController extends Controller
 {
     public function login(Request $request){
 
+        $request->validate([
+            'correo' => 'required|email|unique:usuario',
+            'contrasenya' => 'required|min:6|confirmed',
+        ]);
+
         $correo = $request->input('correo');
         $contrasenya = $request->input('contrasenya');
         $user = Usuario::where('correo',$correo)->first();
@@ -64,13 +69,12 @@ class UsuarioController extends Controller
 
     public function register(Request $request)
     {
-        // $request->validate([
-        //     'nombre' => 'required|string|max:255',
-        //     'fecha_nacimiento' => 'required|date',
-        //     'correo' => 'required|email|unique:usuario',
-        //     'contrasenya' => 'required|min:6|confirmed',
-        // ]);
-
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'fecha_nacimiento' => 'required|date|after:1900-01-01|before:today',
+            'correo' => 'required|email|unique:usuario',
+            'contrasenya' => 'required|min:6|confirmed',
+        ]);
 
         $user = new Usuario();
         $user->nombre = $request->input("nombre");

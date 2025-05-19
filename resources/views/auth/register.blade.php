@@ -14,6 +14,11 @@
                         <div class="titulo-registro">
                             <h1>REGISTRO</h1>
                         </div>
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form action="{{ action([App\Http\Controllers\Api\UsuarioController::class, 'register']) }}"
                             method="POST" id="formulario">
                             @csrf
@@ -25,7 +30,8 @@
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label for="formInputFecha" class="form-label">Fecha de nacimiento</label>
                                 <input type="date" name="fecha_nacimiento" class="form-control" id="formInputFecha"
-                                    required>
+                                    required min="1900-01-01" max="{{ date('Y-m-d') }}">
+
                             </div>
 
                             <div class="mb-3">
@@ -59,6 +65,6 @@
             </div>
         </div>
 
- @endsection
+    @endsection
 
-@section('footer', '')
+    @section('footer', '')

@@ -1,11 +1,11 @@
 <template>
-  <div class="contenedor-home">
-    <div class="video-filmo-container">
-      <video autoplay muted loop class="video-filmo-bg">
-        <source src="/public/mp4/pulp.mp4" type="video/mp4">
-      </video>
-      <div class="video-filmo-overlay"></div>
-    </div>
+    <div class="contenedor-home">
+        <div class="video-filmo-container">
+            <video autoplay muted loop class="video-filmo-bg">
+                <source src="/public/mp4/pulp.mp4" type="video/mp4">
+            </video>
+            <div class="video-filmo-overlay"></div>
+        </div>
         <div class="filmo-marquee-container">
             <div class="filmo-marquee">
                 <span>FILMOFILMOFILMOFILMOFILMO</span>
@@ -37,6 +37,8 @@
             </div>
         </div>
         <div id="app">
+            <paradax></paradax>
+
             <EstadisticasHome></EstadisticasHome>
         </div>
         <div class="image-scroll-gallery">
@@ -82,72 +84,72 @@ const galleryImages = [
 
 
 
-onMounted(() => {
-    gsap.to(".filmo-marquee span", {
-        x: "-50%",
-        duration: 30,
-        repeat: -1,
-        ease: "none"
-    })
-    gsap.to(".filmo-marquee-reverse span", {
-        x: "50%",
-        duration: 30,
-        repeat: -1,
-        ease: "none"
-    })
+// onMounted(() => {
+//     gsap.to(".filmo-marquee span", {
+//         x: "-50%",
+//         duration: 30,
+//         repeat: -1,
+//         ease: "none"
+//     })
+//     gsap.to(".filmo-marquee-reverse span", {
+//         x: "50%",
+//         duration: 30,
+//         repeat: -1,
+//         ease: "none"
+//     })
 
-    nextTick(() => {
-        revealElements.value.forEach((container) => {
-            const image = container.querySelector('img')
+//     nextTick(() => {
+//         revealElements.value.forEach((container) => {
+//             const image = container.querySelector('img')
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: container,
-                    toggleActions: 'restart none none reset'
-                }
-            })
+//             const tl = gsap.timeline({
+//                 scrollTrigger: {
+//                     trigger: container,
+//                     toggleActions: 'restart none none reset'
+//                 }
+//             })
 
-            tl.set(container, { autoAlpha: 1 })
-            tl.from(container, {
-                xPercent: -100,
-                duration: 1.5,
-                ease: 'power2.out'
-            })
-            tl.from(
-                image,
-                {
-                    xPercent: 100,
-                    scale: 1.3,
-                    duration: 1.5,
-                    delay: -1.5,
-                    ease: 'power2.out'
-                },
-                0
-            )
-        })
-    })
+//             tl.set(container, { autoAlpha: 1 })
+//             tl.from(container, {
+//                 xPercent: -100,
+//                 duration: 1.5,
+//                 ease: 'power2.out'
+//             })
+//             tl.from(
+//                 image,
+//                 {
+//                     xPercent: 100,
+//                     scale: 1.3,
+//                     duration: 1.5,
+//                     delay: -1.5,
+//                     ease: 'power2.out'
+//                 },
+//                 0
+//             )
+//         })
+//     })
 
-    gsap.utils.toArray(".scroll-image").forEach((image, i) => {
-        gsap.from(image, {
-            scrollTrigger: {
-                trigger: image,
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            delay: i * 0.2,
-            ease: "power2.out"
-        })
-    })
-})
+//     gsap.utils.toArray(".scroll-image").forEach((image, i) => {
+//         gsap.from(image, {
+//             scrollTrigger: {
+//                 trigger: image,
+//                 start: "top 80%",
+//                 toggleActions: "play none none none"
+//             },
+//             y: 100,
+//             opacity: 0,
+//             duration: 1,
+//             delay: i * 0.2,
+//             ease: "power2.out"
+//         })
+//     })
+// })
 
-onBeforeUnmount(() => {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    gsap.killTweensOf(".filmo-marquee span")
-    gsap.killTweensOf(".filmo-marquee-reverse span")
-})
+// onBeforeUnmount(() => {
+//     ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+//     gsap.killTweensOf(".filmo-marquee span")
+//     gsap.killTweensOf(".filmo-marquee-reverse span")
+// })
 </script>
 
 
